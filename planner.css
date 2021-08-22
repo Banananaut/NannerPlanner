@@ -1,0 +1,184 @@
+body {
+  background-color: darkslateblue;
+  font-family:Arial;
+}
+
+h1 {
+  text-align:center;
+  color:white;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+#freePerkCountDiv {
+  text-align:center;
+  font-size:20px;
+}
+
+.redText {
+  color:red;
+}
+
+.whiteText{
+  color:white:
+}
+
+#activeSkillNameAndLevel {
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  font-size:25px;
+  padding:5px;
+}
+
+#activeSkillLevelInput {
+  margin-left:10px;
+  width:90px;
+  font-size:25px;
+  background: rgba(0, 128, 0, 0.0);
+  color:white;
+  text-align:right;
+}
+
+#highlightedPerkDiv{
+  display:none;
+  position:fixed;
+  max-width:600px;
+  background:lightyellow;
+  padding:5px;
+}
+
+#highlightedPerkName {
+  text-align:center;
+  font-size:20px;
+}
+
+#highlightedPerkDesc, #highlightedNextPerkDesc {
+  margin-top:10px;
+  margin-left:5px;
+  margin-right:5px;
+  text-align:center;
+  font-size:16px;
+}
+
+#mainSkillDisplayDiv {
+  margin:auto;
+  max-width:1400px;
+  min-width:1200px;
+  border: 1px solid black;
+  display: flex;
+  /*flex-wrap: wrap;*/
+  padding: 3px;
+  background:slateblue;
+  color:white;
+}
+
+#activeSkillDisplaySVG {
+  width:100%;
+  min-width:400px;
+  height:600px;
+}
+
+#activeSkillDisplayDiv {
+  float:left;
+  width:40%;
+  min-width:400px;
+  margin:5px;
+  border-left: 2px solid black;
+  border-right: 2px solid black;
+}
+
+#leftSkillDisplayDiv {
+  display:table;
+  /*border-collapse:collapse;*/
+  border-spacing:3px;
+  float:left;
+  width:25%;
+  min-width:300px;
+  height:0px;
+}
+
+#rightStatsPanelDiv {
+  width:32%;
+  min-width:400px;
+  padding:3px;
+}
+
+.leftSkillDisplayRowDiv {
+  display:table-row;
+}
+
+.miniSkillTreeDiv {
+  display: table-cell;
+  padding: 5px;
+  border-style:solid;
+  border-width: 2px;
+  border-color:transparent;
+  width: 31%;
+  min-width: 80px;
+}
+
+.miniSkillTreeDivSelected{
+  border: 2px solid red;
+}
+
+.miniSkillTreeSVG {
+  width:90%;
+  height:80px;
+  display:block;
+  margin:auto;
+}
+
+.miniSkillTreeName {
+  text-align:center;
+}
+
+.miniSkillTreeLevel {
+  text-align:center;
+}
+
+svg > text {
+   -webkit-user-select: none;
+   -moz-user-select: none;
+   -ms-user-select: none;
+   user-select: none;
+}
+
+.subsectionTitle{
+  text-align:center;
+  font-size:24px;
+  margin-bottom:5px;
+  margin-bottom:5px;
+}
+
+.subsectionSubtitle{
+  text-align:center;
+  font-size:20px;
+  margin-bottom:5px;
+  margin-bottom:5px;
+}
+
+.selectInputWithLabel {
+  font-size:20px;
+  margin-top:5px;
+  margin-bottom:5px;
+}
+
+.selectInputWithLabel select {
+  float:right;
+  width:65%;
+  font-size:14px;
+}
+
+.statsSubsectionDiv {
+  margin:5px;
+  padding:3px;
+  border-bottom: 2px solid black;
+}
+
+#rulesTitle{
+  color:yellow;
+}

@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <script src="planner.js"></script>
+  <script src="perkListData.js"></script>
+  <script src="raceListData.js"></script>
+  <script src="gameMechanicsData.js"></script>
+  <script src="presetData.js"></script>
+  <link rel="stylesheet" href="planner.css">
+  <title>NannerPlanner</title>
+  <link rel="shortcut icon" href="nanner.ico" />
+</head>
+<body>
+  <h1>Requiem Character Planner</h1>
+  <div id="mainSkillDisplayDiv">
+    <div id="rightStatsPanelDiv">
+      <div id="rulesConfigDiv" class="statsSubsectionDiv">
+        <div class="subsectionTitle" id="rulesTitle">Rules (Pick these first!)</div>
+        <div class="selectInputWithLabel" id="presetDataSelectInputDiv">Preset
+          <select id="presetSelect">
+          </select>
+        </div>
+        <div class="subsectionSubtitle">Customize</div>
+        <div class="selectInputWithLabel" id="perkDataSelectInputDiv">Perks
+          <select id="perksSelect">
+          </select>
+        </div>
+        <div class="selectInputWithLabel" id="raceDataSelectInputDiv">Races
+          <select id="racesSelect">
+          </select>
+        </div>
+        <div class="selectInputWithLabel" id="mechanicsDataSelectInputDiv">Game Rules
+          <select id="mechanicsSelect">
+          </select>
+        </div>
+      </div>
+      <div id="raceAndStatsDiv" class="statsSubsectionDiv">
+        <div class="selectInputWithLabel" id="raceSelectInputDiv">Race
+          <select id="raceSelect">
+          </select>
+        </div>
+      </div>
+    </div>
+    <div id="activeSkillDisplayDiv">
+      <div id="activeSkillNameAndLevel">
+        <span id="activeSkillDisplayName"></span>
+        <input type="number" id="activeSkillLevelInput" min="5" max="100" step="1" value="5">
+      </div>
+      <div id="freePerkCountDiv">
+      </div>
+      <svg id="activeSkillDisplaySVG">
+        <defs>
+          <radialGradient id="perkSelectedGrad" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
+            <stop offset="40%" style="stop-color:rgb(255,255,0);stop-opacity:1" />
+            <stop offset="100%" style="stop-color:rgb(255,255,255);stop-opacity:0" />
+          </radialGradient>
+          <radialGradient id="perkNotSelectedGrad" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
+            <stop offset="40%" style="stop-color:rgb(173,216,230);stop-opacity:1" />
+            <stop offset="100%" style="stop-color:rgb(255,255,255);stop-opacity:0" />
+          </radialGradient>
+          <radialGradient id="perkNotValidGrad" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
+            <stop offset="40%" style="stop-color:rgb(255,0,0);stop-opacity:1" />
+            <stop offset="100%" style="stop-color:rgb(255,255,255);stop-opacity:0" />
+          </radialGradient>
+          <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+            <feGaussianBlur stdDeviation="2 2" result="shadow"/>
+            <feOffset dx="4" dy="4"/>
+          </filter>
+        </defs>
+      </svg>
+    </div>
+    <div id="leftSkillDisplayDiv">
+      <div class="leftSkillDisplayRowDiv">
+        <div class="miniSkillTreeDiv  miniSkillTreeDivSelected" id="skill1Div" data-skillnum="0">
+          <div class="miniSkillTreeName" id="skill1Name"></div>
+          <div class="miniSkillTreeLevel" id="skill1Level"></div>
+          <svg class="miniSkillTreeSVG" id="skill1SVG"></svg>
+        </div>
+        <div class="miniSkillTreeDiv" id="skill2Div" data-skillnum="1">
+          <div class="miniSkillTreeName" id="skill2Name"></div>
+          <div class="miniSkillTreeLevel" id="skill2Level"></div>
+          <svg class="miniSkillTreeSVG" id="skill2SVG">
+          </svg>
+        </div>
+        <div class="miniSkillTreeDiv" id="skill3Div" data-skillnum="2">
+          <div class="miniSkillTreeName" id="skill3Name"></div>
+          <div class="miniSkillTreeLevel" id="skill3Level"></div>
+          <svg class="miniSkillTreeSVG" id="skill3SVG">
+          </svg>
+        </div>
+      </div>
+      <div class="leftSkillDisplayRowDiv">
+        <div class="miniSkillTreeDiv" id="skill4Div" data-skillnum="3">
+          <div class="miniSkillTreeName" id="skill4Name"></div>
+          <div class="miniSkillTreeLevel" id="skill4Level"></div>
+          <svg class="miniSkillTreeSVG" id="skill4SVG">
+          </svg>
+        </div>
+        <div class="miniSkillTreeDiv" id="skill5Div" data-skillnum="4">
+          <div class="miniSkillTreeName" id="skill5Name"></div>
+          <div class="miniSkillTreeLevel" id="skill5Level"></div>
+          <svg class="miniSkillTreeSVG" id="skill5SVG">
+          </svg>
+        </div>
+        <div class="miniSkillTreeDiv" id="skill6Div" data-skillnum="5">
+          <div class="miniSkillTreeName" id="skill6Name"></div>
+          <div class="miniSkillTreeLevel" id="skill6Level"></div>
+          <svg class="miniSkillTreeSVG" id="skill6SVG">
+          </svg>
+        </div>
+      </div>
+      <div class="leftSkillDisplayRowDiv">
+        <div class="miniSkillTreeDiv" id="skill7Div" data-skillnum="6">
+          <div class="miniSkillTreeName" id="skill7Name"></div>
+          <div class="miniSkillTreeLevel" id="skill7Level"></div>
+          <svg class="miniSkillTreeSVG" id="skill7SVG">
+          </svg>
+        </div>
+        <div class="miniSkillTreeDiv" id="skill8Div" data-skillnum="7">
+          <div class="miniSkillTreeName" id="skill8Name"></div>
+          <div class="miniSkillTreeLevel" id="skill8Level"></div>
+          <svg class="miniSkillTreeSVG" id="skill8SVG">
+          </svg>
+        </div>
+        <div class="miniSkillTreeDiv" id="skill9Div" data-skillnum="8">
+          <div class="miniSkillTreeName" id="skill9Name"></div>
+          <div class="miniSkillTreeLevel" id="skill9Level"></div>
+          <svg class="miniSkillTreeSVG" id="skill9SVG">
+          </svg>
+        </div>
+      </div>
+      <div class="leftSkillDisplayRowDiv">
+        <div class="miniSkillTreeDiv" id="skill10Div" data-skillnum="9">
+          <div class="miniSkillTreeName" id="skill10Name"></div>
+          <div class="miniSkillTreeLevel" id="skill10Level"></div>
+          <svg class="miniSkillTreeSVG" id="skill10SVG">
+          </svg>
+        </div>
+        <div class="miniSkillTreeDiv" id="skill11Div" data-skillnum="10">
+          <div class="miniSkillTreeName" id="skill11Name"></div>
+          <div class="miniSkillTreeLevel" id="skill11Level"></div>
+          <svg class="miniSkillTreeSVG" id="skill11SVG">
+          </svg>
+        </div>
+        <div class="miniSkillTreeDiv" id="skill12Div" data-skillnum="11">
+          <div class="miniSkillTreeName" id="skill12Name"></div>
+          <div class="miniSkillTreeLevel" id="skill12Level"></div>
+          <svg class="miniSkillTreeSVG" id="skill12SVG">
+          </svg>
+        </div>
+      </div>
+      <div class="leftSkillDisplayRowDiv">
+        <div class="miniSkillTreeDiv" id="skill13Div" data-skillnum="12">
+          <div class="miniSkillTreeName" id="skill13Name"></div>
+          <div class="miniSkillTreeLevel" id="skill13Level"></div>
+          <svg class="miniSkillTreeSVG" id="skill113SVG">
+          </svg>
+        </div>
+        <div class="miniSkillTreeDiv" id="skill14Div" data-skillnum="13">
+          <div class="miniSkillTreeName" id="skill14Name"></div>
+          <div class="miniSkillTreeLevel" id="skill14Level"></div>
+          <svg class="miniSkillTreeSVG" id="skill14SVG">
+          </svg>
+        </div>
+        <div class="miniSkillTreeDiv" id="skill15Div" data-skillnum="14">
+          <div class="miniSkillTreeName" id="skill15Name"></div>
+          <div class="miniSkillTreeLevel" id="skill15Level"></div>
+          <svg class="miniSkillTreeSVG" id="skill15SVG">
+          </svg>
+        </div>
+      </div>
+      <div class="leftSkillDisplayRowDiv">
+        <div class="miniSkillTreeDiv" id="skill16Div" data-skillnum="15">
+          <div class="miniSkillTreeName" id="skill16Name"></div>
+          <div class="miniSkillTreeLevel" id="skill16Level"></div>
+          <svg class="miniSkillTreeSVG" id="skill16SVG">
+          </svg>
+        </div>
+        <div class="miniSkillTreeDiv" id="skill17Div" data-skillnum="16">
+          <div class="miniSkillTreeName" id="skill17Name"></div>
+          <div class="miniSkillTreeLevel" id="skill17Level"></div>
+          <svg class="miniSkillTreeSVG" id="skill17SVG">
+          </svg>
+        </div>
+        <div class="miniSkillTreeDiv" id="skill18Div" data-skillnum="17">
+          <div class="miniSkillTreeName" id="skill18Name"></div>
+          <div class="miniSkillTreeLevel" id="skill18Level"></div>
+          <svg class="miniSkillTreeSVG" id="skill18SVG">
+          </svg>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="highlightedPerkDiv">
+    <div id="highlightedPerkDesc"></div>
+    <div id="highlightedNextPerkDesc"></div>
+  </div>
+</body>
+</html>
