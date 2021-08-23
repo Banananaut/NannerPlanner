@@ -1,17 +1,17 @@
-const fTweaks17GameMechanicsData = {
-  name: "FTweaks 1.7",
+const requiem402GameMechanicsData = {
+  name: "Requiem 4.0.2",
   id : 0,
   
   initialPerks: 3,
   
   oghmaData : {
-    perksGiven : 5,
-    hmsGiven : [100,100,100]
+    perksGiven : 7,
+    hmsGiven : [200,200,200]
   },
   
   leveling: {
-    base : 150,
-    mult : 23,
+    base : 75,
+    mult : 25,
     hmsGiven : [5,5,5]
   },
   
@@ -83,6 +83,20 @@ const fTweaks17GameMechanicsData = {
                       0.2,
                       0.5]                     
   }
+};
+
+addGameMechanicsData(requiem402GameMechanicsData);
+
+const fTweaks17GameMechanicsData = {};
+Object.assign(fTweaks17GameMechanicsData,requiem402GameMechanicsData);
+
+fTweaks17GameMechanicsData.id = 1;
+fTweaks17GameMechanicsData.name = "FTweaks 1.7";
+fTweaks17GameMechanicsData.oghmaData = {perksGiven: 5, hmsGiven :[100,100,100]};
+fTweaks17GameMechanicsData.leveling = {
+  base:150,
+  mult:23,
+  hmsGiven : [5,5,5]
 };
 
 addGameMechanicsData(fTweaks17GameMechanicsData);

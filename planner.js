@@ -28,6 +28,7 @@ $(document).ready(function(){
   curRaceList = racesList[0];
   curGameMechanics = gameMechanicsList[0];
 
+  sortDataLists();
   initCharacterData();
   updateSelectOptions();
   updateSkillNames();
@@ -40,6 +41,18 @@ $(document).ready(function(){
   
   attachHandlers();
 });
+
+//Sort all of the data lists by name alphabetically
+function sortDataLists(){
+  perksList.sort(dataArrayCompare);
+  racesList.sort(dataArrayCompare);
+  gameMechanicsList.sort(dataArrayCompare);
+  presetList.sort(dataArrayCompare);
+}
+
+function dataArrayCompare(a,b){
+  return a.name.localeCompare(b.name);
+}
 
 //Reset character data completely to a staring 
 function initCharacterData(){
@@ -70,16 +83,52 @@ function attachHandlers(){
   $("#activeSkillLevelInput").on("keyup input",skillInputChange);
   $("#presetSelect").on("change",presetSelectChange);
   $("#perksSelect").on("change",perkSelectChange);
+  $("#raceSelect").on("change",raceSelectChange);
+}
+
+function raceSelectChange(){
+  changeRace($(this).val());
+}
+
+function changeRace(newRaceNum){
+  let oldRaceNum = characterData.race;
+  let oldRace = curRaceList.races[oldRaceNum];
+  let newRace = curRaceList.races[newRaceNum];
+  
+  //Adjust skills based for the new race.
+  //If skills are below the staring value for the new race,
+  //bring them up to the new level. If a skill is at the staring
+  //value for the old race, set it to the starting value for the
+  //new race.
+  for(let i = 0; i < 18; i++){
+    if(characterData.skillLevels[i] < newRace.startingSkills[i] || 
+       characterData.skillLevels[i] == oldRace.startingSkills[i]){
+      characterData.skillLevels[i] = newRace.startingSkills[i];
+    }
+  }
+  
+  characterData.race = newRaceNum;
+  
+  updateCharacterLevelAndEarnedPerks();
+  updateCircleAndLineColors();
+  updateSkillLevelsDisplay();
+  $("#activeSkillLevelInput").val(characterData.skillLevels[activeSkill]);
+  $("#activeSkillLevelInput").attr("min",newRace.startingSkills[activeSkill]);
+}
+
+function calculateDerivedAttributes(){
 }
 
 function presetSelectChange() {
   let presetIndex = getIndexWithID(Number($(this).val()),presetList);
   let preset = presetList[presetIndex];
   $("#perksSelect").val(preset.perks);
+  $("#racesSelect").val(preset.races);
+  $("#mechanicsSelect").val(preset.gameMechanics);
 }
 
 function perkSelectChange(){
-  alert("perks changed");
+  //alert("perks changed");
 }
 
 function skillInputChange(){
@@ -90,29 +139,24 @@ function skillInputChange(){
   $(this).val(value);
   characterData.skillLevels[activeSkill] = value;
   
-  /*
-  let removedOne = removeInvalidPerks(activeSkill);
-  if(removedOne){
-    drawActiveSkillTree();
-  }
-  */
-  
   updateCircleAndLineColors();
   
   updateCharacterLevelAndEarnedPerks();
   updateSkillLevelsDisplay();
 }
 
-//Remove perks that the character should no longer have
+//Remove perks from the given skill that the character should no longer have
 //because the skill level is now too low.
 //Returns true if a perk was removed and we need to redraw
-//the active skill display
+//the active skill display.
+//If input skillNum = -1, check all skills.
 function removeInvalidPerks(skillNum){
   let answer = false;
   let skillLev = characterData.skillLevels[skillNum];
+  let checkAll = skillNum == -1;
   
   for(let i = 0; i < curPerkList.perks.length; i++){
-    if(curPerkList.perks[i].skill != skillNum || !characterHasPerk(i)){
+    if( (curPerkList.perks[i].skill != skillNum && !checkAll) || !characterHasPerk(i)){
           continue;
     }
     if(skillLev < curPerkList.perks[i].skillReq){
@@ -577,7 +621,7 @@ function addPerkData(perkData){
       perkData.perks[i].totalInChain = -1;
       perkData.perks[i].placeInChain = -1;
     }
-    else if(perkData.perks[i].nextPerk != -1){
+    else if(perkData.perks[i].nextPerk != -1 && !("prevPerk" in perkData.perks[i])){
       perkData.perks[i].prevPerk = -1;
       //The start of a chain
       //First count how many are in the chain
@@ -626,24 +670,28 @@ function updateSelectOptions(){
   for(let i = 0; i < presetList.length; i++){
     presetSel.append(`<option value="${presetList[i].id}">${presetList[i].name}</option>`);
   }
+  presetSel.val(0);
   
   let perksSel = $("#perksSelect");
   perksSel.empty();
   for(let i = 0; i < perksList.length; i++){
     perksSel.append(`<option value="${perksList[i].id}">${perksList[i].name}</option>`);
   }
+  perksSel.val(0);
   
   let racesSel = $("#racesSelect");
   racesSel.empty();
   for(let i = 0; i < racesList.length; i++){
     racesSel.append(`<option value="${racesList[i].id}">${racesList[i].name}</option>`);
   }
+  racesSel.val(0);
   
   let mechanicsSel = $("#mechanicsSelect");
   mechanicsSel.empty();
   for(let i = 0; i < gameMechanicsList.length; i++){
     mechanicsSel.append(`<option value="${gameMechanicsList[i].id}">${gameMechanicsList[i].name}</option>`);
   }
+  mechanicsSel.val(0);
 }
 
 function getIndexWithID(id,dataArray){
