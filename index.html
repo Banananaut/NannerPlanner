@@ -7,6 +7,8 @@
   <script src="raceListData.js"></script>
   <script src="gameMechanicsData.js"></script>
   <script src="presetData.js"></script>
+  <script src="blessingsData.js"></script>
+  <script src="standingStoneData.js"></script>
   <link rel="stylesheet" href="planner.css">
   <title>NannerPlanner</title>
   <link rel="shortcut icon" href="nanner.ico" />
@@ -21,23 +23,37 @@
           <select id="presetSelect">
           </select>
         </div>
-        <div class="subsectionSubtitle">Customize</div>
-        <div class="selectInputWithLabel" id="perkDataSelectInputDiv">Perks
-          <select id="perksSelect">
-          </select>
-        </div>
-        <div class="selectInputWithLabel" id="raceDataSelectInputDiv">Races
-          <select id="racesSelect">
-          </select>
-        </div>
-        <div class="selectInputWithLabel" id="mechanicsDataSelectInputDiv">Game Rules
-          <select id="mechanicsSelect">
-          </select>
+        <div class="subsectionSubtitle clickableText" id="customClickDiv">Click here to customize</div>
+        <div id="presetCustomOptionsDiv">
+          <div class="selectInputWithLabel" id="perkDataSelectInputDiv">Perks
+            <select id="perksSelect">
+            </select>
+          </div>
+          <div class="selectInputWithLabel" id="raceDataSelectInputDiv">Races
+            <select id="racesSelect">
+            </select>
+          </div>
+          <div class="selectInputWithLabel" id="blessingDataSelectInputDiv">Blessings
+            <select id="blessingsSelect">
+            </select>
+          </div>
+          <div class="selectInputWithLabel" id="mechanicsDataSelectInputDiv">Game Rules
+            <select id="mechanicsSelect">
+            </select>
+          </div>
         </div>
       </div>
       <div id="raceAndStatsDiv" class="statsSubsectionDiv">
         <div class="selectInputWithLabel" id="raceSelectInputDiv">Race
           <select id="raceSelect">
+          </select>
+        </div>
+        <div class="selectInputWithLabel" id="stoneSelectInputDiv">Standing Stone
+          <select id="stoneSelect">
+          </select>
+        </div>
+        <div class="selectInputWithLabel" id="blessingSelectInputDiv">Blessing
+          <select id="blessingSelect">
           </select>
         </div>
       </div>

@@ -1,5 +1,5 @@
 body {
-  background-color: darkslateblue;
+  background-color: black;
   font-family:Arial;
 }
 
@@ -38,7 +38,7 @@ h1 {
   margin-left:10px;
   width:90px;
   font-size:25px;
-  background: rgba(0, 128, 0, 0.0);
+  background: rgba(0, 0, 0, 0.0);
   color:white;
   text-align:right;
 }
@@ -72,14 +72,16 @@ h1 {
   display: flex;
   /*flex-wrap: wrap;*/
   padding: 3px;
-  background:slateblue;
+  background-color:slateblue;
   color:white;
 }
 
 #activeSkillDisplaySVG {
-  width:100%;
-  min-width:400px;
-  height:600px;
+  min-width:500px;
+  width:550px;
+  height:550px;
+  margin:auto;
+  display:block;
 }
 
 #activeSkillDisplayDiv {
@@ -126,7 +128,7 @@ h1 {
 }
 
 .miniSkillTreeSVG {
-  width:90%;
+  width:80px;
   height:80px;
   display:block;
   margin:auto;
@@ -181,4 +183,18 @@ svg > text {
 
 #rulesTitle{
   color:yellow;
+}
+
+#presetCustomOptionsDiv{
+  display:none;
+  position:absolute;
+  background:blue;
+  min-width:500px;
+  border:2px solid black;
+  padding:10px;
+  background-color:slateblue;
+}
+
+.clickableText{
+  cursor:pointer;
 }

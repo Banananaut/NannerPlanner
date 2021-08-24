@@ -2,9 +2,12 @@ var perksList = [];
 var racesList = [];
 var gameMechanicsList = [];
 var presetList = [];
+var blessingsList = [];
 var curPerkList;
 var curRaceList;
 var curGameMechanics;
+var curPreset;
+var curBlessingList;
 var activeSkill = 0;
 
 var characterData = {
@@ -19,14 +22,21 @@ var characterData = {
   level: 1,
   attrIncreases: 0,
   earnedPerks : 3,
-  spentPerks: 0 //The number of perks actually taken
+  spentPerks: 0, //The number of perks actually taken
+  standingStone : 0,
+  blessing : 0
 };
 
 $(document).ready(function(){
 
-  curPerkList = perksList[0];
-  curRaceList = racesList[0];
-  curGameMechanics = gameMechanicsList[0];
+  let presetNum = parsePresetFromURL();
+
+  curPreset = presetList[getIndexWithID(presetNum,presetList)];
+
+  curPerkList = perksList[curPreset.perks];
+  curRaceList = racesList[curPreset.races];
+  curGameMechanics = gameMechanicsList[curPreset.gameMechanics];
+  curBlessingList = blessingsList[curPreset.blessings];
 
   sortDataLists();
   initCharacterData();
@@ -41,6 +51,22 @@ $(document).ready(function(){
   
   attachHandlers();
 });
+
+function parsePresetFromURL(){
+  const queryString = window.location.search;
+  const params = new URLSearchParams(queryString);
+  if(params.has("p")){
+    let presetNum = Number(params.get("p"));
+    if(isNaN(presetNum) || presetNum < 0 || presetNum > presetList.length){
+      presetNum = 0;
+    }
+    return presetNum;
+  }
+  else {
+    return 0;
+  }
+  
+}
 
 //Sort all of the data lists by name alphabetically
 function sortDataLists(){
@@ -74,16 +100,23 @@ function initCharacterData(){
   characterData.attrIncreases = 0;
   characterData.earnedPerks = curGameMechanics.initialPerks;
   characterData.spentPerks = 0;
+  characterData.standingStone = 0;
+  characterData.blessing = 0;
 }
 
 function attachHandlers(){
   $(".miniSkillTreeDiv").click(leftSideSkillClick);
-  $(".miniSkillCircle").click(miniSkillCircleClick);
   $(window).resize(resizeWindowHandler);
-  $("#activeSkillLevelInput").on("keyup input",skillInputChange);
+  $("#activeSkillLevelInput").on("change",skillInputChange);
   $("#presetSelect").on("change",presetSelectChange);
   $("#perksSelect").on("change",perkSelectChange);
   $("#raceSelect").on("change",raceSelectChange);
+  
+  $("#customClickDiv").click(customClickDivClick);
+}
+
+function customClickDivClick(){
+  $("#presetCustomOptionsDiv").toggle();
 }
 
 function raceSelectChange(){
@@ -125,6 +158,7 @@ function presetSelectChange() {
   $("#perksSelect").val(preset.perks);
   $("#racesSelect").val(preset.races);
   $("#mechanicsSelect").val(preset.gameMechanics);
+  $("#blessingsSelect").val(preset.blessings);
 }
 
 function perkSelectChange(){
@@ -181,18 +215,64 @@ function activeSkillPerkClick(event){
     let isInChain = curPerkList.perks[perkNum].placeInChain != -1;
     let isFirstInChain = curPerkList.perks[perkNum].prevPerk == -1;
     
+    let perkToTake = -1
+    
     //The perk we clicked on is the one we want to take
-    if(!isInChain || !hasPerk){
-      tryTakePerk(perkNum);
+    if(!isInChain || !hasPerk){ 
+      perkToTake = perkNum;
     }
     //Otherwise we clicked part of a chain and actually want to take the next one.
     else{
-      tryTakePerk(curPerkList.perks[perkNum].nextPerk);
+      perkToTake = curPerkList.perks[perkNum].nextPerk;
     }
+    
+    if(event.detail > 1){
+      
+      let tookPerk = forceTakePerk(perkToTake);
+      if(tookPerk){
+        updateActiveSkillPanel();
+      }
+      updateCharacterLevelAndEarnedPerks();
+      updateCircleAndLineColors();
+      updateSkillLevelsDisplay();
+    }
+    else{
+      tryTakePerk(perkToTake);
+    }
+    
   }
   else if (event.button == 2){//RMB
     tryRemovePerk(perkNum);
   }
+}
+
+//Force the character into a state where we can take the given perk
+//and then take the perk. That is, set the appropriate skill level to
+//take the given perk if it isn't high enough and take all of the pre-reqs
+//Assumes that the skill level requirement for a perk is greater or equal
+//to the skill req for all pre-reqs. Returns true if a perk was actually taken.
+function forceTakePerk(perkNum){
+  
+  let thePerk = curPerkList.perks[perkNum];
+  let hasPerk = characterHasPerk(perkNum);
+  let meetsSkillReq = thePerk.skillReq <= characterData.skillLevels[thePerk.skill]
+  
+  if(!meetsSkillReq){
+    characterData.skillLevels[thePerk.skill] = thePerk.skillReq;
+  }
+  
+  let tookPerk = false;
+  
+  for(let i = 0; i < thePerk.preReqs.length; i++){
+    tookPerk = forceTakePerk(thePerk.preReqs[i]) | tookPerk;
+  }
+  
+  if(!hasPerk){
+    actuallyTakePerk(perkNum);
+    tookPerk = true;
+  }
+  
+  return tookPerk;
 }
 
 //Attempt to take the given perk. Can fail if the pre-reqs for
@@ -292,7 +372,6 @@ function activeSkillPerkHoverEnter(event){
 }
 
 function activeSkillPerkHoverLeave(){
-  $("#highlightedPerkName").empty();
   $("#highlightedPerkDesc").empty();
   $("#highlightedNextPerkDesc").empty();
   $("#highlightedPerkDiv").hide();
@@ -302,10 +381,6 @@ function resizeWindowHandler(){
   drawActiveSkillTree();
   drawMiniSkillTrees();
   updateCircleAndLineColors();
-}
-
-function miniSkillCircleClick(){
-  //alert($(this).attr("data-perknum"));
 }
 
 function leftSideSkillClick(){
@@ -363,16 +438,7 @@ function drawActiveSkillTree(){
       let preYPos = perks[ perks[i].preReqs[j] ].yPos / 100 * svgHeight;
       
       if(preXPos != curXPos || preYPos != curYPos)
-      {
-        /*
-        let theColor = "lightblue";
-        
-        if(characterHasPerk(i) && characterHasPerk(perks[i].preReqs[j])){
-          theColor = "yellow";
-        }
-        
-        theSVG.append(`<line id="mainLine${i}to${perks[i].preReqs[j]}" x1="${curXPos}" y1="${curYPos}" x2="${preXPos}" y2="${preYPos}" stroke="${theColor}" stroke-width="2" stroke-opacity="0.5" />`);*/
-        
+      { 
         theSVG.append(`<line id="mainLine${i}to${perks[i].preReqs[j]}" x1="${curXPos}" y1="${curYPos}" x2="${preXPos}" y2="${preYPos}" stroke-width="2" stroke-opacity="0.5" />`);
       }
     }
@@ -402,16 +468,6 @@ function drawActiveSkillTree(){
     
     let curXPos = perks[i].xPos / 100 * svgWidth;
     let curYPos = perks[i].yPos / 100 * svgHeight;  
-    /*
-    let fillType = "perkNotSelectedGrad";
-
-    if(hasPerk || hasPrevInChain){
-      fillType = "perkSelectedGrad";
-    }
-    
-    
-    theSVG.append(`<circle class="activeSkillCircle" id="activeCircle${i}" cx="${curXPos}" cy="${curYPos}" r="10" data-perkNum="${i}" oncontextmenu="return false" fill="url(#${fillType})"/>`);
-    */
     
     theSVG.append(`<circle class="activeSkillCircle" id="activeCircle${i}" cx="${curXPos}" cy="${curYPos}" r="10" data-perkNum="${i}" oncontextmenu="return false"/>`);
     
@@ -535,15 +591,7 @@ function drawMiniSkillTrees() {
       let preYPos = perks[ perks[i].preReqs[j] ].yPos / 100 * svgHeight;
       
       if(preXPos != curXPos || preYPos != curYPos)
-      {
-        /*
-        let theColor = "lightblue";
-        
-        if(characterHasPerk(i) && characterHasPerk(perks[i].preReqs[j])){
-          theColor = "yellow";
-        }
-        */
-        
+      { 
         theSVG.append(`<line id="miniLine${i}to${perks[i].preReqs[j]}" x1="${curXPos}" y1="${curYPos}" x2="${preXPos}" y2="${preYPos}" stroke-width="1" />`);
       }
     }
@@ -561,14 +609,6 @@ function drawMiniSkillTrees() {
     //For perk chains, only draw one circle for the first one
     if(perks[i].prevPerk == -1)
     {
-      /*
-      let fillType = "lightblue";
-
-      if(characterHasPerk(i)){
-        fillType = "yellow";
-      }
-      */
-      
       $("#skill" + (perks[i].skill + 1) + "SVG").append(`<circle class="miniSkillCircle" id="miniSkillCircle${i}" cx="${curXPos}" cy="${curYPos}" r="3" data-perkNum="${i}" />`);
     }
   }
@@ -576,6 +616,26 @@ function drawMiniSkillTrees() {
   for(let i = 1; i <= 18; i++){
     $(`#skill${i}Div`).html($(`#skill${i}Div`).html())
   }
+  
+  attachMiniSkillTreeHandlers();
+}
+
+function attachMiniSkillTreeHandlers(){
+  $(".miniSkillCircle").hover(miniPerkHoverEnter,activeSkillPerkHoverLeave);
+}
+
+function miniPerkHoverEnter(event){
+
+  let clientRect = this.getBoundingClientRect();
+
+  let perkNum = Number($(this).attr("data-perknum"));
+  let hasPerk = characterHasPerk(perkNum);
+  let isInChain = curPerkList.perks[perkNum].placeInChain != -1;
+  
+  $("#highlightedPerkDesc").html(curPerkList.perks[perkNum].name);
+  $("#highlightedNextPerkDesc").empty();
+  
+  $("#highlightedPerkDiv").css({left : `${clientRect.left-80}px`, top : `${clientRect.top+5}px`, display: "block"}); 
 }
 
 function updateSkillNames() {
@@ -588,6 +648,7 @@ function updateSkillLevelsDisplay(){
   for(let i = 1; i <= 18; i++){
     $("#skill" + i + "Level").html(characterData.skillLevels[i-1]);
   }
+  $("#activeSkillLevelInput").val(characterData.skillLevels[activeSkill]);
 }
 
 function characterHasPerk(perkNum){
@@ -597,6 +658,11 @@ function characterHasPerk(perkNum){
 //Don't need to do any processing here (yet).
 function addRaceData(raceData){
   racesList.push(raceData);
+}
+
+//Don't need to do any processing here (yet).
+function addBlessingsData(blessingData){
+  blessingsList.push(blessingData);
 }
 
 //Do some additional processing on the perk data,
@@ -670,28 +736,35 @@ function updateSelectOptions(){
   for(let i = 0; i < presetList.length; i++){
     presetSel.append(`<option value="${presetList[i].id}">${presetList[i].name}</option>`);
   }
-  presetSel.val(0);
+  presetSel.val(curPreset.id);
   
   let perksSel = $("#perksSelect");
   perksSel.empty();
   for(let i = 0; i < perksList.length; i++){
     perksSel.append(`<option value="${perksList[i].id}">${perksList[i].name}</option>`);
   }
-  perksSel.val(0);
+  perksSel.val(curPerkList.id);
   
   let racesSel = $("#racesSelect");
   racesSel.empty();
   for(let i = 0; i < racesList.length; i++){
     racesSel.append(`<option value="${racesList[i].id}">${racesList[i].name}</option>`);
   }
-  racesSel.val(0);
+  racesSel.val(curRaceList.id);
   
   let mechanicsSel = $("#mechanicsSelect");
   mechanicsSel.empty();
   for(let i = 0; i < gameMechanicsList.length; i++){
     mechanicsSel.append(`<option value="${gameMechanicsList[i].id}">${gameMechanicsList[i].name}</option>`);
   }
-  mechanicsSel.val(0);
+  mechanicsSel.val(curGameMechanics.id);
+  
+  let blessingsSel = $("#blessingsSelect");
+  blessingsSel.empty();
+  for(let i = 0; i < blessingsList.length; i++){
+    blessingsSel.append(`<option value="${blessingsList[i].id}">${blessingsList[i].name}</option>`);
+  }
+  blessingsSel.val(curBlessingList.id);
 }
 
 function getIndexWithID(id,dataArray){
