@@ -91,7 +91,7 @@ const fTweaks17GameMechanicsData = {};
 Object.assign(fTweaks17GameMechanicsData,requiem402GameMechanicsData);
 
 fTweaks17GameMechanicsData.id = 1;
-fTweaks17GameMechanicsData.name = "FTweaks 1.7";
+fTweaks17GameMechanicsData.name = "3/B/FTweaks";
 fTweaks17GameMechanicsData.oghmaData = {perksGiven: 5, hmsGiven :[100,100,100]};
 fTweaks17GameMechanicsData.leveling = {
   base:150,

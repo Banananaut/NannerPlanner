@@ -208,6 +208,8 @@ function attachActiveSkillHandlers(){
 }
 
 function activeSkillPerkClick(event){
+  $("body").addClass("unselectable");
+  
   let perkNum = Number($(this).attr("data-perknum"));
   
   if(event.button == 0){//LMB
@@ -244,6 +246,10 @@ function activeSkillPerkClick(event){
   else if (event.button == 2){//RMB
     tryRemovePerk(perkNum);
   }
+  
+  window.getSelection().removeAllRanges();
+  setTimeout(function(){$("body").removeClass("unselectable");},5);
+  
 }
 
 //Force the character into a state where we can take the given perk

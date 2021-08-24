@@ -49,6 +49,7 @@ h1 {
   max-width:600px;
   background:lightyellow;
   padding:5px;
+  border:1px solid black;
 }
 
 #highlightedPerkName {
@@ -82,6 +83,10 @@ h1 {
   height:550px;
   margin:auto;
   display:block;
+}
+
+#activeSkillDisplaySVGDiv{
+  border-bottom: 2px solid black;
 }
 
 #activeSkillDisplayDiv {
@@ -142,7 +147,7 @@ h1 {
   text-align:center;
 }
 
-svg > text {
+svg > text, .unselectable {
    -webkit-user-select: none;
    -moz-user-select: none;
    -ms-user-select: none;
@@ -192,9 +197,24 @@ svg > text {
   min-width:500px;
   border:2px solid black;
   padding:10px;
-  background-color:slateblue;
+  background-color:blue;
 }
 
 .clickableText{
   cursor:pointer;
+}
+
+#activeSkillControlsDiv{
+  padding:5px;
+}
+
+#resetButtonsDiv{
+  display:flex;
+  justify-content:center;
+}
+
+#resetButtonsDiv button{
+  font-size:16px;
+  margin-left:10px;
+  margin-right:10px;
 }

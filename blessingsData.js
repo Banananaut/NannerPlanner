@@ -47,7 +47,7 @@ addBlessingsData(requiemWithFozarsBlessingsData);
 
 const fTweaks14BlessingsData = {
   id : 2,
-  name : "FTweaks 1.4+",
+  name : "FTweaks 1.4 and up",
   
   blessings : [
     "None",
