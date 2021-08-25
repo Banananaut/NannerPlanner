@@ -563,6 +563,383 @@ perks : [
   {name : "Stunning Precision", skill : 10, skillReq : 100,
    xPos : 174/4, yPos : 27/4, preReqs : [132,129], nextPerk: -1,
    description : "Any successful staggering shot will almost always stun the target momentarily. [staggering hits will also stun the target]"},
+   //134
+  {name : "Martial Arts", skill : 11, skillReq : 0,
+   xPos : 125/4, yPos : 297/4, preReqs : [], nextPerk: -1,
+   description : "You are a passionate fist fighter, and train regularly to toughen your muscles to their very limits. Thus you are able to deliver much harder punches to your enemies."},
+   //135
+  {name : "Weapon Mastery", skill : 11, skillReq : 0,
+   xPos : 191/4, yPos : 351/4, preReqs : [], nextPerk: 136,
+   description : "Your improved fighting techniques allow you to swing one-handed weapons with less effort and deal more damage. [damage x 1.2, -50% weapon weight penalties]"},
+   //136
+  {name : "Weapon Mastery", skill : 11, skillReq : 0,
+   xPos : 191/4, yPos : 351/4, preReqs : [135], nextPerk: -1,
+   description : "Your improved fighting techniques increase your damage dealt with one-handed weapons greatly. [damage x 1.4, -50% weapon weight penalties]"},
+   //137
+  {name : "Penetrating Strikes", skill : 11, skillReq : 20,
+   xPos : 195/4, yPos : 274/4, preReqs : [135], nextPerk: -1,
+   description : "Your power attacks with one-handed weapons are now devastating enough to penetrate enemy armor and less exhausting. [-50% power attack stamina cost, +5 armor penetration]"},
+   //138
+  {name : "Dagger Focus", skill : 11, skillReq : 25,
+   xPos : 85/4, yPos : 240/4, preReqs : [137], nextPerk: 139,
+   description : "You learned some dirty tricks for your dagger and are more likely to find weak spots in enemy armor. [irresistable sneak attack damage x 1.25, +10 armor penetration]"},
+   //139
+  {name : "Dagger Focus", skill : 11, skillReq : 50,
+   xPos : 85/4, yPos : 240/4, preReqs : [138], nextPerk: 140,
+   description : "A dagger in your hand turns into a deadly weapon that will find a weakness in every armor. [irresistable sneak attack damage x 1.55, +20 armor penetration]"},
+   //140
+  {name : "Dagger Focus", skill : 11, skillReq : 75,
+   xPos : 85/4, yPos : 240/4, preReqs : [139], nextPerk: -1,
+   description : "You have mastered the deadly art of the dagger and enemy armor stands no chance against your precision. [irresistable sneak attack damage x 2, +30 armor penetration]"},
+   //141
+  {name : "War Axe Focus", skill : 11, skillReq : 25,
+   xPos : 140/4, yPos : 200/4, preReqs : [137], nextPerk: 142,
+   description : "You've become familiar with war axes, thereby increasing their damage and armor penetration. [damage x 1.05, +10 armor penetration]"},
+   //142
+  {name : "War Axe Focus", skill : 11, skillReq : 50,
+   xPos : 140/4, yPos : 200/4, preReqs : [141], nextPerk: 143,
+   description : "You've become an advanced axe fighter, further increasing their damage and armor penetration. [damage x 1.15, +20 armor penetration]"},
+   //143
+  {name : "War Axe Focus", skill : 11, skillReq : 75,
+   xPos : 140/4, yPos : 200/4, preReqs : [142], nextPerk: -1,
+   description : "Having mastered war axe combat, they start to feel like an almost natural extension of your arm. [damage x 1.3, +30 armor penetration]"},
+   //144
+  {name : "Mace Focus", skill : 11, skillReq : 25,
+   xPos : 260/4, yPos : 200/4, preReqs : [137], nextPerk: 145,
+   description : "You've become familiar with war axes, thereby increasing their damage and armor penetration. [damage x 1.05, +10 armor penetration]"},
+   //145
+  {name : "Mace Focus", skill : 11, skillReq : 50,
+   xPos : 260/4, yPos : 200/4, preReqs : [144], nextPerk: 146,
+   description : "You've become an advanced mace fighter and know how to find weak spots in enemy armor. [power attack damage x 1.1, +30 armor penetration]"},
+   //146
+  {name : "Mace Focus", skill : 11, skillReq : 75,
+   xPos : 260/4, yPos : 200/4, preReqs : [145], nextPerk: -1,
+   description : "You've become a masterly mace fighter, rendering armor almost useless. [power attack damage x 1.15, +45 armor penetration]"},
+   //147
+  {name : "Sword Focus", skill : 11, skillReq : 25,
+   xPos : 275/4, yPos : 236/4, preReqs : [137], nextPerk: 148,
+   description : "You've learned the basics of sword combat, allowing you to increase your attack rate with them slightly. [+8% attack speed, +7 armor penetration]"},
+   //148
+  {name : "Sword Focus", skill : 11, skillReq : 50,
+   xPos : 275/4, yPos : 236/4, preReqs : [147], nextPerk: 149,
+   description : "You've acquired the advanced techniques of sword combat, further increasing your attack rate with them. [+16% attack speed, +14 armor penetration]"},
+   //149
+  {name : "Sword Focus", skill : 11, skillReq : 75,
+   xPos : 275/4, yPos : 236/4, preReqs : [148], nextPerk: -1,
+   description : "You've become a master of sword combat, allowing you to swing swords so fast that it's almost undetectable to the mortal eye. [+24% attack speed, +21 armor penetration]"},
+   //150
+  {name : "Powerful Strike", skill : 11, skillReq : 50,
+   xPos : 150/4, yPos : 150/4, preReqs : [137], nextPerk: -1,
+   description : "You know how to put the maximum force into your power attacks which are now even more devastating. [power attack damage x 1.2]"},
+   //151
+  {name : "Powerful Charge", skill : 11, skillReq : 50,
+   xPos : 250/4, yPos : 150/4, preReqs : [137], nextPerk: -1,
+   description : "You have learned to perform a leaping power attack while sprinting, inflicting terrible wounds. [unlocks sprinting power attack, -25% weapon weight penalties]"},
+   //152
+  {name : "Stunning Charge", skill : 11, skillReq : 100,
+   xPos : 200/4, yPos : 25/4, preReqs : [150,151], nextPerk: -1,
+   description : "Putting your whole weight behind your charge, your forward power attacks now have enough momentum to knock down opponent.[forward power attacks can knock down]"},
+   //153
+  {name : "Flurry", skill : 11, skillReq : 25,
+   xPos : 325/4, yPos : 300/4, preReqs : [135], nextPerk: 154,
+   description : "When fighting with one-handed weapons, you are able to attack faster than normal. [+10% attack speed]"},
+   //154
+  {name : "Flurry", skill : 11, skillReq : 50,
+   xPos : 325/4, yPos : 300/4, preReqs : [153], nextPerk: -1,
+   description : "When fighting with one-handed weapons, you're able to attack even faster. [+25% attack speed]"},
+   //155
+  {name : "Storm of Steel", skill : 11, skillReq : 75,
+   xPos : 289/4, yPos : 100/4, preReqs : [153], nextPerk: -1,
+   description : "You've become very skilled in wielding two weapons at once. [dual-wield power attack damage x 1.25]"},
+   //156
+  {name : "Nimble Fingers", skill : 12, skillReq : 0,
+   xPos : 112/4, yPos : 337/4, preReqs : [], nextPerk: 157,
+   description : "You've spent some time improving your sleight of hand, which gives you substantial chances when pickpocketing."},
+   //157
+  {name : "Nimble Fingers", skill : 12, skillReq : 0,
+   xPos : 112/4, yPos : 337/4, preReqs : [156], nextPerk: -1,
+   description : "Your fingers have become very nimble, and besides other advantages, they allow you to pickpocket even better and to apply poisons on your victims. Why fight if a vial of deadly venom can also do the trick?"},
+   //158
+  {name : "Cutpurse", skill : 12, skillReq : 25,
+   xPos : 161/4, yPos : 242/4, preReqs : [156], nextPerk: -1,
+   description : "People shouldn't burden themselves with purses and keys. Luckily, you now can free them of these burdens more easily."},
+   //159
+  {name : "Mighty Greed", skill : 12, skillReq : 25,
+   xPos : 257/4, yPos : 275/4, preReqs : [158], nextPerk: -1,
+   description : "You are either very strong or very greedy... You now can carry more items without becoming overencumbered."},
+   //160
+  {name : "Nightly Thief", skill : 12, skillReq : 50,
+   xPos : 202/4, yPos : 146/4, preReqs : [158], nextPerk: -1,
+   description : "You have learned how to avoid waking up targets during your \"nightly visits\", so you can free them from their worldly burdens with ease."},
+   //161
+  {name : "Misdirection", skill : 12, skillReq : 75,
+   xPos : 221/4, yPos : 60/4, preReqs : [160], nextPerk: -1,
+   description : "Why should someone own a nice weapon or piece of jewelry when it could be yours? Now you can sometimes adjust this inequity."},
+   //162
+  {name : "Perfected Art", skill : 12, skillReq : 100,
+   xPos : 254/4, yPos : 20/4, preReqs : [161], nextPerk: -1,
+   description : "After having learned everything there is to know about thievery, your legendary skill means you almost never get caught."},
+   //163
+  {name : "Painful Regrets", skill : 13, skillReq : 0,
+   xPos : 314/4, yPos : 360/4, preReqs : [], nextPerk: -1,
+   description : "You've honestly reflected your sins, and you truly regret what pain you have inflicted upon others. Therefore, the gods show at least a bit of mercy, but the torment of your deeds will haunt you for the rest of your days..."},
+   //164
+  {name : "Novice Restoration", skill : 13, skillReq : 0,
+   xPos : 221/4, yPos : 345/4, preReqs : [], nextPerk: -1,
+   description : "You've taught yourself a few Novice level spells and learned how to cast them with decreased effort while your newfound knowledge also allows you to augment all Restoration spells."},
+   //165
+  {name : "Apprentice Restoration", skill : 13, skillReq : 25,
+   xPos : 236/4, yPos : 268/4, preReqs : [164], nextPerk: -1,
+   description : "By pursuing your apprenticeship in Restoration, you've gained knowledge of Apprentice level spells which you now augment while casting them with less effort."},
+   //166
+  {name : "Adept Restoration", skill : 13, skillReq : 50,
+   xPos : 213/4, yPos : 190/4, preReqs : [165], nextPerk: -1,
+   description : "By advancing further into the school of Restoration, you've gained some Adept level spells and learned how to augment and cast spells of this rank more easily."},
+   //167
+  {name : "Expert Restoration", skill : 13, skillReq : 75,
+   xPos : 219/4, yPos : 118/4, preReqs : [166], nextPerk: -1,
+   description : "You've unlocked almost every secret in the school of Restoration and you've acquired some Expert level spells. You can now cast spells of this level easier and augment them to an almost otherworldly extent."},
+   //168
+  {name : "Master Restoration", skill : 13, skillReq : 100,
+   xPos : 178/4, yPos : 67/4, preReqs : [167], nextPerk: -1,
+   description : "Your knowledge of Restoration has become all-encompassing.You taught yourself a Master level spell and you can cast the most complex spells from this school with less effort while augmenting them beyond mortal limits."},
+   //169
+  {name : "Benefactor's Insight", skill : 13, skillReq : 25,
+   xPos : 306/4, yPos : 295/4, preReqs : [165], nextPerk: -1,
+   description : "You learned how to empower Restoration spells. Therefore, you are now able to overcharge their effects."},
+   //170
+  {name : "Focused Mind", skill : 13, skillReq : 25,
+   xPos : 336/4, yPos : 253/4, preReqs : [165], nextPerk: -1,
+   description : "You've learned to focus your mind. Thus, you can keep your concentration even in stressful situations and regenerate your magicka faster."},
+   //171
+  {name : "Power of Life", skill : 13, skillReq : 50,
+   xPos : 282/4, yPos : 160/4, preReqs : [170], nextPerk: -1,
+   description : "Your studies of healing magic now grant you the power of making yourself almost invulnerable for a short duration once a day."},
+   //172
+  {name : "Essence of Life", skill : 13, skillReq : 75,
+   xPos : 350/4, yPos : 201/4, preReqs : [171], nextPerk: -1,
+   description : "Your understanding of healing and how magic and life are intertwined allows you to call upon your newfound power more often."},
+   //173
+  {name : "Improved Wards", skill : 13, skillReq : 75,
+   xPos : 153/4, yPos : 169/4, preReqs : [164], nextPerk: -1,
+   description : "Your arcane wards now absorb magicka from incoming spells and have slightly improved efficiency."},
+   //174
+  {name : "Improved Healing", skill : 13, skillReq : 50,
+   xPos : 120/4, yPos : 264/4, preReqs : [164], nextPerk: -1,
+   description : "You've gained more knowledge about restorative magics, allowing you to heal wounds more efficiently with your healing spells."},
+   //175
+  {name : "Respite", skill : 13, skillReq : 75,
+   xPos : 35/4, yPos : 238/4, preReqs : [174], nextPerk: -1,
+   description : "In addition to curing wounds, your healing spells now reinvigorate the body itself, restoring the affected subject's stamina."},
+   //176
+  {name : "Mysticism", skill : 13, skillReq : 75,
+   xPos : 62/4, yPos : 161/4, preReqs : [174], nextPerk: -1,
+   description : "You've learned the art of weaving mystical energies into your spells, making all of them more effective against the undead and Daedra."},
+   //177
+  {name : "Craftsmanship", skill : 14, skillReq : 0,
+   xPos : 224/5, yPos : 288/3.5, preReqs : [], nextPerk: -1,
+   description : "You've acquired the basics of craftsmanship and know how to properly use all kinds of tools. Thus, you are able to craft and improve a wide variety of common goods."},
+   //178
+  {name : "Advanced Blacksmithing", skill : 14, skillReq : 50,
+   xPos : 234/5, yPos : 203/3.5, preReqs : [177], nextPerk: -1,
+   description : "You've gained quite some finesse, allowing you to craft plate armor and fine jewelry. You have also found a way to melt and crush certain gems into alchemically usable dust."},
+   //179
+  {name : "Arcane Craftsmanship", skill : 14, skillReq : 50,
+   xPos : 191/5, yPos : 121/3.5, preReqs : [178], nextPerk: -1,
+   description : "After reading a tome about the ancient secrets of explosive dwemer bolts, you've learned the necessary techniques to craft bolts and arrows that will explode with elemental fury upon impact."},
+   //180
+  {name : "Legendary Blacksmithing", skill : 14, skillReq : 100,
+   xPos : 289/5, yPos : 140/3.5, preReqs : [178], nextPerk: -1,
+   description : "You make steel sing songs on the anvil. Your hammer is no longer a mere tool, but a loom that weaves the fabric of myths. You can even improve the divine artifacts of Aedra and Daedra."},
+   //181
+  {name : "Advanced Light Armors", skill : 14, skillReq : 25,
+   xPos : 115/5, yPos : 220/3.5, preReqs : [177], nextPerk: -1,
+   description : "You've been able to learn more advanced techniques, allowing you to craft and efficiently improve scale armor."},
+   //182
+  {name : "Elven Smithing", skill : 14, skillReq : 50,
+   xPos : 48/5, yPos : 150/3.5, preReqs : [181], nextPerk: -1,
+   description : "You've gained enough finesse to create and improve Elven armor and weapons by studying the Elven craftmanship carefully."},
+   //183
+  {name : "Glass Smithing", skill : 14, skillReq : 75,
+   xPos : 70/5, yPos : 96/3.5, preReqs : [182], nextPerk: -1,
+   description : "Crafting and improving Glass equipment is not for the unskilled, but having studied intensely, you aren't one of them any more."},
+   //184
+  {name : "Dwarven Smithing", skill : 14, skillReq : 25,
+   xPos : 347/5, yPos : 227/3.5, preReqs : [177], nextPerk: -1,
+   description : "You've studied some long-lost schematics of dwarven equipment and acquired the secret knowledge of how to create and improve them efficiently."},
+   //185
+  {name : "Orcish Smithing", skill : 14, skillReq : 50,
+   xPos : 426/5, yPos : 172/3.5, preReqs : [184], nextPerk: -1,
+   description : "Orcish equipment is hard to craft, but you've got what it takes. Especially the schematics! You can craft and improve it easily and most efficiently."},
+   //186
+  {name : "Ebony Smithing", skill : 14, skillReq : 75,
+   xPos : 390/5, yPos : 118/3.5, preReqs : [185], nextPerk: -1,
+   description : "Ebony weapons and armor - some even fail at heating the metal. But not you. Now that you've studied the related schematics, you can craft and improve ebony equipment with ease."},
+   //187
+  {name : "Daedric Smithing", skill : 14, skillReq : 100,
+   xPos : 440/5, yPos : 85/3.5, preReqs : [186], nextPerk: -1,
+   description : "The creation of daedric weapons and armor is a secret few mortals know - still, somehow you managed to acquire this knowledge..."},
+   //188
+  {name : "Draconic Blacksmithing", skill : 14, skillReq : 100,
+   xPos : 251/5, yPos : 66/3.5, preReqs : [186,183], nextPerk: -1,
+   description : "The scales and bones of dragons are probably the hardest material to work with, but you've mastered even this art since you studied that old compendium."},
+   //189
+  {name : "Stealth", skill : 15, skillReq : 0,
+   xPos : 189/4, yPos : 349/4, preReqs : [], nextPerk: 190,
+   description : "You know the basics of moving silently and are harder to detect when sneaking while not wearing any heavy armor."},
+   //190
+  {name : "Stealth", skill : 15, skillReq : 0,
+   xPos : 189/4, yPos : 349/4, preReqs : [189], nextPerk: -1,
+   description : "You are even harder to detect when sneaking while not wearing any heavy armor."},
+   //191
+  {name : "Deft Strike", skill : 15, skillReq : 25,
+   xPos : 300/4, yPos : 252/4, preReqs : [189], nextPerk: -1,
+   description : "You've learned to exploit weaknesses in your foes' armor when sneak attacking with daggers, bows or swords."},
+   //192
+  {name : "Anatomical Lore", skill : 15, skillReq : 50,
+   xPos : 308/4, yPos : 174/4, preReqs : [191], nextPerk: -1,
+   description : "Newfound knowledge of humanoid anatomy allows you to slay almost any human-like creature outright with sneak attacks."},
+   //193
+  {name : "Advanced Anatomical Lore", skill : 15, skillReq : 75,
+   xPos : 260/4, yPos : 134/4, preReqs : [192], nextPerk: -1,
+   description : "Your vast knowledge of anatomy allows you to perform devastating sneak attacks on almost any target."},
+   //194
+  {name : "Muffled Movement", skill : 15, skillReq : 25,
+   xPos : 86/4, yPos : 245/4, preReqs : [189], nextPerk: -1,
+   description : "Your newfound finesse allows you to move more quietly while not wearing any heavy armor."},
+   //195
+  {name : "Light Steps", skill : 15, skillReq : 50,
+   xPos : 129/4, yPos : 147/4, preReqs : [194], nextPerk: -1,
+   description : "By distributing your weight more consciously, you're able to avoid triggering pressure plates or similar mechanisms."},
+   //196
+  {name : "Acrobatics", skill : 15, skillReq : 75,
+   xPos : 227/4, yPos : 79/4, preReqs : [195], nextPerk: -1,
+   description : "Your improved balance allows you to silently roll forward, avoid getting knocked down except through magic and move even more quietly."},
+   //197
+  {name : "Shadowrunner", skill : 15, skillReq : 100,
+   xPos : 324/4, yPos : 45/4, preReqs : [196], nextPerk: -1,
+   description : "There's almost nothing you cannot evade. You are even harder to detect, more silent and all falling damage is decreased."},
+   //198
+  {name : "Haggling", skill : 16, skillReq : 0,
+   xPos : 118/4, yPos : 335/4, preReqs : [], nextPerk: -1,
+   description : "You've learned how to deal with Skyrim's greedy merchants and how to haggle for better prices."},
+   //199
+  {name : "Merchant", skill : 16, skillReq : 50,
+   xPos : 98/4, yPos : 271/4, preReqs : [198], nextPerk: -1,
+   description : "Your trading skills are good enough to sell almost anything to any merchant willing to trade with you, and you can invest some of your gold with a shopkeeper to increase his available gold permanently."},
+   //200
+  {name : "Fencing", skill : 16, skillReq : 100,
+   xPos : 141/4, yPos : 246/4, preReqs : [199], nextPerk: -1,
+   description : "You've become so persuasive that you could make almost anyone believe that your goods are of a legal origin."},
+   //201
+  {name : "Silver Tongue", skill : 16, skillReq : 25,
+   xPos : 48/4, yPos : 333/4, preReqs : [198], nextPerk: -1,
+   description : "You've spent quite some time improving your rhetorical skills and are now able to greatly influence any conversation and to fascinate the opposite gender. You also get better offers at respective vendors."},
+   //202
+  {name : "Leadership", skill : 16, skillReq : 75,
+   xPos : 118/4, yPos : 174/4, preReqs : [201], nextPerk: -1,
+   description : "Your rhetorical skill makes you the perfect leader. By inspiring all those who fight by your side, you encourage your followers to always push their abilities to their very limits."},
+   //203
+  {name : "Masquerade", skill : 16, skillReq : 50,
+   xPos : 102/4, yPos : 93/4, preReqs : [201], nextPerk: 204,
+   description : "You've become proficient at acting, and with the right equipment you can now disguise yourself, although sometimes people can still tell that you are not truly one of them."},
+   //204
+  {name : "Masquerade", skill : 16, skillReq : 100,
+   xPos : 102/4, yPos : 93/4, preReqs : [203], nextPerk: -1,
+   description : "There is no role you cannot play, and your acting is so believable that there is almost no way for others to see through your disguises."},
+   //205
+  {name : "Lore of the Thu'um", skill : 16, skillReq : 0,
+   xPos : 340/4, yPos : 338/4, preReqs : [], nextPerk: -1,
+   description : "You've been studying the lore and ancient script of dragons and the Thu'um. Thus, you can shout more often."},
+   //206
+  {name : "Destructive Urge", skill : 16, skillReq : 0,
+   xPos : 250/4, yPos : 320/4, preReqs : [205], nextPerk: -1,
+   description : "The horrors that the Thu'um can inflict are etched into your mind just as you have seen them etched into stone. Your Thu'um will wreak even greater havoc among your unfortunate foes."},
+   //207
+  {name : "Indomitable Force", skill : 16, skillReq : 0,
+   xPos : 265/4, yPos : 251/4, preReqs : [205], nextPerk: -1,
+   description : "You know what it means to be called Ysmir, Dragon of the North. As you have withstood the test of Thu'um, so you will withstand the Thu'um of others."},
+   //208
+  {name : "Spiritual Equilibrium", skill : 16, skillReq : 0,
+   xPos : 273/4, yPos : 160/4, preReqs : [205], nextPerk: -1,
+   description : "You have been guided in meditating on the Thu'um. Now your shouts linger, lasting longer than they did before."},
+   //209
+  {name : "The Way of the Voice", skill : 16, skillReq : 0,
+   xPos : 296/4, yPos : 96/4, preReqs : [205], nextPerk: -1,
+   description : "You've meditated thoroughly, and acquired vast insights into the Way of the Voice. Thus, you can call upon the power of your Thu'um rapidly once each day."},
+   //210
+  {name : "Tongue's Insight", skill : 16, skillReq : 0,
+   xPos : 349/4, yPos : 71/4, preReqs : [205], nextPerk: -1,
+   description : "You've spent time meditating on the Way of the Voice, unearthing more knowledge and gaining valuable insights. Thus, you can harness the might of yet another word of power."},
+   //211
+  {name : "Great Weapon Mastery", skill : 17, skillReq : 0,
+   xPos : 192/4, yPos : 362/4, preReqs : [], nextPerk: 212,
+   description : "Your improved fighting techniques increase your damage dealt with two-handed weapons. [damage x 1.2, -50% weapon weight penalties]"},
+   //212
+  {name : "Great Weapon Mastery", skill : 17, skillReq : 0,
+   xPos : 192/4, yPos : 362/4, preReqs : [211], nextPerk: -1,
+   description : "Your improved fighting techniques increase your damage dealt with two-handed weapons even more. [damage x 1.4, -50% weapon weight penalties]"},
+   //213
+  {name : "Barbaric Might", skill : 17, skillReq : 20,
+   xPos : 195/4, yPos : 275/4, preReqs : [211], nextPerk: -1,
+   description : "Your power attacks become mighty blows that will penetrate armor and are less tiring. [-50% power attack stamina cost, +5 armor penetration]"},
+   //214
+  {name : "Battle Axe Focus", skill : 17, skillReq : 25,
+   xPos : 100/4, yPos : 232/4, preReqs : [213], nextPerk: 215,
+   description : "You've become familiar with battle axes, thereby increasing their damage and armor penetration. [damage x 1.05, +10 armor penetration]"},
+   //215
+  {name : "Battle Axe Focus", skill : 17, skillReq : 50,
+   xPos : 100/4, yPos : 232/4, preReqs : [214], nextPerk: 216,
+   description : "You've become an advanced battle axe fighter, further increasing their damage and armor penetration. [damage x 1.15, +20 armor penetration]"},
+   //216
+  {name : "Battle Axe Focus", skill : 17, skillReq : 75,
+   xPos : 100/4, yPos : 232/4, preReqs : [215], nextPerk: -1,
+   description : "You've become a master of battle axe combat, allowing you to perform devastating attacks with them. [damage x 1.3, +30 armor penetration]"},
+   //217
+  {name : "Greatsword Focus", skill : 17, skillReq : 25,
+   xPos : 280/4, yPos : 230/4, preReqs : [213], nextPerk: 218,
+   description : "You've learned the basics of greatsword combat, allowing you to increase your attack rate with them slightly. [+10% attack speed with greatswords, +7 armor penetration]"},
+   //218
+  {name : "Greatsword Focus", skill : 17, skillReq : 50,
+   xPos : 280/4, yPos : 230/4, preReqs : [217], nextPerk: 219,
+   description : "You've acquired the advanced techniques of greatsword combat, further increasing your attack rate with them. [+20% attack speed with greatswords, +14 armor penetration]"},
+   //219
+  {name : "Greatsword Focus", skill : 17, skillReq : 75,
+   xPos : 280/4, yPos : 230/4, preReqs : [218], nextPerk: -1,
+   description : "You're a master of greatsword combat, making your swings even faster. [+30% attack speed with greatswords, +21 armor penetration]"},
+   //220
+  {name : "Warhammer Focus", skill : 17, skillReq : 25,
+   xPos : 306/4, yPos : 260/4, preReqs : [213], nextPerk: 221,
+   description : "You've become familiar with warhammers, enabling you to partly use their ability to penetrate your foes' armor. [power attack damage x 1.05, +15 armor penetration]"},
+   //221
+  {name : "Warhammer Focus", skill : 17, skillReq : 50,
+   xPos : 306/4, yPos : 260/4, preReqs : [220], nextPerk: 222,
+   description : "You've become an advanced warhammer fighter, further increasing your ability to penetrate armor with them. [power attack damage x 1.1, +30 armor penetration]"},
+   //222
+  {name : "Warhammer Focus", skill : 17, skillReq : 75,
+   xPos : 306/4, yPos : 260/4, preReqs : [221], nextPerk: -1,
+   description : "You've become a masterly warhammer fighter, rendering armor almost useless. [power attack damage x 1.15, +45 armor penetration]"},
+   //223
+  {name : "Devastating Charge", skill : 17, skillReq : 50,
+   xPos : 140/4, yPos : 183/4, preReqs : [213], nextPerk: -1,
+   description : "You've learned to perform a leaping power attack while sprinting, reducing your enemies to smithereens. [unlocks sprinting power attack, -25% weapon weight penalties]"},
+   //224
+  {name : "Devastating Strike", skill : 17, skillReq : 50,
+   xPos : 260/4, yPos : 183/4, preReqs : [213], nextPerk: -1,
+   description : "Your two-handed combat style has improved so much that all power attacks have become devastating. [power attack damage x 1.25]"},
+   //225
+  {name : "Cleave", skill : 17, skillReq : 75,
+   xPos : 205/4, yPos : 91/4, preReqs : [223,224], nextPerk: -1,
+   description : "Your power attacks are truly devastating and you can cut down multiple foes with a single sweeping blow. [sideways power attack can hit multiple targets]"},
+   //226
+  {name : "Devastating Cleave", skill : 17, skillReq : 100,
+   xPos : 205/4, yPos : 50/4, preReqs : [225], nextPerk: -1,
+   description : "Putting your whole weight behind your swing, your sidewards power attacks are now powerful enough to knock down foes. [sideways power attacks can knock down]"},
+   //227
+  {name : "Mighty Strike", skill : 17, skillReq : 100,
+   xPos : 205/4, yPos : 10/4, preReqs : [226], nextPerk: -1,
+   description : "You can kill almost any foe with a single strike of your two-hander, as your blows even fell giants with ease. [damage x 1.25]"},
+   
 ]
 };
 

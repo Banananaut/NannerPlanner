@@ -228,7 +228,7 @@ function activeSkillPerkClick(event){
       perkToTake = curPerkList.perks[perkNum].nextPerk;
     }
     
-    if(event.detail > 1){
+    if(event.detail % 2 == 0){
       
       let tookPerk = forceTakePerk(perkToTake);
       if(tookPerk){
