@@ -617,15 +617,15 @@ perks : [
    description : "You've become a masterly mace fighter, rendering armor almost useless. [power attack damage x 1.15, +45 armor penetration]"},
    //147
   {name : "Sword Focus", skill : 11, skillReq : 25,
-   xPos : 275/4, yPos : 236/4, preReqs : [137], nextPerk: 148,
+   xPos : 285/4, yPos : 246/4, preReqs : [137], nextPerk: 148,
    description : "You've learned the basics of sword combat, allowing you to increase your attack rate with them slightly. [+8% attack speed, +7 armor penetration]"},
    //148
   {name : "Sword Focus", skill : 11, skillReq : 50,
-   xPos : 275/4, yPos : 236/4, preReqs : [147], nextPerk: 149,
+   xPos : 285/4, yPos : 246/4, preReqs : [147], nextPerk: 149,
    description : "You've acquired the advanced techniques of sword combat, further increasing your attack rate with them. [+16% attack speed, +14 armor penetration]"},
    //149
   {name : "Sword Focus", skill : 11, skillReq : 75,
-   xPos : 275/4, yPos : 236/4, preReqs : [148], nextPerk: -1,
+   xPos : 285/4, yPos : 246/4, preReqs : [148], nextPerk: -1,
    description : "You've become a master of sword combat, allowing you to swing swords so fast that it's almost undetectable to the mortal eye. [+24% attack speed, +21 armor penetration]"},
    //150
   {name : "Powerful Strike", skill : 11, skillReq : 50,
@@ -638,18 +638,18 @@ perks : [
    //152
   {name : "Stunning Charge", skill : 11, skillReq : 100,
    xPos : 200/4, yPos : 25/4, preReqs : [150,151], nextPerk: -1,
-   description : "Putting your whole weight behind your charge, your forward power attacks now have enough momentum to knock down opponent.[forward power attacks can knock down]"},
+   description : "Putting your whole weight behind your charge, your forward power attacks now have enough momentum to knock down opponent. [forward power attacks can knock down]"},
    //153
   {name : "Flurry", skill : 11, skillReq : 25,
-   xPos : 325/4, yPos : 300/4, preReqs : [135], nextPerk: 154,
+   xPos : 350/4, yPos : 300/4, preReqs : [135], nextPerk: 154,
    description : "When fighting with one-handed weapons, you are able to attack faster than normal. [+10% attack speed]"},
    //154
   {name : "Flurry", skill : 11, skillReq : 50,
-   xPos : 325/4, yPos : 300/4, preReqs : [153], nextPerk: -1,
+   xPos : 350/4, yPos : 300/4, preReqs : [153], nextPerk: -1,
    description : "When fighting with one-handed weapons, you're able to attack even faster. [+25% attack speed]"},
    //155
   {name : "Storm of Steel", skill : 11, skillReq : 75,
-   xPos : 289/4, yPos : 100/4, preReqs : [153], nextPerk: -1,
+   xPos : 320/4, yPos : 100/4, preReqs : [153], nextPerk: -1,
    description : "You've become very skilled in wielding two weapons at once. [dual-wield power attack damage x 1.25]"},
    //156
   {name : "Nimble Fingers", skill : 12, skillReq : 0,

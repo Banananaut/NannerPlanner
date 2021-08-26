@@ -23,23 +23,28 @@
           <select id="presetSelect">
           </select>
         </div>
-        <div class="subsectionSubtitle clickableText" id="customClickDiv">Click here to customize</div>
+        <div class="subsectionSubtitle">
+          <span class="clickableText customCloseText">Click here to customize</span>
+        </div>
         <div id="presetCustomOptionsDiv">
           <div class="selectInputWithLabel" id="perkDataSelectInputDiv">Perks
             <select id="perksSelect">
             </select>
           </div>
           <div class="selectInputWithLabel" id="raceDataSelectInputDiv">Races
-            <select id="racesSelect">
+            <select id="racesListSelect">
             </select>
           </div>
           <div class="selectInputWithLabel" id="blessingDataSelectInputDiv">Blessings
             <select id="blessingsSelect">
             </select>
           </div>
-          <div class="selectInputWithLabel" id="mechanicsDataSelectInputDiv">Game Rules
+          <div class="selectInputWithLabel" id="mechanicsDataSelectInputDiv">Leveling Rules
             <select id="mechanicsSelect">
             </select>
+          </div>
+          <div class="subsectionSubtitle" id="customizeCloseText">
+            <span class="clickableText customCloseText">Close</span>
           </div>
         </div>
       </div>
@@ -57,11 +62,44 @@
           </select>
         </div>
       </div>
+      <div id="attributesDiv" class="statsSubsectionDiv">
+        <div class="subsectionSubtitle">Attributes</div>
+        <div id="attributesToSpendDiv">Attribute Choices Remaining: 0</div>
+        <div class="attributeInputAndLabelDiv">
+          <span id="healthAttributeText" class="attributeText">Health: 100</span>
+          <span class="numberInputWithLabel">
+            <span class="increasesLabel">Increases:</span>
+            <input class="attributeInput" type="number" id="healthIncreasesInput" min="0" max="0" step="1" value="0"/>
+          </span>
+        </div>
+        <div class="attributeInputAndLabelDiv">
+          <span id="magickaAttributeText" class="attributeText">Magicka: 100</span>
+          <span class="numberInputWithLabel">
+            <span class="increasesLabel">Increases:</span>
+            <input class="attributeInput" type="number" id="magickaIncreasesInput" min="0" max="0" step="1" value="0"/>
+          </span>
+        </div>
+        <div class="attributeInputAndLabelDiv">
+          <span id="staminaAttributeText" class="attributeText">Stamina: 100</span>
+          <span class="numberInputWithLabel">
+            <span class="increasesLabel">Increases:</span>
+            <input class="attributeInput" type="number" id="staminaIncreasesInput" min="0" max="0" step="1" value="0"/>
+          </span>
+        </div>
+        <div class="selectInputWithSmallLabel" id="oghmaInputDiv">Oghma Infinium Choice
+          <select id="oghmaSelect">
+            <option value="0">None</option>
+            <option value="1">Health</option>
+            <option value="2">Magicka</option>
+            <option value="3">Stamina</option>
+          </select>
+        </div>
+      </div>
     </div>
     <div id="activeSkillDisplayDiv">
       <div id="activeSkillNameAndLevel">
         <span id="activeSkillDisplayName"></span>
-        <input type="number" id="activeSkillLevelInput" min="5" max="100" step="1" value="5">
+        <input type="number" id="activeSkillLevelInput" min="5" max="100" step="1" value="5"/>
       </div>
       <div id="freePerkCountDiv">
       </div>

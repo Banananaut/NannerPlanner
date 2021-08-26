@@ -22,6 +22,7 @@ var characterData = {
   level: 1,
   attrIncreases: 0,
   earnedPerks : 3,
+  earnedAttributes: 0,
   spentPerks: 0, //The number of perks actually taken
   standingStone : 0,
   blessing : 0
@@ -40,13 +41,15 @@ $(document).ready(function(){
 
   sortDataLists();
   initCharacterData();
-  updateSelectOptions();
+  updateCustomSelectOptions();
   updateSkillNames();
   updateSkillLevelsDisplay();
   drawMiniSkillTrees();
   updateActiveSkillPanel();
   updateRaceSelect();
-  
+  updateStandingStoneSelect();
+  updateBlessingSelect();
+  updateAttributeText();
   updateCircleAndLineColors();
   
   attachHandlers();
@@ -76,11 +79,12 @@ function sortDataLists(){
   presetList.sort(dataArrayCompare);
 }
 
+//Sort all of the arrays of game data by their names
 function dataArrayCompare(a,b){
   return a.name.localeCompare(b.name);
 }
 
-//Reset character data completely to a staring 
+//Reset character data completely to a starting state
 function initCharacterData(){
   characterData.race = 0;
   characterData.hmsIncreases = [0,0,0];
@@ -102,8 +106,10 @@ function initCharacterData(){
   characterData.spentPerks = 0;
   characterData.standingStone = 0;
   characterData.blessing = 0;
+  characterData.earnedAttributes = 0;
 }
 
+//Attach all the event handlers to the main UI
 function attachHandlers(){
   $(".miniSkillTreeDiv").click(leftSideSkillClick);
   $(window).resize(resizeWindowHandler);
@@ -111,19 +117,145 @@ function attachHandlers(){
   $("#presetSelect").on("change",presetSelectChange);
   $("#perksSelect").on("change",perkSelectChange);
   $("#raceSelect").on("change",raceSelectChange);
+  $("#racesListSelect").on("change",raceListSelectChange);
+  $("#blessingsSelect").on("change",blessingListSelectChange);
+  $("#mechanicsSelect").on("change",mechanicsListSelectChange);
+  $(".customCloseText").click(customClickDivClick);
+  $("#resetActiveSkillButton").click(resetActiveSkillButtonClick);
+  $("#resetAllSkillsButton").click(resetAllSkillsButtonClick);
+  $(".attributeInput").on("keydown input",attributeInputChange);
+  $("#oghmaSelect").on("change", oghmaSelectChange);
+}
+
+function oghmaSelectChange(){
+  updateCharacterLevelAndResults();
+  updateAttributeText();
+}
+
+function attributeInputChange(){
   
-  $("#customClickDiv").click(customClickDivClick);
+  validateAttributeInput($(this));
+  
+  //Just be lazy and update them all at the same time.
+  characterData.hmsIncreases[0] = Number($("#healthIncreasesInput").val());
+  characterData.hmsIncreases[1] = Number($("#magickaIncreasesInput").val());
+  characterData.hmsIncreases[2] = Number($("#staminaIncreasesInput").val());
+  
+  updateAttributeChoiceInputs();
+  updateFreeAttributeChoicesDisplay();
+  updateAttributeText();
+  calculateDerivedAttributes();
+}
+
+function updateAttributeText(){
+  let answers = ["Health: ","Magicka: ","Stamina: "];
+  let oghmaVal = Number($("#oghmaSelect").val());
+  for(let i = 0; i < 3; i++){
+    let baseVal = curRaceList.races[characterData.race].startingHMS[i];
+    baseVal += curGameMechanics.leveling.hmsGiven[i] * characterData.hmsIncreases[i];
+    
+    answers[i] += baseVal;
+    
+    let bonuses = curRaceList.races[characterData.race].hmsBonus[i];
+    if( (oghmaVal - 1) == i){
+      bonuses += curGameMechanics.oghmaData.hmsGiven[i];
+    }
+    if(bonuses > 0){
+      answers[i] += ` (+${bonuses})`;
+    } 
+  }
+  
+  $("#healthAttributeText").html(answers[0]);
+  $("#magickaAttributeText").html(answers[1]);
+  $("#staminaAttributeText").html(answers[2]);
+}
+
+function validateAttributeInput(theInput){
+  let val = Number(theInput.val());
+  if(val < 0) val = 0;
+  if(val > theInput.attr("max")) val = theInput.attr("max");
+  theInput.val(val);
+}
+
+function resetActiveSkillButtonClick(){
+  resetSkill(activeSkill);
+  updateActiveSkillPanel();
+  updateCircleAndLineColors();
+  updateSkillLevelsDisplay();
+}
+
+function resetAllSkillsButtonClick(){
+  resetSkill(-1);
+  updateActiveSkillPanel();
+  updateCircleAndLineColors();
+  updateSkillLevelsDisplay();
+}
+
+//Remove all perks from the skill and set the skill level back
+//to the starting value for the race. Set skillNum to -1 to do this
+//for ALL skills. Then update the character level and earned perks.
+function resetSkill(skillNum){
+  let removeAll = skillNum == -1;
+  if(removeAll){
+    for(let i = 0; i < 18; i++){
+      characterData.skillLevels[i] = 
+        curRaceList.races[characterData.race].startingSkills[i];
+    }
+  }
+  characterData.skillLevels[skillNum] = 
+    curRaceList.races[characterData.race].startingSkills[skillNum];
+    
+  for(let i = 0; i < curPerkList.perks.length; i++){
+    if( (removeAll || curPerkList.perks[i].skill == skillNum) 
+      && characterHasPerk(i) ){
+      removePerkAndDependents(i);
+    }
+  }
+  
+  updateCharacterLevelAndResults();
 }
 
 function customClickDivClick(){
   $("#presetCustomOptionsDiv").toggle();
 }
 
-function raceSelectChange(){
-  changeRace($(this).val());
+function raceListSelectChange(){
+  changeRaceList(Number($(this).val()));
 }
 
-function changeRace(newRaceNum){
+function blessingListSelectChange(){
+  changeBlessingList(Number($(this).val()));
+}
+
+function mechanicsListSelectChange(){
+  changeGameMechanics(Number($(this).val()));
+}
+
+function changeGameMechanics(gmNum){
+  curGameMechanics = gameMechanicsList[getIndexWithID(gmNum,gameMechanicsList)];
+  updateCharacterLevelAndResults();
+}
+
+function changeRaceList(listNum){
+  curRaceList = racesList[getIndexWithID(listNum,racesList)];
+  updateRaceSelect();
+  changeRace(0,false);
+}
+
+function changeBlessingList(listNum){
+  curBlessingList = blessingsList[getIndexWithID(listNum,blessingsList)];
+  updateBlessingSelect();
+}
+
+function raceSelectChange(){
+  changeRace(Number($(this).val()));
+}
+
+//Change the character's race to the new one with the number given.
+//If respectOld is true, the starting skills of the old race will
+//be taken into account when determining new skills levels. Otherwise
+//just take into account the starting skills of the new race.
+function changeRace(newRaceNum,respectOld = true){
   let oldRaceNum = characterData.race;
   let oldRace = curRaceList.races[oldRaceNum];
   let newRace = curRaceList.races[newRaceNum];
@@ -134,15 +266,15 @@ function changeRace(newRaceNum){
   //value for the old race, set it to the starting value for the
   //new race.
   for(let i = 0; i < 18; i++){
-    if(characterData.skillLevels[i] < newRace.startingSkills[i] || 
-       characterData.skillLevels[i] == oldRace.startingSkills[i]){
+    if(!respectOld || (characterData.skillLevels[i] < newRace.startingSkills[i] || 
+       characterData.skillLevels[i] == oldRace.startingSkills[i])){
       characterData.skillLevels[i] = newRace.startingSkills[i];
     }
   }
   
   characterData.race = newRaceNum;
   
-  updateCharacterLevelAndEarnedPerks();
+  updateCharacterLevelAndResults();
   updateCircleAndLineColors();
   updateSkillLevelsDisplay();
   $("#activeSkillLevelInput").val(characterData.skillLevels[activeSkill]);
@@ -155,10 +287,27 @@ function calculateDerivedAttributes(){
 function presetSelectChange() {
   let presetIndex = getIndexWithID(Number($(this).val()),presetList);
   let preset = presetList[presetIndex];
+  let oldVal = 0;
+  
   $("#perksSelect").val(preset.perks);
-  $("#racesSelect").val(preset.races);
+  
+  oldVal = Number($("#racesListSelect").val());
+  $("#racesListSelect").val(preset.races);
+  if(oldVal != preset.races){
+    changeRaceList(preset.races);
+  }
+  
+  oldVal = $("#mechanicsSelect").val();
   $("#mechanicsSelect").val(preset.gameMechanics);
+  if(oldVal != preset.gameMechanics){
+    changeGameMechanics(preset.gameMechanics);
+  }
+  
+  oldVal = $("#blessingsSelect").val();
   $("#blessingsSelect").val(preset.blessings);
+  if(oldVal != preset.blessings){
+    changeBlessingList(preset.blessings);
+  }
 }
 
 function perkSelectChange(){
@@ -175,7 +324,7 @@ function skillInputChange(){
   
   updateCircleAndLineColors();
   
-  updateCharacterLevelAndEarnedPerks();
+  updateCharacterLevelAndResults();
   updateSkillLevelsDisplay();
 }
 
@@ -234,7 +383,7 @@ function activeSkillPerkClick(event){
       if(tookPerk){
         updateActiveSkillPanel();
       }
-      updateCharacterLevelAndEarnedPerks();
+      updateCharacterLevelAndResults();
       updateCircleAndLineColors();
       updateSkillLevelsDisplay();
     }
@@ -735,7 +884,7 @@ function addPresetData(presetData){
   presetList.push(presetData);
 }
 
-function updateSelectOptions(){
+function updateCustomSelectOptions(){
   
   let presetSel = $("#presetSelect");
   presetSel.empty();
@@ -751,7 +900,7 @@ function updateSelectOptions(){
   }
   perksSel.val(curPerkList.id);
   
-  let racesSel = $("#racesSelect");
+  let racesSel = $("#racesListSelect");
   racesSel.empty();
   for(let i = 0; i < racesList.length; i++){
     racesSel.append(`<option value="${racesList[i].id}">${racesList[i].name}</option>`);
@@ -785,6 +934,22 @@ function updateRaceSelect(){
   raceSel.empty();
   for(let i = 0; i < curRaceList.races.length; i++){
     raceSel.append(`<option value="${i}">${curRaceList.races[i].name}</option>`);
+  }
+}
+
+function updateBlessingSelect(){
+  let blessSel = $("#blessingSelect");
+  blessSel.empty();
+  for(let i = 0; i < curBlessingList.blessings.length; i++){
+    blessSel.append(`<option value="${i}">${curBlessingList.blessings[i]}</option>`);
+  }
+}
+
+function updateStandingStoneSelect(){
+  let ssSelect = $("#stoneSelect");
+  ssSelect.empty();
+  for(let i = 0; i < standingStoneNames.length; i++){
+    ssSelect.append(`<option value="${i}">${standingStoneNames[i]}</option>`);
   }
 }
 
@@ -822,13 +987,45 @@ function calcTotalXP(){
   return answer;
 }
 
-function updateCharacterLevelAndEarnedPerks(){
+function updateCharacterLevelAndResults(){
   let newLevel = calcLevel();
   let levelDiff = newLevel - characterData.level;
   characterData.level = newLevel;
-  characterData.earnedPerks += levelDiff;
+  characterData.earnedAttributes = newLevel - 1;
+  characterData.earnedPerks = curGameMechanics.initialPerks + (newLevel-1);
+  
+  if(Number($("#oghmaSelect").val()) > 0){
+    characterData.earnedPerks += curGameMechanics.oghmaData.perksGiven;
+  }
   updateLevelAndFreePerksDisplay();
+  updateFreeAttributeChoicesDisplay();
+  updateAttributeChoiceInputs();
+  updateAttributeText();
 }
 
-function resetSkillsAndPerks(){
+function updateAttributeChoiceInputs() {
+  let freeChoices = calcFreeAttributeChoices();
+  if(freeChoices < 0) freeChoices = 0;
+  $("#healthIncreasesInput").attr("max",characterData.hmsIncreases[0] + freeChoices);
+  $("#magickaIncreasesInput").attr("max",characterData.hmsIncreases[1] + freeChoices);
+  $("#staminaIncreasesInput").attr("max",characterData.hmsIncreases[2] + freeChoices);
+}
+
+function calcFreeAttributeChoices(){
+  return characterData.earnedAttributes - (characterData.hmsIncreases[0] +
+    characterData.hmsIncreases[1] + characterData.hmsIncreases[2]);
+}
+
+function updateFreeAttributeChoicesDisplay(){
+  let theDiv = $("#attributesToSpendDiv");
+  let freeChoices = calcFreeAttributeChoices();
+  theDiv.html(`Attribute Choices Remaining: ${freeChoices}`);
+  if(freeChoices < 0){
+    theDiv.removeClass("whiteText");
+    theDiv.addClass("redText");
+  }
+  else{
+    theDiv.removeClass("redText");
+    theDiv.addClass("whiteText");
+  }
 }
