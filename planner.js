@@ -406,11 +406,33 @@ function activeSkillPerkClick(event){
 //take the given perk if it isn't high enough and take all of the pre-reqs
 //Assumes that the skill level requirement for a perk is greater or equal
 //to the skill req for all pre-reqs. Returns true if a perk was actually taken.
+//Do not actually do anything if the we would need to choose between multiple
+//perks in order to take this one. (i.e. one of the pre-reqs has an OR condition in
+//it's pre-reqs)
 function forceTakePerk(perkNum){
   
   let thePerk = curPerkList.perks[perkNum];
   let hasPerk = characterHasPerk(perkNum);
   let meetsSkillReq = thePerk.skillReq <= characterData.skillLevels[thePerk.skill]
+  
+  if(wouldNeedChoiceToForce(perkNum)){
+    let errorMessage = "This perk requires at least one of the following other perks: ";
+    for(let i = 0; i < thePerk.preReqs.length; i++){
+      if(thePerk.preReqs[i] < 0){
+        errorMessage += curPerkList.perks[Math.abs(thePerk.preReqs[i])].name;
+        if(i == (thePerk.preReqs.length - 1)){
+          errorMessage += ". ";
+        }
+        else{
+          errorMessage += ", ";
+        }
+      }
+    }
+    errorMessage += "Select one of those perks first before selecting this one.";
+    $("#highlightedPerkDesc").html(errorMessage);
+    $("#highlightedPerkDiv").addClass("errorMessageDiv");
+    return false;
+  }
   
   if(!meetsSkillReq){
     characterData.skillLevels[thePerk.skill] = thePerk.skillReq;
@@ -419,7 +441,9 @@ function forceTakePerk(perkNum){
   let tookPerk = false;
   
   for(let i = 0; i < thePerk.preReqs.length; i++){
-    tookPerk = forceTakePerk(thePerk.preReqs[i]) | tookPerk;
+    if(thePerk.preReqs[i] >= 0){
+      tookPerk = forceTakePerk(thePerk.preReqs[i]) | tookPerk;
+    }
   }
   
   if(!hasPerk){
@@ -428,6 +452,35 @@ function forceTakePerk(perkNum){
   }
   
   return tookPerk;
+}
+
+//Returns true if in the course of force taking the given perk
+//we would need to make a choice about which of the OR pre-reqs
+//to take. If there is an OR but we already have one of them, that's fine.
+function wouldNeedChoiceToForce(perkNum){
+  //first check this perk to see if there's an OR that we don't satisfy
+  let thePerk = curPerkList.perks[perkNum];
+  let hasOrPerks = false;
+  let satisfiesOrPerks = false;
+  for(let i = 0; i < thePerk.preReqs.length; i++){
+    if(thePerk.preReqs[i] < 0){
+      hasOrPerks = true;
+      if(characterHasPerk(Math.abs(thePerk.preReqs[i]))){
+        satisfiesOrPerks = true;
+      }
+    }
+  }
+  
+  if(hasOrPerks && !satisfiesOrPerks) return true;
+  
+  //Then recursively check all of the hard requirements 
+  for(let i = 0; i < thePerk.preReqs.length; i++) {
+    if(thePerk.preReqs[i] >= 0 && wouldNeedChoiceToForce(thePerk.preReqs[i])){
+      return true;
+    }
+  }
+  
+  return false;
 }
 
 //Attempt to take the given perk. Can fail if the pre-reqs for
@@ -450,9 +503,28 @@ function canTakePerk(perkNum){
   if(curPerkList.perks[perkNum].skillReq > characterData.skillLevels[activeSkill])
     return false;
   
+  if(!hasPerkPreReqs(perkNum)) return false;
+  
+  return true;
+}
+
+function hasPerkPreReqs(perkNum){
+  let hasOrPerks = false;
+  let satisfiesOrPerks = false;
+  
   for(let i = 0; i < curPerkList.perks[perkNum].preReqs.length; i++){
-    if(!characterHasPerk(curPerkList.perks[perkNum].preReqs[i])) return false;
+    if(curPerkList.perks[perkNum].preReqs[i] < 0){
+      hasOrPerks = true;
+      if(characterHasPerk(Math.abs(curPerkList.perks[perkNum].preReqs[i]))){
+        satisfiesOrPerks = true;
+      }
+    }
+    else{
+      if(!characterHasPerk(curPerkList.perks[perkNum].preReqs[i])) return false;
+    }
   }
+  
+  if(hasOrPerks && !satisfiesOrPerks) return false;
   
   return true;
 }
@@ -472,12 +544,12 @@ function actuallyRemovePerk(perkNum){
 //Recursively remove the given perk and all of the perks that require
 //it to be taken. Assumes the given perk can actually be removed.
 function removePerkAndDependents(perkNum){
+  actuallyRemovePerk(perkNum);
   for(let i = 0; i < curPerkList.perks.length; i++){
-    if(characterHasPerk(i) && curPerkList.perks[i].preReqs.indexOf(perkNum) != -1){
-      removePerkAndDependents(i);
+    if(characterHasPerk(i) && !hasPerkPreReqs(i)){
+      actuallyRemovePerk(i);
     }
   }
-  actuallyRemovePerk(perkNum);
 }
 
 function tryRemovePerk(perkNum){
@@ -522,6 +594,7 @@ function activeSkillPerkHoverEnter(event){
     $("#highlightedNextPerkDesc").empty();
   }
   
+  $("#highlightedPerkDiv").removeClass("errorMessageDiv");
   $("#highlightedPerkDiv").css({left : `${clientRect.left-300}px`, top : `${clientRect.top+40}px`, display: "block"});
   //$("#highlightedPerkDiv").show();  
 }
@@ -589,12 +662,14 @@ function drawActiveSkillTree(){
     //Assuming that all pre-reqs are in the same skill tree
     for(let j = 0; j < perks[i].preReqs.length; j++)
     {
-      let preXPos = perks[ perks[i].preReqs[j] ].xPos / 100 * svgWidth;
-      let preYPos = perks[ perks[i].preReqs[j] ].yPos / 100 * svgHeight;
+      let preReqNum = Math.abs(perks[i].preReqs[j]);
+      
+      let preXPos = perks[ preReqNum ].xPos / 100 * svgWidth;
+      let preYPos = perks[ preReqNum ].yPos / 100 * svgHeight;
       
       if(preXPos != curXPos || preYPos != curYPos)
       { 
-        theSVG.append(`<line id="mainLine${i}to${perks[i].preReqs[j]}" x1="${curXPos}" y1="${curYPos}" x2="${preXPos}" y2="${preYPos}" stroke-width="2" stroke-opacity="0.5" />`);
+        theSVG.append(`<line id="mainLine${i}to${preReqNum}" x1="${curXPos}" y1="${curYPos}" x2="${preXPos}" y2="${preYPos}" stroke-width="2" stroke-opacity="0.5" />`);
       }
     }
   }
@@ -669,13 +744,18 @@ function updateCircleAndLineColors(){
         
         //Then the connecting lines
         for(let j = 0; j < thePerk.preReqs.length; j++){
-          $(`#mainLine${i}to${thePerk.preReqs[j]}`).attr("stroke","yellow");
+          if(characterHasPerk(Math.abs(thePerk.preReqs[j]))){
+            $(`#mainLine${i}to${Math.abs(thePerk.preReqs[j])}`).attr("stroke","yellow");
+          }
+          else{
+            $(`#mainLine${i}to${Math.abs(thePerk.preReqs[j])}`).attr("stroke","lightblue");
+          }
         }
       }
       else{
         $(`#activeCircle${i}`).attr("fill","url(#perkNotSelectedGrad)");
         for(let j = 0; j < thePerk.preReqs.length; j++){
-          $(`#mainLine${i}to${thePerk.preReqs[j]}`).attr("stroke","lightblue");
+          $(`#mainLine${i}to${Math.abs(thePerk.preReqs[j])}`).attr("stroke","lightblue");
         }
       } 
     }
@@ -690,12 +770,17 @@ function updateCircleAndLineColors(){
     if(!hasPerk){
       $(`#miniSkillCircle${i}`).attr("fill","lightblue");
       for(let j = 0; j < thePerk.preReqs.length; j++){
-        $(`#miniLine${i}to${thePerk.preReqs[j]}`).attr("stroke","lightblue");
+        $(`#miniLine${i}to${Math.abs(thePerk.preReqs[j])}`).attr("stroke","lightblue");
       }
     }
     else{
       for(let j = 0; j < thePerk.preReqs.length; j++){
-        $(`#miniLine${i}to${thePerk.preReqs[j]}`).attr("stroke","yellow");
+        if(characterHasPerk(Math.abs(thePerk.preReqs[j]))){
+          $(`#miniLine${i}to${Math.abs(thePerk.preReqs[j])}`).attr("stroke","yellow");
+        }
+        else{
+          $(`#miniLine${i}to${Math.abs(thePerk.preReqs[j])}`).attr("stroke","lightblue");
+        }
       }
       //Check if the circle should be red because we have a later perk in the
       //chain that we don't meet the skill req for.
@@ -742,12 +827,13 @@ function drawMiniSkillTrees() {
     
     for(let j = 0; j < perks[i].preReqs.length; j++)
     {
-      let preXPos = perks[ perks[i].preReqs[j] ].xPos / 100 * svgWidth;
-      let preYPos = perks[ perks[i].preReqs[j] ].yPos / 100 * svgHeight;
+      let preReqNum = Math.abs(perks[i].preReqs[j]);
+      let preXPos = perks[ preReqNum ].xPos / 100 * svgWidth;
+      let preYPos = perks[ preReqNum ].yPos / 100 * svgHeight;
       
       if(preXPos != curXPos || preYPos != curYPos)
       { 
-        theSVG.append(`<line id="miniLine${i}to${perks[i].preReqs[j]}" x1="${curXPos}" y1="${curYPos}" x2="${preXPos}" y2="${preYPos}" stroke-width="1" />`);
+        theSVG.append(`<line id="miniLine${i}to${preReqNum}" x1="${curXPos}" y1="${curYPos}" x2="${preXPos}" y2="${preYPos}" stroke-width="1" />`);
       }
     }
   }
@@ -787,6 +873,7 @@ function miniPerkHoverEnter(event){
   let hasPerk = characterHasPerk(perkNum);
   let isInChain = curPerkList.perks[perkNum].placeInChain != -1;
   
+  $("#highlightedPerkDiv").removeClass("errorMessageDiv");
   $("#highlightedPerkDesc").html(curPerkList.perks[perkNum].name);
   $("#highlightedNextPerkDesc").empty();
   

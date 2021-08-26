@@ -43,13 +43,19 @@ h1 {
   text-align:right;
 }
 
-#highlightedPerkDiv{
+.tooltipDiv{
   display:none;
   position:fixed;
   max-width:600px;
   background:lightyellow;
   padding:5px;
   border:1px solid black;
+  color:black;
+}
+
+.errorMessageDiv {
+  background:firebrick;
+  color:white;
 }
 
 #highlightedPerkName {

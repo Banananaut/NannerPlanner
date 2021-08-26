@@ -781,7 +781,7 @@ perks : [
    description : "The creation of daedric weapons and armor is a secret few mortals know - still, somehow you managed to acquire this knowledge..."},
    //188
   {name : "Draconic Blacksmithing", skill : 14, skillReq : 100,
-   xPos : 251/5, yPos : 66/3.5, preReqs : [186,183], nextPerk: -1,
+   xPos : 251/5, yPos : 66/3.5, preReqs : [-186,-183], nextPerk: -1,
    description : "The scales and bones of dragons are probably the hardest material to work with, but you've mastered even this art since you studied that old compendium."},
    //189
   {name : "Stealth", skill : 15, skillReq : 0,
