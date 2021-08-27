@@ -758,8 +758,20 @@ function drawActiveSkillTree(){
       label += `/${perks[i].totalInChain})`;
     }
     
-    theSVG.append(`<text font-size="16px" x="${curXPos}" y="${curYPos+25}" text-anchor="middle" fill="black" filter="url(#shadow)">${label}</text>`); 
-    theSVG.append(`<text font-size="16px" x="${curXPos}" y="${curYPos+25}" text-anchor="middle" fill="white">${label}</text>`); 
+    let breakLocation = label.indexOf("<br>");
+    
+    if(breakLocation == -1){
+      theSVG.append(`<text font-size="16px" x="${curXPos}" y="${curYPos+25}" text-anchor="middle" fill="black" filter="url(#shadow)">${label}</text>`); 
+      theSVG.append(`<text font-size="16px" x="${curXPos}" y="${curYPos+25}" text-anchor="middle" fill="white">${label}</text>`);
+    }
+    else{
+      let parts = label.split("<br>");
+      theSVG.append(`<text font-size="16px" x="${curXPos}" y="${curYPos+25}" text-anchor="middle" fill="black" filter="url(#shadow)">${parts[0]}
+          <tspan x="${curXPos}" y="${curYPos+42}">${parts[1]}</tspan></text>`); 
+          
+          
+      theSVG.append(`<text font-size="16px" x="${curXPos}" y="${curYPos+25}" text-anchor="middle" fill="white">${parts[0]}<tspan x="${curXPos}" y="${curYPos+42}">${parts[1]}</tspan></text>`);
+    }
   }
   //Silly hack to actually draw the new SVG
   $("#activeSkillDisplaySVG").html($("#activeSkillDisplaySVG").html())

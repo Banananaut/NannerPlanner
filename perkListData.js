@@ -136,7 +136,7 @@ perks : [
    xPos : 48/3, yPos : 133/4, preReqs : [25], nextPerk: -1,
    description : "Your knowledge of the very fabric of magic itself allows you to cast any spell of any school with decreased effort."},
    //27
-  {name : "Metamagical Empowerment", skill : 1, skillReq : 100,
+  {name : "Metamagical<br>Empowerment", skill : 1, skillReq : 100,
    xPos : 61/3, yPos : 65/4, preReqs : [26], nextPerk: -1,
    description : "Having delved even deeper in metamagical lore, you can cast any spell more effectively and augment all other magical effects."},
    //28
@@ -268,7 +268,7 @@ perks : [
    xPos : 82/4, yPos : 143/4, preReqs : [57], nextPerk: -1,
    description : "Your higher level fire spells burn so ferociously that foes are set ablaze, often causing them to run away in gruesome agony as their very skin becomes molten."},
    //60
-  {name : "Fire Mastery", skill : 4, skillReq : 100,
+  {name : "Fire<br>Mastery", skill : 4, skillReq : 100,
    xPos : 80/4, yPos : 52/4, preReqs : [59], nextPerk: -1,
    description : "Your fascination for fire now grants you a natural resistance to it, while also increasing all your fire spells' power even further."},
    //61
@@ -284,7 +284,7 @@ perks : [
    xPos : 145/4, yPos : 109/4, preReqs : [61], nextPerk: -1,
    description : "Your higher level ice spells are colder than Skyrim's most ferocious blizzards, causing them to freeze foes with low resistance to frost."},
   //64
-  {name : "Frost Mastery", skill : 4, skillReq : 100,
+  {name : "Frost<br>Mastery", skill : 4, skillReq : 100,
    xPos : 153/4, yPos : 41/4, preReqs : [63], nextPerk: -1,
    description : "Your understanding of all that is cold grants you a natural resistance to it, while  increasing all your frost spells' power even further."},
    //65
@@ -296,11 +296,11 @@ perks : [
    xPos : 210/4, yPos : 170/4, preReqs : [65], nextPerk: -1,
    description : "Compared to your lightning spells, the worst tempests would look like a mild summer breeze."},
    //67
-  {name : "Electrostatic Discharge", skill : 4, skillReq : 75,
+  {name : "Electrostatic<br>Discharge", skill : 4, skillReq : 75,
    xPos : 213/4, yPos : 93/4, preReqs : [65], nextPerk: -1,
    description : "Your lightning strikes pass through body and mind with thundering intensity. Thus, they now vaporize vast amounts of Magicka off your targets."},
    //68
-  {name : "Lightning Mastery", skill : 4, skillReq : 100,
+  {name : "Lightning<br>Mastery", skill : 4, skillReq : 100,
    xPos : 220/4, yPos : 25/4, preReqs : [67], nextPerk: -1,
    description : "Your aptitude with lightning grants you a natural resistance to it, while also increasing all your shock spells' power even further."},
    //69
@@ -429,15 +429,15 @@ perks : [
    description : "You have mastered spellcasting while wearing heavy armor and now can even cast Master level spells with ease. Bolstered by wearing your full heavy armor, you can concentrate even more and cast all spells easier."},
    //100
   {name : "Combat Training", skill : 7, skillReq : 25,
-   xPos : 335/4.5, yPos : 307/4.5, preReqs : [94], nextPerk: -1,
+   xPos : 355/4.5, yPos : 307/4.5, preReqs : [94], nextPerk: -1,
    description : "You require no extra stamina for power attacks when wearing heavy armor and are less hindered by your armor. Also, your gauntlets improve your unarmed damage."},
    //101
   {name : "Fortitude", skill : 7, skillReq : 50,
-   xPos : 367/4.5, yPos : 216/4.5, preReqs : [100], nextPerk: -1,
+   xPos : 387/4.5, yPos : 216/4.5, preReqs : [100], nextPerk: -1,
    description : "Your training made you stronger and you are now less burdened by the rigidity of your armor. You also receive some additional stamina and carry weight."},
    //102
-  {name : "Power of the Combatant", skill : 7, skillReq : 75,
-   xPos : 375/4.5, yPos : 163/4.5, preReqs : [101], nextPerk: -1,
+  {name : "Power of<br>the Combatant", skill : 7, skillReq : 75,
+   xPos : 400/4.5, yPos : 140/4.5, preReqs : [101], nextPerk: -1,
    description : "Once a day, you can now push yourself to continue fighting,  allowing you to regenerate stamina very fast. Furthermore, you learned some new tricks to overcome the mobility limitations of your armor."},
    //103
   {name : "Juggernaut", skill : 7, skillReq : 100,
@@ -448,7 +448,7 @@ perks : [
    xPos : 180/3.5, yPos : 303/3.5, preReqs : [], nextPerk: -1,
    description : "You've taught yourself a few Novice level spells and learned how to cast them with decreased effort while your newfound knowledge also allows you to augment the strength and duration of all Illusion spells."},
    //105
-  {name : "Apprentice Illusion", skill : 8, skillReq : 20,
+  {name : "Apprentice<br>Illusion", skill : 8, skillReq : 20,
    xPos : 183/3.5, yPos : 198/3.5, preReqs : [104], nextPerk: -1,
    description : "By pursuing your apprenticeship in Illusion, you've gained knowledge of Apprentice level spells which you now augment while casting them with less effort."},
    //106
@@ -468,15 +468,15 @@ perks : [
    xPos : 125/3.5, yPos : 60/3.5, preReqs : [107], nextPerk: -1,
    description : "By studying spells like Shadow Shield or Shadow Simulacrum, you gained even deeper insights into the weave of shadows. Thus, you can empower them and cast them with less effort."},
    //110
-  {name : "Visual Manipulation", skill : 8, skillReq : 35,
+  {name : "Visual<br>Manipulation", skill : 8, skillReq : 35,
    xPos : 110/3.5, yPos : 181/3.5, preReqs : [104], nextPerk: -1,
    description : "You've experimented with spells like Dark Vision, Invisibility and Blur to manipulate your surroundings. After a lot of training you can now empower such spells and concentrating on them requires less effort."},
    //111
-  {name : "Acoustic Manipulation", skill : 8, skillReq : 25,
+  {name : "Acoustic<br>Manipulation", skill : 8, skillReq : 25,
    xPos : 55/3.5, yPos : 226/3.5, preReqs : [104], nextPerk: -1,
    description : "After studying spells like Muffle, Arcane Resonance or Dampening Rune you are now familiar with manipulating sounds. Thus, you can empower these spells and require less concentration to maintain them."},
    //112
-  {name : "Environmental Manipulation", skill : 8, skillReq : 65,
+  {name : "Environmental<br>Manipulation", skill : 8, skillReq : 65,
    xPos : 65/3.5, yPos : 85/3.5, preReqs : [110,111], nextPerk: -1,
    description : "After long training with spells like Shadow Stride, Veil of Silence, Invisibility and Muffling Sphere you gained a deep insight into the connections between light and sound. You can now empower these spells and maintain them with less effort."},
    //113
@@ -484,11 +484,11 @@ perks : [
    xPos : 102/3.5, yPos : 10/3.5, preReqs : [112,109,108], nextPerk: -1,
    description : "You've mastered the most powerful forms of Shadow Magic. Therefore, spells like Veil of Shadows, Shadow Sanctuary and Mistress of the Dark can now be empowered and cast with highly decreased effort."},
    //114
-  {name : "Delusive Phantasms", skill : 8, skillReq : 15,
+  {name : "Delusive<br>Phantasms", skill : 8, skillReq : 15,
    xPos : 300/3.5, yPos : 210/3.5, preReqs : [104], nextPerk: -1,
    description : "You have studied the most common spell formulae that affect basic emotions like fear, calmness and courage. Thus, you can empower related spells and increase their overall effectiveness."},
    //115
-  {name : "Otherworldly Phantasms", skill : 8, skillReq : 45,
+  {name : "Otherworldly<br>Phantasms", skill : 8, skillReq : 45,
    xPos : 285/3.5, yPos : 132/3.5, preReqs : [114], nextPerk: -1,
    description : "You have extended your knowledge of affecting emotions, being able to turn your foes into berserking maniacs or cause them to fall asleep with ease. You also learned how to empower related spells."},
    //116
@@ -745,14 +745,14 @@ perks : [
    description : "You've gained quite some finesse, allowing you to craft plate armor and fine jewelry. You have also found a way to melt and crush certain gems into alchemically usable dust."},
    //179
   {name : "Arcane Craftsmanship", skill : 14, skillReq : 50,
-   xPos : 191/5, yPos : 121/3.5, preReqs : [178], nextPerk: -1,
+   xPos : 191/5, yPos : 141/3.5, preReqs : [178], nextPerk: -1,
    description : "After reading a tome about the ancient secrets of explosive dwemer bolts, you've learned the necessary techniques to craft bolts and arrows that will explode with elemental fury upon impact."},
    //180
   {name : "Legendary Blacksmithing", skill : 14, skillReq : 100,
-   xPos : 289/5, yPos : 140/3.5, preReqs : [178], nextPerk: -1,
+   xPos : 289/5, yPos : 160/3.5, preReqs : [178], nextPerk: -1,
    description : "You make steel sing songs on the anvil. Your hammer is no longer a mere tool, but a loom that weaves the fabric of myths. You can even improve the divine artifacts of Aedra and Daedra."},
    //181
-  {name : "Advanced Light Armors", skill : 14, skillReq : 25,
+  {name : "Advanced<br>Light Armors", skill : 14, skillReq : 25,
    xPos : 115/5, yPos : 220/3.5, preReqs : [177], nextPerk: -1,
    description : "You've been able to learn more advanced techniques, allowing you to craft and efficiently improve scale armor."},
    //182
@@ -773,15 +773,15 @@ perks : [
    description : "Orcish equipment is hard to craft, but you've got what it takes. Especially the schematics! You can craft and improve it easily and most efficiently."},
    //186
   {name : "Ebony Smithing", skill : 14, skillReq : 75,
-   xPos : 390/5, yPos : 118/3.5, preReqs : [185], nextPerk: -1,
+   xPos : 390/5, yPos : 98/3.5, preReqs : [185], nextPerk: -1,
    description : "Ebony weapons and armor - some even fail at heating the metal. But not you. Now that you've studied the related schematics, you can craft and improve ebony equipment with ease."},
    //187
   {name : "Daedric Smithing", skill : 14, skillReq : 100,
-   xPos : 440/5, yPos : 85/3.5, preReqs : [186], nextPerk: -1,
+   xPos : 440/5, yPos : 65/3.5, preReqs : [186], nextPerk: -1,
    description : "The creation of daedric weapons and armor is a secret few mortals know - still, somehow you managed to acquire this knowledge..."},
    //188
-  {name : "Draconic Blacksmithing", skill : 14, skillReq : 100,
-   xPos : 251/5, yPos : 66/3.5, preReqs : [-186,-183], nextPerk: -1,
+  {name : "Draconic<br>Blacksmithing", skill : 14, skillReq : 100,
+   xPos : 251/5, yPos : 30/3.5, preReqs : [-186,-183], nextPerk: -1,
    description : "The scales and bones of dragons are probably the hardest material to work with, but you've mastered even this art since you studied that old compendium."},
    //189
   {name : "Stealth", skill : 15, skillReq : 0,
@@ -945,9 +945,16 @@ perks : [
 
 addPerkData(requiem402PerkData);
 
+const requiem402WithFozarsPerkData = {};
+Object.assign(requiem402WithFozarsPerkData,requiem402PerkData);
+requiem402WithFozarsPerkData.name = "Requiem 4.0.2 + Fozar's DB patch";
+requiem402WithFozarsPerkData.id = 1;
+
+addPerkData(requiem402WithFozarsPerkData);
+
 const fTweaks17PerkData = {};
-Object.assign(fTweaks17PerkData,requiem402PerkData);
+Object.assign(fTweaks17PerkData,requiem402WithFozarsPerkData);
 fTweaks17PerkData.name = "FTweaks 1.7";
-fTweaks17PerkData.id = 1;
+fTweaks17PerkData.id = 2;
 
 addPerkData(fTweaks17PerkData);
