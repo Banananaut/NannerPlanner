@@ -51,9 +51,25 @@ $(document).ready(function(){
   updateBlessingSelect();
   updateAttributeText();
   updateCircleAndLineColors();
+  createDerivedAttributesTable();
+  updateDerivedAttributes();
   
   attachHandlers();
 });
+
+function createDerivedAttributesTable() {
+  let theTable = $("#derivedAttributeTable");
+  let derAttrData = curGameMechanics.derivedAttributes;
+  for(let i = 0; i < derAttrData.attribute.length; i++){
+    let theRow = `<div class="derivedAttributeTableRow">`;
+    theRow += `<div class="derivedAttributeTableCellLabel" id="derivedAttributeName${i}">`;
+    theRow += `${derAttrData.attribute[i]}</div>`;
+    theRow += `<div class="derivedAttributeTableCellValue" id="derivedAttributeValue${i}">`;
+    theRow += "0</div></div>";
+    theTable.append(theRow);
+  }
+  
+}
 
 function parsePresetFromURL(){
   const queryString = window.location.search;
@@ -144,7 +160,40 @@ function attributeInputChange(){
   updateAttributeChoiceInputs();
   updateFreeAttributeChoicesDisplay();
   updateAttributeText();
-  calculateDerivedAttributes();
+  updateDerivedAttributes();
+}
+
+function updateDerivedAttributes(){
+  let derAttrData = curGameMechanics.derivedAttributes;
+  let baseAttributes = calcBaseAttributes();
+  for(let i = 0; i < derAttrData.attribute.length; i++){
+    let weightedSum = baseAttributes[0] * derAttrData.weight_health[i];
+    weightedSum += baseAttributes[1] * derAttrData.weight_magicka[i];
+    weightedSum += baseAttributes[2] * derAttrData.weight_stamina[i];
+    
+    let bonus = 0;
+    if(weightedSum > derAttrData.threshold[i]){
+      bonus = derAttrData.prefactor[i] * Math.sqrt(weightedSum - derAttrData.threshold[i]);
+      bonus = Math.floor(bonus);
+    }
+    
+    bonus = "+" + bonus;
+    
+    if(derAttrData.isPercent[i]){
+      bonus += "%";
+    }
+    
+    $(`#derivedAttributeValue${i}`).html(bonus);
+  }
+}
+
+function calcBaseAttributes(){
+  let theAnswer = [0,0,0];
+  for(let i = 0; i < 3; i++){
+    theAnswer[i] = curRaceList.races[characterData.race].startingHMS[i];
+    theAnswer[i] += curGameMechanics.leveling.hmsGiven[i] * characterData.hmsIncreases[i];
+  }
+  return theAnswer;
 }
 
 function updateAttributeText(){
@@ -277,11 +326,9 @@ function changeRace(newRaceNum,respectOld = true){
   updateCharacterLevelAndResults();
   updateCircleAndLineColors();
   updateSkillLevelsDisplay();
+  updateDerivedAttributes();
   $("#activeSkillLevelInput").val(characterData.skillLevels[activeSkill]);
-  $("#activeSkillLevelInput").attr("min",newRace.startingSkills[activeSkill]);
-}
-
-function calculateDerivedAttributes(){
+  $("#activeSkillLevelInput").attr("min",newRace.startingSkills[activeSkill]); 
 }
 
 function presetSelectChange() {
@@ -596,7 +643,6 @@ function activeSkillPerkHoverEnter(event){
   
   $("#highlightedPerkDiv").removeClass("errorMessageDiv");
   $("#highlightedPerkDiv").css({left : `${clientRect.left-300}px`, top : `${clientRect.top+40}px`, display: "block"});
-  //$("#highlightedPerkDiv").show();  
 }
 
 function activeSkillPerkHoverLeave(){

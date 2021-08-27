@@ -441,7 +441,7 @@ perks : [
    description : "Once a day, you can now push yourself to continue fighting,  allowing you to regenerate stamina very fast. Furthermore, you learned some new tricks to overcome the mobility limitations of your armor."},
    //103
   {name : "Juggernaut", skill : 7, skillReq : 100,
-   xPos : 366/4.5, yPos : 62/4.5, preReqs : [102], nextPerk: -1,
+   xPos : 366/4.5, yPos : 36/4.5, preReqs : [102], nextPerk: -1,
    description : "You've reached perfection in the skill of wearing heavy armor and are now significantly more maneuverable in it. Your armor can now be worn with less effort and protects you even more."},
    //104
   {name : "Novice Illusion", skill : 8, skillReq : 0,

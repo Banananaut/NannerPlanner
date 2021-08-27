@@ -51,6 +51,7 @@ h1 {
   padding:5px;
   border:1px solid black;
   color:black;
+  
 }
 
 .errorMessageDiv {
@@ -81,6 +82,7 @@ h1 {
   padding: 3px;
   background-color:slateblue;
   color:white;
+  border-radius:25px;
 }
 
 #activeSkillDisplaySVG {
@@ -205,6 +207,10 @@ svg > text, .unselectable {
   border-bottom: 2px solid black;
 }
 
+.statsSubsectionDiv:last-child {
+  border-bottom: 0px solid black;
+}
+
 #rulesTitle{
   color:yellow;
 }
@@ -217,6 +223,7 @@ svg > text, .unselectable {
   border:2px solid black;
   padding:10px;
   background-color:blue;
+  margin-left:-15px;
 }
 
 .clickableText{
@@ -259,4 +266,31 @@ svg > text, .unselectable {
   text-align:left;
   margin-left:20%;
   margin-bottom:10px;
+}
+
+#derivedAttributeTableDiv{
+  display:flex;
+  justify-content:center;
+}
+
+#derivedAttributeTable{
+  display:table;
+}
+
+.derivedAttributeTableRow{
+  display:table-row;
+}
+
+.derivedAttributeTableCellLabel{
+  display:table-cell;
+  padding:5px 5px 5px 10px;
+  font-size:16px;
+  text-align:left;
+}
+
+.derivedAttributeTableCellValue{
+  display:table-cell;
+  padding:5px 5px 5px 10px;
+  font-size:16px;
+  text-align:right;
 }
