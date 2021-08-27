@@ -740,16 +740,16 @@ perks : [
    xPos : 224/5, yPos : 288/3.5, preReqs : [], nextPerk: -1,
    description : "You've acquired the basics of craftsmanship and know how to properly use all kinds of tools. Thus, you are able to craft and improve a wide variety of common goods."},
    //178
-  {name : "Advanced Blacksmithing", skill : 14, skillReq : 50,
+  {name : "Advanced<br>Blacksmithing", skill : 14, skillReq : 50,
    xPos : 234/5, yPos : 203/3.5, preReqs : [177], nextPerk: -1,
    description : "You've gained quite some finesse, allowing you to craft plate armor and fine jewelry. You have also found a way to melt and crush certain gems into alchemically usable dust."},
    //179
-  {name : "Arcane Craftsmanship", skill : 14, skillReq : 50,
-   xPos : 191/5, yPos : 141/3.5, preReqs : [178], nextPerk: -1,
+  {name : "Arcane<br>Craftsmanship", skill : 14, skillReq : 50,
+   xPos : 181/5, yPos : 160/3.5, preReqs : [178], nextPerk: -1,
    description : "After reading a tome about the ancient secrets of explosive dwemer bolts, you've learned the necessary techniques to craft bolts and arrows that will explode with elemental fury upon impact."},
    //180
-  {name : "Legendary Blacksmithing", skill : 14, skillReq : 100,
-   xPos : 289/5, yPos : 160/3.5, preReqs : [178], nextPerk: -1,
+  {name : "Legendary<br>Blacksmithing", skill : 14, skillReq : 100,
+   xPos : 299/5, yPos : 160/3.5, preReqs : [178], nextPerk: -1,
    description : "You make steel sing songs on the anvil. Your hammer is no longer a mere tool, but a loom that weaves the fabric of myths. You can even improve the divine artifacts of Aedra and Daedra."},
    //181
   {name : "Advanced<br>Light Armors", skill : 14, skillReq : 25,
@@ -761,27 +761,27 @@ perks : [
    description : "You've gained enough finesse to create and improve Elven armor and weapons by studying the Elven craftmanship carefully."},
    //183
   {name : "Glass Smithing", skill : 14, skillReq : 75,
-   xPos : 70/5, yPos : 96/3.5, preReqs : [182], nextPerk: -1,
+   xPos : 70/5, yPos : 66/3.5, preReqs : [182], nextPerk: -1,
    description : "Crafting and improving Glass equipment is not for the unskilled, but having studied intensely, you aren't one of them any more."},
    //184
-  {name : "Dwarven Smithing", skill : 14, skillReq : 25,
+  {name : "Dwarven<br>Smithing", skill : 14, skillReq : 25,
    xPos : 347/5, yPos : 227/3.5, preReqs : [177], nextPerk: -1,
    description : "You've studied some long-lost schematics of dwarven equipment and acquired the secret knowledge of how to create and improve them efficiently."},
    //185
-  {name : "Orcish Smithing", skill : 14, skillReq : 50,
-   xPos : 426/5, yPos : 172/3.5, preReqs : [184], nextPerk: -1,
+  {name : "Orcish<br>Smithing", skill : 14, skillReq : 50,
+   xPos : 400/5, yPos : 172/3.5, preReqs : [184], nextPerk: -1,
    description : "Orcish equipment is hard to craft, but you've got what it takes. Especially the schematics! You can craft and improve it easily and most efficiently."},
    //186
   {name : "Ebony Smithing", skill : 14, skillReq : 75,
-   xPos : 390/5, yPos : 98/3.5, preReqs : [185], nextPerk: -1,
+   xPos : 390/5, yPos : 68/3.5, preReqs : [185], nextPerk: -1,
    description : "Ebony weapons and armor - some even fail at heating the metal. But not you. Now that you've studied the related schematics, you can craft and improve ebony equipment with ease."},
    //187
   {name : "Daedric Smithing", skill : 14, skillReq : 100,
-   xPos : 440/5, yPos : 65/3.5, preReqs : [186], nextPerk: -1,
+   xPos : 440/5, yPos : 35/3.5, preReqs : [186], nextPerk: -1,
    description : "The creation of daedric weapons and armor is a secret few mortals know - still, somehow you managed to acquire this knowledge..."},
    //188
-  {name : "Draconic<br>Blacksmithing", skill : 14, skillReq : 100,
-   xPos : 251/5, yPos : 30/3.5, preReqs : [-186,-183], nextPerk: -1,
+  {name : "Draconic Blacksmithing", skill : 14, skillReq : 100,
+   xPos : 251/5, yPos : 15/3.5, preReqs : [-186,-183], nextPerk: -1,
    description : "The scales and bones of dragons are probably the hardest material to work with, but you've mastered even this art since you studied that old compendium."},
    //189
   {name : "Stealth", skill : 15, skillReq : 0,
@@ -945,15 +945,46 @@ perks : [
 
 addPerkData(requiem402PerkData);
 
-const requiem402WithFozarsPerkData = {};
-Object.assign(requiem402WithFozarsPerkData,requiem402PerkData);
+const requiem402WithFozarsPerkData = deepmerge({},requiem402PerkData);
 requiem402WithFozarsPerkData.name = "Requiem 4.0.2 + Fozar's DB patch";
 requiem402WithFozarsPerkData.id = 1;
 
+//Add new smithing perks
+requiem402WithFozarsPerkData.perks.push(
+  //228
+  {name : "Stalhrim Smithing", skill : 14, skillReq : 85,
+   xPos : 251/5, yPos : 45/3.5, preReqs : [-186,-183], nextPerk: -1,
+   description : "Around the world, only a few know the secret of properly processing enchanted ice, but you were lucky, for the help you provided to Skaals, they agreed to share their secrets."}
+);
+
+requiem402WithFozarsPerkData.perks.push(
+  //229
+  {name : "Morrowind<br>Smithing", skill : 14, skillReq : 25,
+   xPos : 303/5, yPos : 109/3.5, preReqs : [177], nextPerk: 230,
+   description : "As a rule, Dunmer are masters of the processing of bone of the fauna of Morrowind, but you have mastered their knowledge with the help of this compendium written by the famous blacksmith of Morrowind."}
+);
+
+requiem402WithFozarsPerkData.perks.push(
+  //230
+  {name : "Morrowind<br>Smithing", skill : 14, skillReq : 50,
+   xPos : 303/5, yPos : 109/3.5, preReqs : [229], nextPerk: -1,
+   description : "You have honed your bone processing skills and are now able to work with such complex material as chitin. Having read the compendium to the holes, you have become a master of this technology."}
+);
+
+requiem402WithFozarsPerkData.perks.push(
+  //231
+  {name : "Nordic<br>Smithing", skill : 14, skillReq : 55,
+   xPos : 460/5, yPos : 183/3.5, preReqs : [184], nextPerk: -1,
+   description : "You have honed your bone processing skills and are now able to work with such complex material as chitin. Having read the compendium to the holes, you have become a master of this technology."}
+);
+
+requiem402WithFozarsPerkData.perks[186].preReqs = [-185,-231];
+requiem402WithFozarsPerkData.perks[183].preReqs = [-182,-230];
+requiem402WithFozarsPerkData.perks[185].preReqs = [184,229];
+
 addPerkData(requiem402WithFozarsPerkData);
 
-const fTweaks17PerkData = {};
-Object.assign(fTweaks17PerkData,requiem402WithFozarsPerkData);
+const fTweaks17PerkData = deepmerge({},requiem402WithFozarsPerkData);
 fTweaks17PerkData.name = "FTweaks 1.7";
 fTweaks17PerkData.id = 2;
 

@@ -467,6 +467,9 @@ function forceTakePerk(perkNum){
     for(let i = 0; i < thePerk.preReqs.length; i++){
       if(thePerk.preReqs[i] < 0){
         errorMessage += curPerkList.perks[Math.abs(thePerk.preReqs[i])].name;
+        if(curPerkList.perks[Math.abs(thePerk.preReqs[i])].placeInChain > 0){
+          errorMessage += " " + curPerkList.perks[Math.abs(thePerk.preReqs[i])].placeInChain;
+        }
         if(i == (thePerk.preReqs.length - 1)){
           errorMessage += ". ";
         }
@@ -476,6 +479,7 @@ function forceTakePerk(perkNum){
       }
     }
     errorMessage += "Select one of those perks first before selecting this one.";
+    errorMessage = errorMessage.replace(/<br>/g," ");
     $("#highlightedPerkDesc").html(errorMessage);
     $("#highlightedPerkDiv").addClass("errorMessageDiv");
     return false;

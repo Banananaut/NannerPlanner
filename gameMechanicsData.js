@@ -98,8 +98,7 @@ const requiem402GameMechanicsData = {
 
 addGameMechanicsData(requiem402GameMechanicsData);
 
-const fTweaks17GameMechanicsData = {};
-Object.assign(fTweaks17GameMechanicsData,requiem402GameMechanicsData);
+const fTweaks17GameMechanicsData = deepmerge({},requiem402GameMechanicsData);
 
 fTweaks17GameMechanicsData.id = 1;
 fTweaks17GameMechanicsData.name = "3/B/FTweaks";
