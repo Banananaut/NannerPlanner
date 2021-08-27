@@ -9,6 +9,7 @@ var curGameMechanics;
 var curPreset;
 var curBlessingList;
 var activeSkill = 0;
+var tookPerkWithLastClick = false;
 
 var characterData = {
   race: 0, //This is an index into the race data array
@@ -424,18 +425,22 @@ function activeSkillPerkClick(event){
       perkToTake = curPerkList.perks[perkNum].nextPerk;
     }
     
-    if(event.detail % 2 == 0){
+    if(event.detail > 1 & !tookPerkWithLastClick){
       
       let tookPerk = forceTakePerk(perkToTake);
       if(tookPerk){
         updateActiveSkillPanel();
+        tookPerkWithLastClick = true;
+      }
+      else{
+        tookPerkWithLastClick = false;
       }
       updateCharacterLevelAndResults();
       updateCircleAndLineColors();
       updateSkillLevelsDisplay();
     }
     else{
-      tryTakePerk(perkToTake);
+      tookPerkWithLastClick = tryTakePerk(perkToTake);
     }
     
   }
@@ -536,13 +541,15 @@ function wouldNeedChoiceToForce(perkNum){
 
 //Attempt to take the given perk. Can fail if the pre-reqs for
 //the perk are not met. Updates the displays if the perk is taken.
+//Return true if a perk was taken
 function tryTakePerk(perkNum){
 
-  if(!canTakePerk(perkNum)) return;
+  if(!canTakePerk(perkNum)) return false;
   
   actuallyTakePerk(perkNum);
   updateActiveSkillPanel();
   updateCircleAndLineColors();
+  return true;
 }
 
 //Check if the given perk can actually be taken

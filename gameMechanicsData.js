@@ -1,5 +1,5 @@
 const requiem402GameMechanicsData = {
-  name: "Requiem 4.0.2",
+  name: "Requiem 4.0 and Up",
   id : 0,
   
   initialPerks: 3,

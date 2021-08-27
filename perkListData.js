@@ -1,5 +1,10 @@
+/*
+*
+* Base Requiem 4.0.2 (and probably earlier)
+*
+*/
 const requiem402PerkData = {
-name : "Requiem 4.0.2",
+name : "Requiem 4.0 and Up",
 id: 0,
 skillNames : [
   "Alchemy",      // 0
@@ -116,15 +121,15 @@ perks : [
    xPos : 113/3, yPos : 170/4, preReqs : [14], nextPerk: -1,
    description : "You've mastered the art of casting armor spells. Their effect is maximized when you don't wear any distracting armor."},
    //22
-  {name : "Magic Resistance", skill : 1, skillReq : 25,
+  {name : "Magic<br>Resistance", skill : 1, skillReq : 25,
    xPos : 222/3, yPos : 167/4, preReqs : [14], nextPerk: 23,
    description : "You're able to block a part of a dangerous spell's effect."},
    //23
-  {name : "Magic Resistance", skill : 1, skillReq : 50,
+  {name : "Magic<br>Resistance", skill : 1, skillReq : 50,
    xPos : 222/3, yPos : 167/4, preReqs : [22], nextPerk: 24,
    description : "You are able to block more of a dangerous spell's effect."},
    //24
-  {name : "Magic Resistance", skill : 1, skillReq : 75,
+  {name : "Magic<br>Resistance", skill : 1, skillReq : 75,
    xPos : 222/3, yPos : 167/4, preReqs : [23], nextPerk: -1,
    description : "You are able to block even more of a dangerous spell's effect."},
    //25
@@ -324,7 +329,7 @@ perks : [
    xPos : 300/4, yPos : 15/4, preReqs : [72], nextPerk: -1,
    description : "Your knowledge of Destruction has become all-encompassing. You taught yourself a Master level spell and you can cast the most complex spells from this school with less effort while augmenting them beyond mortal limits."},
    //74
-  {name : "Empowered Elements", skill : 4, skillReq : 25,
+  {name : "Empowered<br>Elements", skill : 4, skillReq : 25,
    xPos : 294/4, yPos : 316/4, preReqs : [56], nextPerk: -1,
    description : "You learned how to empower Destruction spells. Thus, you're able to overcharge their effects."},
    //75
@@ -421,7 +426,7 @@ perks : [
    description : "Your heavy armor distracts you even less, allowing you to cast Adept level spells with almost no penalty."},
    //98
   {name : "Combat Meditation", skill : 7, skillReq : 75,
-   xPos : 84/4.5, yPos : 89/4.5, preReqs : [97], nextPerk: -1,
+   xPos : 84/4.5, yPos : 110/4.5, preReqs : [97], nextPerk: -1,
    description : "You're accustomed to your heavy armor so much that you can now cast even Expert level spells with relative ease."},
    //99
   {name : "Battle Mage", skill : 7, skillReq : 100,
@@ -697,11 +702,11 @@ perks : [
    description : "By advancing further into the school of Restoration, you've gained some Adept level spells and learned how to augment and cast spells of this rank more easily."},
    //167
   {name : "Expert Restoration", skill : 13, skillReq : 75,
-   xPos : 219/4, yPos : 118/4, preReqs : [166], nextPerk: -1,
+   xPos : 219/4, yPos : 88/4, preReqs : [166], nextPerk: -1,
    description : "You've unlocked almost every secret in the school of Restoration and you've acquired some Expert level spells. You can now cast spells of this level easier and augment them to an almost otherworldly extent."},
    //168
   {name : "Master Restoration", skill : 13, skillReq : 100,
-   xPos : 178/4, yPos : 67/4, preReqs : [167], nextPerk: -1,
+   xPos : 178/4, yPos : 30/4, preReqs : [167], nextPerk: -1,
    description : "Your knowledge of Restoration has become all-encompassing.You taught yourself a Master level spell and you can cast the most complex spells from this school with less effort while augmenting them beyond mortal limits."},
    //169
   {name : "Benefactor's Insight", skill : 13, skillReq : 25,
@@ -945,6 +950,12 @@ perks : [
 
 addPerkData(requiem402PerkData);
 
+/*
+*
+*
+* Requiem with Fozar's DB Patch
+*
+*/
 const requiem402WithFozarsPerkData = deepmerge({},requiem402PerkData);
 requiem402WithFozarsPerkData.name = "Requiem 4.0.2 + Fozar's DB patch";
 requiem402WithFozarsPerkData.id = 1;
@@ -977,15 +988,125 @@ requiem402WithFozarsPerkData.perks.push(
    xPos : 460/5, yPos : 183/3.5, preReqs : [184], nextPerk: -1,
    description : "You have honed your bone processing skills and are now able to work with such complex material as chitin. Having read the compendium to the holes, you have become a master of this technology."}
 );
-
+//Fozar's also changes some pre-requisites for other smithing perks.
 requiem402WithFozarsPerkData.perks[186].preReqs = [-185,-231];
 requiem402WithFozarsPerkData.perks[183].preReqs = [-182,-230];
 requiem402WithFozarsPerkData.perks[185].preReqs = [184,229];
 
 addPerkData(requiem402WithFozarsPerkData);
 
+/*
+*
+*
+* FTweaks 1.7 (and probably earlier)
+*
+*
+*/
 const fTweaks17PerkData = deepmerge({},requiem402WithFozarsPerkData);
 fTweaks17PerkData.name = "FTweaks 1.7";
 fTweaks17PerkData.id = 2;
+//Basic description/requirement changes.
+fTweaks17PerkData.perks[1].description = "You now can craft alchemistic powders at a smelter. In addition, your sensory organs have become very keen. Thus, you determine most of the alchemical properties of consumed ingredients. Your created potions are 50% more potent [overrides Alchemical Lore 1]";
+fTweaks17PerkData.perks[1].skillReq = 50;
+fTweaks17PerkData.perks[2].description = "Having refined your brewing process, you are now able to improve the effects of all your beneficial elixirs by 10%, and your health/stamina/magicka-restoring potions by a further 10%.";
+fTweaks17PerkData.perks[3].skillReq = 35;
+fTweaks17PerkData.perks[5].skillReq = 65;
+fTweaks17PerkData.perks[6].description = "You've started experimenting with a catalyst that increases the yield of the brewing process roughly one fifth of the time.";
+fTweaks17PerkData.perks[7].description = "You've improved the catalyst. Thereby, you can craft double the amount of <br> mixtures with the same amount of ingredients on third of the time.";
+fTweaks17PerkData.perks[8].description = "You have learned to fully extract the most vile parts of your ingredients. <br> Thus, you are able to make your poisons 15% more potent.";
+fTweaks17PerkData.perks[10].description = "Having ingested a preparation of troll fat and mammoth heart fermented in Strange Remains, you've become more resilient to harm and your body can excrete toxic waste products more efficiently.";
+fTweaks17PerkData.perks[10].skillReq = 80;
+fTweaks17PerkData.perks[12].description = "You've found a method to eliminate disadvantages from your mixtures while making them even more potent. All created potions are 10% more potent, while all beneficial potions are a further 5% more potent. Lastly, health/magicka/stamina-restoring potions are a further 5% more potent.";
+fTweaks17PerkData.perks[21].description = "You've mastered the art of casting armor spells. So long as the weight of all items you have equipped is less than 20, all mage armor spells will be more effective.";
+fTweaks17PerkData.perks[22].description = "Your Mage Armor spells are able to block a part of a dangerous spell's effect.";
+fTweaks17PerkData.perks[23].description = "Your Mage Armor spells are able to block more of a dangerous spell's effect.";
+fTweaks17PerkData.perks[24].description = "Your Mage Armor spells are able to block even more of a dangerous spell's effect.";
+fTweaks17PerkData.perks[28].description = "You strengthened your shield arm and trained to parry blows a little. Thus you can block somewhat better and protect yourself a bit more from offensive magic with your shield.";
+fTweaks17PerkData.perks[29].description = "With weapon or shield you can block almost any blow with rock-solid confidence. Additionally, when blocking a hit you feel the adrenaline rushing through your veins, recovering a small amount of stamina. You are also able to block a bit more offensive magic with your shield.";
+fTweaks17PerkData.perks[29].skillReq = 45;
+fTweaks17PerkData.perks[30].description = "You hold on to your shield like you would hold on to your life. Blocking is even more effective and your equipped shield weighs less. Your shield is also able to block a bit more of offensive magic.";
+fTweaks17PerkData.perks[31].skillReq = 60;
+fTweaks17PerkData.perks[31].description = "You've perfected the art of blocking spells and take even less damage from them while blocking. You've even learned to deflect spells with your weapon a bit, though a shield is still much more effective for such a task.";
+fTweaks17PerkData.perks[42].skillReq = 30;
+fTweaks17PerkData.perks[42].description = "You've become very skilled in binding weapon-shaped daedra from Oblivion. Thereby, bound weapons are stronger and much longer-lasting.";
+fTweaks17PerkData.perks[43].description = "The weapon-shaped Daedra you conjure now directly cut into their victims' souls, thereby making targets vulnerable to soul gems and suffer irresistible damage.";
+fTweaks17PerkData.perks[44].skillReq = 70;
+fTweaks17PerkData.perks[44].description = "Your bound weapons are now able to send summoned creatures back into the waters of Oblivion and turn the undead.";
+fTweaks17PerkData.perks[45].skillReq = 90;
+fTweaks17PerkData.perks[45].description = "You've perfected your invocations of summoning weapon-shaped daedra. They now bypass an additional third of foes' armor values.";
+fTweaks17PerkData.perks[48].skillReq = 90;
+fTweaks17PerkData.perks[57].description = "You now are able to intensify the heat of your fire spells. Thus, they now deal increased damage. In addition, you will no longer suffer a damage penalty on all fire spells.";
+fTweaks17PerkData.perks[58].skillReq = 60;
+fTweaks17PerkData.perks[61].description = "You now are able to improve your ice spells and thereby increase their effectiveness. In addition, you will no longer suffer a damage penalty on all frost spells.";
+fTweaks17PerkData.perks[62].skillReq = 60;
+fTweaks17PerkData.perks[65].description = "You can now energize your lightning spells more effectively, causing them to deal more damage. In addition, you will no longer suffer a damage penalty on all shock spells.";
+fTweaks17PerkData.perks[66].skillReq = 60;
+fTweaks17PerkData.perks[78].description = "You've learned how to draw more energy from soul gems (especially smaller ones) and are now able to craft them at a smelter by transmuting and melting certain minerals.";
+fTweaks17PerkData.perks[84].description = "You've found a way to bind even more energy into inanimate matter. Thus, you can bend the Law of Firsts to an extent and even create Daedric staves, while your enchantments are even stronger still. Additionally, all enchanted items also consume less energy.";
+fTweaks17PerkData.perks[85].description = "After some training you are now much more confident in your evasive movements. Your light armor and clothes will now hinder your movements less and you take less damage from falling. You burn slightly less stamina from actions when not wearing a heavy cuirass.";
+fTweaks17PerkData.perks[86].description = "Your trained reflexes allow you to dodge incoming blows when not wearing a heavy cuirass. By sprinting a step or two away, you can attempt to dodge hostile attacks."
+fTweaks17PerkData.perks[87].description = "You inflict increased damage with all your power attacks while not wearing a heavy cuirass, for you're able to hit more precisely.";
+fTweaks17PerkData.perks[88].description = "You are able to balance your weapon better. Thus, you can decrease the effort to execute power attacks when not wearing a heavy cuirass.";
+fTweaks17PerkData.perks[90].description = "Your light armor and clothes have become your second skin. When not wearing a heavy cuirass, you can even run in them without becoming exhausted, recover faster from exhaustion, and even run faster.";
+fTweaks17PerkData.perks[91].description = "You deal more damage with melee weapons while you are running, for you have learned to flank your enemies with ease when not wearing a heavy cuirass. Furthermore, your reflexes will never betray you when an enemy attempts a lethal strike.";
+fTweaks17PerkData.perks[92].description = "You've gained the ability to act faster in combat, though doing so will quickly exhaust you.";
+
+fTweaks17PerkData.perks[93].description = "Your reflexes are lightning fast and grant you a chance to decrease the damage of incoming melee attacks by half while not wearing a heavy cuirass.";
+fTweaks17PerkData.perks[96].skillReq = 15;
+fTweaks17PerkData.perks[97].skillReq = 40;
+fTweaks17PerkData.perks[98].skillReq = 65;
+fTweaks17PerkData.perks[99].skillReq = 95;
+fTweaks17PerkData.perks[101].skillReq = 55;
+fTweaks17PerkData.perks[102].skillReq = 80;
+fTweaks17PerkData.perks[123].description = "After some training at the shooting range you can deal more damage with bows and crossbows. [bow and crossbow damage x 1.2, -50% weapon weight penalties, ammunition grants extra expertise, 30% less stamina drain for bows]";
+fTweaks17PerkData.perks[134].name = "Boxing";
+fTweaks17PerkData.perks[134].description = "You're a passionate fist fighter, and train regularly to toughen your muscles to their very limits. Your punches now deliver 30 more damage points and cost 3 times less stamina.";
+fTweaks17PerkData.perks[155].description = "You've become very skilled in wielding two weapons at once. [dual-wield power attack damage x 1.25, dual power attack cost x 0.5]";
+fTweaks17PerkData.perks[163].name = "Redemption";
+
+fTweaks17PerkData.perks[163].description = "You regret your past and vow to change yourself from here on out. You regain favor to some degree. (Cures Skooma Addiction and Resets Murders, Bounty, Thefts, but not divine-specific mandates or guild membership)";
+fTweaks17PerkData.perks[170].description = "You've learned to focus your mind. Thus, you can keep your concentration even in stressful situations and regenerate your magicka 35% faster.";
+fTweaks17PerkData.perks[171].name = "Enhanced Magicka";
+fTweaks17PerkData.perks[171].description = "You have learned to focus yourself intensely, allowing you to access a greater amount of Magicka and lose less when struck in combat. Increases Magicka by 30 points.";
+fTweaks17PerkData.perks[172].name = "Power of Life";
+fTweaks17PerkData.perks[172].description = "Through your deep understanding of healing and life energies, you have developed an exceptionally efficient healing spell.";
+fTweaks17PerkData.perks[173].name = "Ward Mastery";
+fTweaks17PerkData.perks[173].preReqs = [167];
+fTweaks17PerkData.perks[173].xPos = 250/4;
+fTweaks17PerkData.perks[173].yPos = 120/4;
+fTweaks17PerkData.perks[173].description = "Having learned all common ward spells, your mastery of wards is now complete. All ward spells absorb magicka from incoming spells and are easier to cast. Additionally, you have developed a new and especially powerful ward spell.";
+//Skip smithing now because it's a whole deal;
+fTweaks17PerkData.perks[190].description = "You are even harder to detect when sneaking even when wearing heavy armor.";
+fTweaks17PerkData.perks[194].description = "Your newfound finesse allows you to move more quietly.";
+fTweaks17PerkData.perks[211].description = "Your improved fighting techniques increase your damage dealt with two-handed weapons. [damage x 1.15, -50% weapon weight penalties]";
+fTweaks17PerkData.perks[212].description = "Your improved fighting techniques increase your damage dealt with two-handed weapons even more. [damage x 1.3, -50% weapon weight penalties]";
+fTweaks17PerkData.perks[223].skillReq = 75;
+fTweaks17PerkData.perks[223].preReqs = [225,224];
+fTweaks17PerkData.perks[223].xPos = 205/4; fTweaks17PerkData.perks[223].yPos = 91/4;
+fTweaks17PerkData.perks[224].description = "Your two-handed combat style has improved so much that all power attacks have become devastating. [power attack damage x 1.2]";
+fTweaks17PerkData.perks[225].skillReq = 50;
+fTweaks17PerkData.perks[225].preReqs = [213];
+fTweaks17PerkData.perks[225].xPos = 140/4; fTweaks17PerkData.perks[225].yPos = 183/4;
+fTweaks17PerkData.perks[226].preReqs = [223];
+//Next add the new perks from FTweaks
+fTweaks17PerkData.perks.push(
+  //232
+  {name : "Toxin<br>Nullification", skill : 7, skillReq : 25,
+   xPos : 160/4, yPos : 240/4.5, preReqs : [96], nextPerk: -1,
+   description : "For each piece of heavy armor worn, you can further withstand poison by 5%, and by an extra 10% if a full suit is donned."}
+);
+fTweaks17PerkData.perks.push(
+  //233
+  {name : "Environmental<br>Nullification", skill : 7, skillReq : 50,
+   xPos : 160/4, yPos : 170/4.5, preReqs : [232,97], nextPerk: -1,
+   description : "For each piece of heavy armor worn, you can further withstand elemental attacks by 2.5%, and by an extra 5% if a full suit is donned."}
+);
+fTweaks17PerkData.perks.push(
+  //234
+  {name : "Magic<br>Nullification", skill : 7, skillReq : 75,
+   xPos : 160/4, yPos : 85/4.5, preReqs : [233,98], nextPerk: -1,
+   description : "For each piece of heavy armor worn, you can further withstand magical attacks by 2.5%, and by an extra 5% if a full suit is donned."}
+);
+//Now re-vamp the smithing tree.
 
 addPerkData(fTweaks17PerkData);

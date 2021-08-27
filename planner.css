@@ -197,7 +197,7 @@ svg > text, .unselectable {
 
 .selectInputWithSmallLabel select {
   float:right;
-  width:40%;
+  width:30%;
   font-size:14px;
 }
 
