@@ -46,7 +46,7 @@ perks : [
    description : "Having refinined the brewing process, you are now able to improve the effects of all your elixirs."},
   //3
   {name : "Night Vision", skill : 0, skillReq : 25,
-  xPos : 77, yPos : 62.5, preReqs : [2], nextPerk: -1,
+  xPos : 87, yPos : 62.5, preReqs : [2], nextPerk: -1,
   description : "Having altered your body with extracts from a sabrecat eye, you can now make your eyes see in the dark at will."},
   //4
   {name : "Concentrated Poisons", skill : 0, skillReq : 25,
@@ -54,7 +54,7 @@ perks : [
   description : "Your experience in the obscure alchemical arts allows you to concentrate your poisons. Thus, you can make most of them last longer before they need to be reapplied."},
   //5
   {name : "Regeneration", skill : 0, skillReq : 50,
-   xPos : 65.7, yPos : 40.5, preReqs : [2], nextPerk: -1,
+   xPos : 75.7, yPos : 40.5, preReqs : [2], nextPerk: -1,
    description : "Having altered your body with extracts from troll fat, slaughterfish eggs and spriggan sap, you're now able to regenerate your body, and do so even more rapidly when you are immersed in water."},
   //6
   {name : "Catalysis", skill : 0, skillReq : 50,
@@ -78,11 +78,11 @@ perks : [
    description : "Having altered your body with extracts from troll fat and a mammoth heart, you've become more resilient to harm."},
   //11
   {name : "Alchemical Intellect", skill : 0, skillReq : 100,
-   xPos : 199/3, yPos : 65/4, preReqs : [9], nextPerk: -1,
+   xPos : 219/3, yPos : 45/4, preReqs : [9], nextPerk: -1,
    description : "Having altered your body with extracts from a Dremora's Heart and Ectoplasm, your mind has transcended mortal limits, expanding your magicka and improving your spell casting."},
   //12
   {name : "Purification Process", skill : 0, skillReq : 100,
-   xPos : 140/3, yPos : 40/4, preReqs : [9], nextPerk: -1,
+   xPos : 140/3, yPos : 20/4, preReqs : [9], nextPerk: -1,
    description : "You've found a method to eliminate disadvantages from your mixtures and to make all of them even more potent."},
   //13
   {name : "Novice Alteration", skill : 1, skillReq : 0,
@@ -181,75 +181,75 @@ perks : [
    xPos : 150/3, yPos : 30/4, preReqs : [35,32], nextPerk: -1,
    description : "When bull rushing with your shield raised, you are a tremendous force to deal with. In addition to likely being knocked down, your unfortunate enemies will also suffer serious wounds from the impact itself."},
    //37
-  {name : "Novice Conjuration", skill : 3, skillReq : 0,
+  {name : "Novice<br>Conjuration", skill : 3, skillReq : 0,
    xPos : 216/4, yPos : 354/4, preReqs : [], nextPerk: -1,
    description : "You've taught yourself a few Novice level spells and learned how to cast them with decreased effort while your newfound knowledge also allows you to augment all Conjuration spells."},
   //38
-  {name : "Apprentice Conjuration", skill : 3, skillReq : 25,
-   xPos : 324/4, yPos : 231/4, preReqs : [37], nextPerk: -1,
+  {name : "Apprentice<br>Conjuration", skill : 3, skillReq : 25,
+   xPos : 354/4, yPos : 231/4, preReqs : [37], nextPerk: -1,
    description : "By pursuing your apprenticeship in Conjuration, you've gained knowledge of Apprentice level spells which you now augment while casting them with less effort."},
   //39
-  {name : "Adept Conjuration", skill : 3, skillReq : 50,
-   xPos : 335/4, yPos : 176/4, preReqs : [38], nextPerk: -1,
+  {name : "Adept<br>Conjuration", skill : 3, skillReq : 50,
+   xPos : 365/4, yPos : 176/4, preReqs : [38], nextPerk: -1,
    description : "By advancing further into the school of Conjuration, you've gained some Adept level spells and learned how to augment and cast spells of this rank more easily."},
   //40
-  {name : "Expert Conjuration", skill : 3, skillReq : 75,
-   xPos : 327/4, yPos : 132/4, preReqs : [39], nextPerk: -1,
+  {name : "Expert<br>Conjuration", skill : 3, skillReq : 75,
+   xPos : 357/4, yPos : 122/4, preReqs : [39], nextPerk: -1,
    description : "You've unlocked almost every secret in the school of Conjuration and you've acquired some Expert level spells. You can now cast spells of this level easier and augment them to an almost otherworldly extent."},
   //41
-  {name : "Master Conjuration", skill : 3, skillReq : 100,
-   xPos : 292/4, yPos : 50/4, preReqs : [40], nextPerk: -1,
+  {name : "Master<br>Conjuration", skill : 3, skillReq : 100,
+   xPos : 342/4, yPos : 50/4, preReqs : [40], nextPerk: -1,
    description : "Your knowledge of Conjuration has become all-encompassing. You taught yourself a Master level spell and you can cast the most complex spells from this school with less effort while augmenting them beyond mortal limits."},
    //42
-  {name : "Mystic Binding", skill : 3, skillReq : 25,
-   xPos : 242/4, yPos : 269/4, preReqs : [37], nextPerk: -1,
+  {name : "Mystic<br>Binding", skill : 3, skillReq : 25,
+   xPos : 272/4, yPos : 249/4, preReqs : [37], nextPerk: -1,
    description : "You've become very skilled in binding weapon-shaped daedra from Oblivion. Thereby, bound weapons are stronger and longer-lasting. Bound arrows will penetrate armor more easily."},
    //43
-  {name : "Mystic Maelstrom", skill : 3, skillReq : 50,
-   xPos : 262/4, yPos : 154/4, preReqs : [42], nextPerk: -1,
+  {name : "Mystic<br>Maelstrom", skill : 3, skillReq : 50,
+   xPos : 292/4, yPos : 164/4, preReqs : [42], nextPerk: -1,
    description : "The weapon-shaped Daedra you conjure now directly cut into their victims' souls, thereby making them vulnerable to soul gems."},
    //44
-  {name : "Mystic Banishment", skill : 3, skillReq : 75,
-   xPos : 245/4, yPos : 112/4, preReqs : [43], nextPerk: -1,
+  {name : "Mystic<br>Banishment", skill : 3, skillReq : 75,
+   xPos : 275/4, yPos : 112/4, preReqs : [43], nextPerk: -1,
    description : "Your bound weapons are now able to send summoned creatures back into the waters of Oblivion and to turn the undead."},
    //45
-  {name : "Mystic Disruption", skill : 3, skillReq : 100,
-   xPos : 231/4, yPos : 70/4, preReqs : [44], nextPerk: -1,
+  {name : "Mystic<br>Disruption", skill : 3, skillReq : 100,
+   xPos : 261/4, yPos : 60/4, preReqs : [44], nextPerk: -1,
    description : "You've perfected your invocations of summoning weapon-shaped daedra by making them bypass a part of any enemy's armor."},
    //46
   {name : "Necromancy", skill : 3, skillReq : 25,
-   xPos : 190/4, yPos : 188/4, preReqs : [37], nextPerk: -1,
+   xPos : 220/4, yPos : 218/4, preReqs : [37], nextPerk: -1,
    description : "You've developed a knack for making the dead serve your commands. Therefore, all spells that summon or raise the dead and ghosts last longer and can raise more powerful entities."},
    //47
   {name : "Ritualism", skill : 3, skillReq : 50,
-   xPos : 182/4, yPos : 153/4, preReqs : [46], nextPerk: -1,
+   xPos : 212/4, yPos : 153/4, preReqs : [46], nextPerk: -1,
    description : "Your knowledge of the realms of the dead surpasses that of many and decreases the effort needed to raise or summon the dead and ghosts."},
    //48
-  {name : "Dark Infusion", skill : 3, skillReq : 75,
-   xPos : 151/4, yPos : 76/4, preReqs : [47], nextPerk: -1,
+  {name : "Dark<br>Infusion", skill : 3, skillReq : 75,
+   xPos : 181/4, yPos : 76/4, preReqs : [47], nextPerk: -1,
    description : "By infusing your undead creations with dark energies, you are able to make them stronger and more resilient. You can even prevent your creations from decaying to dust."},
    //49
-  {name : "Summoner's Insight", skill : 3, skillReq : 25,
+  {name : "Summoner's<br>Insight", skill : 3, skillReq : 25,
    xPos : 172/4, yPos : 247/4, preReqs : [37], nextPerk: -1,
    description : "You've learned how to empower Conjuration spells. Thus, you can now make them last longer in this realm."},
    //50
-  {name : "Cognitive Flexibility", skill : 3, skillReq : 50,
-   xPos : 126/4, yPos : 117/4, preReqs : [49], nextPerk: 51,
+  {name : "Cognitive<br>Flexibility", skill : 3, skillReq : 50,
+   xPos : 150/4, yPos : 117/4, preReqs : [49], nextPerk: 51,
    description : "You have practiced the mental ability of maintaining two summons at the same time. This power extends to controlling any type of conjured or conceived entity, even outside the school of Conjuration."},
   //51
-  {name : "Cognitive Flexibility", skill : 3, skillReq : 100,
-   xPos : 126/4, yPos : 117/4, preReqs : [50], nextPerk: -1,
+  {name : "Cognitive<br>Flexibility", skill : 3, skillReq : 100,
+   xPos : 150/4, yPos : 117/4, preReqs : [50], nextPerk: -1,
    description : "You have mastered the art of Cognitive Flexibility, a trait of only the most accomplished Summoners throughout history. You can now control three summons, of any type, simultaneously."},
    //52
   {name : "Stabilized Binding", skill : 3, skillReq : 25,
    xPos : 85/4, yPos : 221/4, preReqs : [37], nextPerk: -1,
    description : "Having studied the barriers that divide the planes of existence, you can make your summoned daedra and spirits last longer in this realm."},
   //53
-  {name : "Spiritual Binding", skill : 3, skillReq : 35,
-   xPos : 78/4, yPos : 161/4, preReqs : [52], nextPerk: -1,
+  {name : "Spiritual<br>Binding", skill : 3, skillReq : 35,
+   xPos : 98/4, yPos : 161/4, preReqs : [52], nextPerk: -1,
    description : "Your knowledge of Oblivion's spiritual aspects increases the strength of all your summoned spirits."},
    //54
-  {name : "Extended Binding", skill : 3, skillReq : 50,
+  {name : "Extended<br>Binding", skill : 3, skillReq : 50,
    xPos : 53/4, yPos : 131/4, preReqs : [52], nextPerk: -1,
    description : "Your knowledge of Oblivion's spiritual aspects increases the strength of all your summoned spirits."},
    //55
@@ -278,11 +278,11 @@ perks : [
    description : "Your fascination for fire now grants you a natural resistance to it, while also increasing all your fire spells' power even further."},
    //61
   {name : "Cyromancy", skill : 4, skillReq : 25,
-   xPos : 155/4, yPos : 196/4, preReqs : [56], nextPerk: 62,
+   xPos : 145/4, yPos : 196/4, preReqs : [56], nextPerk: 62,
    description : "You now are able to improve your ice spells and thereby increase their effectiveness."},
    //62
   {name : "Cyromancy", skill : 4, skillReq : 50,
-   xPos : 155/4, yPos : 196/4, preReqs : [61], nextPerk: -1,
+   xPos : 145/4, yPos : 196/4, preReqs : [61], nextPerk: -1,
    description : "Your ice spells freeze even air in a trice and make the harsh winters of Skyrim look like a refreshing breeze."},
    //63
   {name : "Deep Freeze", skill : 4, skillReq : 75,
@@ -309,7 +309,7 @@ perks : [
    xPos : 220/4, yPos : 25/4, preReqs : [67], nextPerk: -1,
    description : "Your aptitude with lightning grants you a natural resistance to it, while also increasing all your shock spells' power even further."},
    //69
-  {name : "Apprentice Destruction", skill : 4, skillReq : 25,
+  {name : "Apprentice<br>Destruction", skill : 4, skillReq : 25,
    xPos : 255/4, yPos : 255/4, preReqs : [56], nextPerk: -1,
    description : "By pursuing your apprenticeship in Destruction, you've gained knowledge of Apprentice level spells which you now augment while casting them with less effort."},
    //70
@@ -317,15 +317,15 @@ perks : [
    xPos : 302/4, yPos : 204/4, preReqs : [69], nextPerk: -1,
    description : "By studying the arcane symbols of all three elements, you have developed more powerful rune spells and have unlocked the secret of maintaining three active runes instead of just one."},
    //71
-  {name : "Adept Destruction", skill : 4, skillReq : 50,
+  {name : "Adept<br>Destruction", skill : 4, skillReq : 50,
    xPos : 270/4, yPos : 130/4, preReqs : [69], nextPerk: -1,
    description : "By advancing further into the school of Destruction, you've gained some Adept level spells and learned how to augment and cast spells of this rank more easily."},
    //72
-  {name : "Expert Destruction", skill : 4, skillReq : 75,
+  {name : "Expert<br>Destruction", skill : 4, skillReq : 75,
    xPos : 290/4, yPos : 60/4, preReqs : [71], nextPerk: -1,
    description : "You've unlocked almost every secret in the school of Destruction and you've acquired some Expert level spells. You can now cast spells of this level easier and augment them to an almost otherworldly extent."},
    //73
-  {name : "Master Destruction", skill : 4, skillReq : 100,
+  {name : "Master<br>Destruction", skill : 4, skillReq : 100,
    xPos : 300/4, yPos : 15/4, preReqs : [72], nextPerk: -1,
    description : "Your knowledge of Destruction has become all-encompassing. You taught yourself a Master level spell and you can cast the most complex spells from this school with less effort while augmenting them beyond mortal limits."},
    //74
@@ -537,7 +537,7 @@ perks : [
    xPos : 170/4, yPos : 250/4, preReqs : [123], nextPerk: -1,
    description : "By concentrating only on your target and holding your breath, you can now aim much more precisely. [zoom in by holding right mouse button]"},
    //126
-  {name : "Marksman's Focus", skill : 10, skillReq : 50,
+  {name : "Marksman's<br>Focus", skill : 10, skillReq : 50,
    xPos : 83/4, yPos : 161/4, preReqs : [125], nextPerk: -1,
    description : "When fully focusing on your target, everything around you seems to slow down remarkably. [time slows down while zooming, -25% weapon weight penalties]"},
    //127
@@ -585,51 +585,51 @@ perks : [
    xPos : 195/4, yPos : 274/4, preReqs : [135], nextPerk: -1,
    description : "Your power attacks with one-handed weapons are now devastating enough to penetrate enemy armor and less exhausting. [-50% power attack stamina cost, +5 armor penetration]"},
    //138
-  {name : "Dagger Focus", skill : 11, skillReq : 25,
+  {name : "Dagger<br>Focus", skill : 11, skillReq : 25,
    xPos : 85/4, yPos : 240/4, preReqs : [137], nextPerk: 139,
    description : "You learned some dirty tricks for your dagger and are more likely to find weak spots in enemy armor. [irresistable sneak attack damage x 1.25, +10 armor penetration]"},
    //139
-  {name : "Dagger Focus", skill : 11, skillReq : 50,
+  {name : "Dagger<br>Focus", skill : 11, skillReq : 50,
    xPos : 85/4, yPos : 240/4, preReqs : [138], nextPerk: 140,
    description : "A dagger in your hand turns into a deadly weapon that will find a weakness in every armor. [irresistable sneak attack damage x 1.55, +20 armor penetration]"},
    //140
-  {name : "Dagger Focus", skill : 11, skillReq : 75,
+  {name : "Dagger<br>Focus", skill : 11, skillReq : 75,
    xPos : 85/4, yPos : 240/4, preReqs : [139], nextPerk: -1,
    description : "You have mastered the deadly art of the dagger and enemy armor stands no chance against your precision. [irresistable sneak attack damage x 2, +30 armor penetration]"},
    //141
-  {name : "War Axe Focus", skill : 11, skillReq : 25,
+  {name : "War Axe<br>Focus", skill : 11, skillReq : 25,
    xPos : 140/4, yPos : 200/4, preReqs : [137], nextPerk: 142,
    description : "You've become familiar with war axes, thereby increasing their damage and armor penetration. [damage x 1.05, +10 armor penetration]"},
    //142
-  {name : "War Axe Focus", skill : 11, skillReq : 50,
+  {name : "War Axe<br>Focus", skill : 11, skillReq : 50,
    xPos : 140/4, yPos : 200/4, preReqs : [141], nextPerk: 143,
    description : "You've become an advanced axe fighter, further increasing their damage and armor penetration. [damage x 1.15, +20 armor penetration]"},
    //143
-  {name : "War Axe Focus", skill : 11, skillReq : 75,
+  {name : "War Axe<br>Focus", skill : 11, skillReq : 75,
    xPos : 140/4, yPos : 200/4, preReqs : [142], nextPerk: -1,
    description : "Having mastered war axe combat, they start to feel like an almost natural extension of your arm. [damage x 1.3, +30 armor penetration]"},
    //144
-  {name : "Mace Focus", skill : 11, skillReq : 25,
+  {name : "Mace<br>Focus", skill : 11, skillReq : 25,
    xPos : 260/4, yPos : 200/4, preReqs : [137], nextPerk: 145,
    description : "You've become familiar with war axes, thereby increasing their damage and armor penetration. [damage x 1.05, +10 armor penetration]"},
    //145
-  {name : "Mace Focus", skill : 11, skillReq : 50,
+  {name : "Mace<br>Focus", skill : 11, skillReq : 50,
    xPos : 260/4, yPos : 200/4, preReqs : [144], nextPerk: 146,
    description : "You've become an advanced mace fighter and know how to find weak spots in enemy armor. [power attack damage x 1.1, +30 armor penetration]"},
    //146
-  {name : "Mace Focus", skill : 11, skillReq : 75,
+  {name : "Mace<br>Focus", skill : 11, skillReq : 75,
    xPos : 260/4, yPos : 200/4, preReqs : [145], nextPerk: -1,
    description : "You've become a masterly mace fighter, rendering armor almost useless. [power attack damage x 1.15, +45 armor penetration]"},
    //147
-  {name : "Sword Focus", skill : 11, skillReq : 25,
+  {name : "Sword<br>Focus", skill : 11, skillReq : 25,
    xPos : 285/4, yPos : 246/4, preReqs : [137], nextPerk: 148,
    description : "You've learned the basics of sword combat, allowing you to increase your attack rate with them slightly. [+8% attack speed, +7 armor penetration]"},
    //148
-  {name : "Sword Focus", skill : 11, skillReq : 50,
+  {name : "Sword<br>Focus", skill : 11, skillReq : 50,
    xPos : 285/4, yPos : 246/4, preReqs : [147], nextPerk: 149,
    description : "You've acquired the advanced techniques of sword combat, further increasing your attack rate with them. [+16% attack speed, +14 armor penetration]"},
    //149
-  {name : "Sword Focus", skill : 11, skillReq : 75,
+  {name : "Sword<br>Focus", skill : 11, skillReq : 75,
    xPos : 285/4, yPos : 246/4, preReqs : [148], nextPerk: -1,
    description : "You've become a master of sword combat, allowing you to swing swords so fast that it's almost undetectable to the mortal eye. [+24% attack speed, +21 armor penetration]"},
    //150
@@ -693,11 +693,11 @@ perks : [
    xPos : 221/4, yPos : 345/4, preReqs : [], nextPerk: -1,
    description : "You've taught yourself a few Novice level spells and learned how to cast them with decreased effort while your newfound knowledge also allows you to augment all Restoration spells."},
    //165
-  {name : "Apprentice Restoration", skill : 13, skillReq : 25,
+  {name : "Apprentice<br>Restoration", skill : 13, skillReq : 25,
    xPos : 236/4, yPos : 268/4, preReqs : [164], nextPerk: -1,
    description : "By pursuing your apprenticeship in Restoration, you've gained knowledge of Apprentice level spells which you now augment while casting them with less effort."},
    //166
-  {name : "Adept Restoration", skill : 13, skillReq : 50,
+  {name : "Adept<br>Restoration", skill : 13, skillReq : 50,
    xPos : 213/4, yPos : 190/4, preReqs : [165], nextPerk: -1,
    description : "By advancing further into the school of Restoration, you've gained some Adept level spells and learned how to augment and cast spells of this rank more easily."},
    //167
@@ -709,7 +709,7 @@ perks : [
    xPos : 178/4, yPos : 30/4, preReqs : [167], nextPerk: -1,
    description : "Your knowledge of Restoration has become all-encompassing.You taught yourself a Master level spell and you can cast the most complex spells from this school with less effort while augmenting them beyond mortal limits."},
    //169
-  {name : "Benefactor's Insight", skill : 13, skillReq : 25,
+  {name : "Benefactor's<br>Insight", skill : 13, skillReq : 25,
    xPos : 306/4, yPos : 295/4, preReqs : [165], nextPerk: -1,
    description : "You learned how to empower Restoration spells. Therefore, you are now able to overcharge their effects."},
    //170
@@ -742,7 +742,7 @@ perks : [
    description : "You've learned the art of weaving mystical energies into your spells, making all of them more effective against the undead and Daedra."},
    //177
   {name : "Craftsmanship", skill : 14, skillReq : 0,
-   xPos : 224/5, yPos : 288/3.5, preReqs : [], nextPerk: -1,
+   xPos : 230/5, yPos : 310/3.5, preReqs : [], nextPerk: -1,
    description : "You've acquired the basics of craftsmanship and know how to properly use all kinds of tools. Thus, you are able to craft and improve a wide variety of common goods."},
    //178
   {name : "Advanced<br>Blacksmithing", skill : 14, skillReq : 50,
@@ -869,7 +869,7 @@ perks : [
    xPos : 273/4, yPos : 160/4, preReqs : [205], nextPerk: -1,
    description : "You have been guided in meditating on the Thu'um. Now your shouts linger, lasting longer than they did before."},
    //209
-  {name : "The Way of the Voice", skill : 16, skillReq : 0,
+  {name : "The Way of<br>the Voice", skill : 16, skillReq : 0,
    xPos : 296/4, yPos : 96/4, preReqs : [205], nextPerk: -1,
    description : "You've meditated thoroughly, and acquired vast insights into the Way of the Voice. Thus, you can call upon the power of your Thu'um rapidly once each day."},
    //210
@@ -986,7 +986,7 @@ requiem402WithFozarsPerkData.perks.push(
   //231
   {name : "Nordic<br>Smithing", skill : 14, skillReq : 55,
    xPos : 460/5, yPos : 183/3.5, preReqs : [184], nextPerk: -1,
-   description : "You have honed your bone processing skills and are now able to work with such complex material as chitin. Having read the compendium to the holes, you have become a master of this technology."}
+   description : "The key mixture found in Nordic equipment is the blend of Quicksilver and Ebony ore. The combination creates some of the hardest alloys on Nirn."}
 );
 //Fozar's also changes some pre-requisites for other smithing perks.
 requiem402WithFozarsPerkData.perks[186].preReqs = [-185,-231];
@@ -1107,6 +1107,35 @@ fTweaks17PerkData.perks.push(
    xPos : 160/4, yPos : 85/4.5, preReqs : [233,98], nextPerk: -1,
    description : "For each piece of heavy armor worn, you can further withstand magical attacks by 2.5%, and by an extra 5% if a full suit is donned."}
 );
+//3Tweaks removes the second rank of Morrowind Smithing and adds Esoteric Magic
+fTweaks17PerkData.perks[230] = {name : "Esoteric<br>Magic", skill : 4, skillReq : 45,
+   xPos : 100/4, yPos : 270/4, preReqs : [56], nextPerk: -1,
+   description : "By pursuing your apprenticeship in Destruction, you've gained knowledge of Apprentice level spells which you now augment while casting them with less effort."};
 //Now re-vamp the smithing tree.
+fTweaks17PerkData.perks[229] = {name : "Morrowind<br>Smithing", skill : 14, skillReq : 60,
+   xPos : 40/5, yPos : 157/3.5, preReqs : [177], nextPerk: -1,
+   description : "Thanks to your studies of Dunmeri craftsmanship, you have gained the skills necessary to create armors in the Morrowind style out of materials such as chitin or bone."};
+fTweaks17PerkData.perks[182] = {name : "Elven<br>Smithing", skill : 14, skillReq : 50,
+   xPos : 100/5, yPos : 180/3.5, preReqs : [177], nextPerk: -1,
+   description : "You've gained enough finesse to create and improve Elven armor and weapons by studying the Elven craftmanship carefully."};
+ //Advanced Light Armors
+ fTweaks17PerkData.perks[181].xPos = 175/5; fTweaks17PerkData.perks[181].yPos = 214/3.5;
+ //Glass Smithing
+ fTweaks17PerkData.perks[183].preReqs = [-181,-182,-229];
+ fTweaks17PerkData.perks[183].description = "Crafting and improving Glass equipment is not for the unskilled, but having studied intensely, you have overcome that challenge.";
+ //Move some perks in the middle up
+ fTweaks17PerkData.perks[178].yPos = 153 / 3.5;
+ fTweaks17PerkData.perks[179].yPos = 110 / 3.5;
+ fTweaks17PerkData.perks[180].yPos = 110 / 3.5;
+ fTweaks17PerkData.perks[185] = {name : "Orcish<br>Smithing", skill : 14, skillReq : 35,
+   xPos : 320/5, yPos : 214/3.5, preReqs : [177], nextPerk: -1,
+   description : "Orcish equipment is hard to craft, but you've got what it takes. With the schematics, you can now craft and improve it easily and efficiently."};
+ //Dwarven Smithing
+ fTweaks17PerkData.perks[184].skillReq = 60;
+ fTweaks17PerkData.perks[184].xPos = 400/5; fTweaks17PerkData.perks[184].yPos = 170/3.5;
+ fTweaks17PerkData.perks[231] = {name : "Nordic<br>Smithing", skill : 14, skillReq : 55,
+   xPos : 470/5, yPos : 153/3.5, preReqs : [177], nextPerk: -1,
+   description : "You have become skilled at quicksilver-steel alloying.  Therefore, you can now forge Nordic armor and weapons."};
+ fTweaks17PerkData.perks[186].preReqs = [-231,-185,-184];
 
 addPerkData(fTweaks17PerkData);
