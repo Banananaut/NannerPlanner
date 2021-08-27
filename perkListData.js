@@ -861,11 +861,11 @@ perks : [
    xPos : 250/4, yPos : 320/4, preReqs : [205], nextPerk: -1,
    description : "The horrors that the Thu'um can inflict are etched into your mind just as you have seen them etched into stone. Your Thu'um will wreak even greater havoc among your unfortunate foes."},
    //207
-  {name : "Indomitable Force", skill : 16, skillReq : 0,
+  {name : "Indomitable<br>Force", skill : 16, skillReq : 0,
    xPos : 265/4, yPos : 251/4, preReqs : [205], nextPerk: -1,
    description : "You know what it means to be called Ysmir, Dragon of the North. As you have withstood the test of Thu'um, so you will withstand the Thu'um of others."},
    //208
-  {name : "Spiritual Equilibrium", skill : 16, skillReq : 0,
+  {name : "Spiritual<br>Equilibrium", skill : 16, skillReq : 0,
    xPos : 273/4, yPos : 160/4, preReqs : [205], nextPerk: -1,
    description : "You have been guided in meditating on the Thu'um. Now your shouts linger, lasting longer than they did before."},
    //209
@@ -873,7 +873,7 @@ perks : [
    xPos : 296/4, yPos : 96/4, preReqs : [205], nextPerk: -1,
    description : "You've meditated thoroughly, and acquired vast insights into the Way of the Voice. Thus, you can call upon the power of your Thu'um rapidly once each day."},
    //210
-  {name : "Tongue's Insight", skill : 16, skillReq : 0,
+  {name : "Tongue's<br>Insight", skill : 16, skillReq : 0,
    xPos : 349/4, yPos : 71/4, preReqs : [205], nextPerk: -1,
    description : "You've spent time meditating on the Way of the Voice, unearthing more knowledge and gaining valuable insights. Thus, you can harness the might of yet another word of power."},
    //211

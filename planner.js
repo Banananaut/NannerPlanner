@@ -337,7 +337,11 @@ function presetSelectChange() {
   let preset = presetList[presetIndex];
   let oldVal = 0;
   
+  oldVal = Number($("#perksSelect").val());
   $("#perksSelect").val(preset.perks);
+  if(oldVal != preset.perks){
+    changePerkList(preset.perks);
+  }
   
   oldVal = Number($("#racesListSelect").val());
   $("#racesListSelect").val(preset.races);
@@ -359,7 +363,21 @@ function presetSelectChange() {
 }
 
 function perkSelectChange(){
-  //alert("perks changed");
+  changePerkList(Number($(this).val()));
+}
+
+function changePerkList(listNum){
+  curPerkList = perksList[getIndexWithID(listNum,perksList)];
+  //Just reset all of the selected perks.
+  characterData.spentPerks = 0;
+  characterData.perksTaken = [];
+  for(let i = 0; i < curPerkList.perks.length; i++){
+    characterData.perksTaken.push(false);
+  }
+  
+  updateSkillNames();
+  drawMiniSkillTrees();
+  updateActiveSkillPanel();
 }
 
 function skillInputChange(){
