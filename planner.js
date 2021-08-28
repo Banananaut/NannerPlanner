@@ -251,14 +251,15 @@ function updateAttributeText(){
     let baseVal = curRaceList.races[characterData.race].startingHMS[i];
     baseVal += curGameMechanics.leveling.hmsGiven[i] * characterData.hmsIncreases[i];
     
-    answers[i] += baseVal;
-    
     let bonuses = curRaceList.races[characterData.race].hmsBonus[i];
     if( (oghmaVal - 1) == i){
       bonuses += curGameMechanics.oghmaData.hmsGiven[i];
     }
+    
+    answers[i] += (baseVal+bonuses);
+    
     if(bonuses > 0){
-      answers[i] += ` (+${bonuses})`;
+      answers[i] += ` (${baseVal}+${bonuses})`;
     } 
   }
   
