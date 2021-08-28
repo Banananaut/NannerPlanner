@@ -1263,7 +1263,7 @@ function updateFreeAttributeChoicesDisplay(){
 }
 
 function generateBuildCode(){
-  let version = 1;
+  let version = 2;
   let code = String.fromCodePoint(version);
   code += String.fromCodePoint(curPerkList.id);
   code += String.fromCodePoint(curRaceList.id);
@@ -1276,7 +1276,7 @@ function generateBuildCode(){
   for(let i = 0; i < 18; i++){
     code += String.fromCodePoint(characterData.skillLevels[i]);
   }
-  code += String.fromCodePoint(characterData.oghmaChoice);
+  code += String.fromCodePoint(characterData.oghmaChoice << 4);
   code += String.fromCodePoint(characterData.race);
   code += String.fromCodePoint(characterData.standingStone);
   code += String.fromCodePoint(characterData.blessing);
@@ -1323,6 +1323,9 @@ function parseCharacterDataFromURL(){
   if(version == 1){
     return buildCodeParserV1(buildCode);
   }
+  else if(version == 2){
+    return buildCodeParserV2(buildCode);
+  }
   else{
     return false;
   }
@@ -1365,6 +1368,12 @@ function buildCodeParserV1(buildCode){
   }
   
   return true;
+}
+
+function buildCodeParserV2(buildCode){
+  let answer = buildCodeParserV1(buildCode);
+  characterData.oghmaChoice = characterData.oghmaChoice >> 4;
+  return answer;
 }
 
 function updateBuildCodeDisplay(){
