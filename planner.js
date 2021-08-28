@@ -391,6 +391,7 @@ function changeRace(newRaceNum,respectOld = true){
 function presetSelectChange() {
   let presetIndex = getIndexWithID(Number($(this).val()),presetList);
   let preset = presetList[presetIndex];
+  curPreset = preset;
   let oldVal = 0;
   
   oldVal = Number($("#perksSelect").val());
