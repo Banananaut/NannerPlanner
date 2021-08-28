@@ -10,6 +10,7 @@ var curPreset;
 var curBlessingList;
 var activeSkill = 0;
 var tookPerkWithLastClick = false;
+var copiedMessageTimeoutID = -1;
 
 var characterData = {
   race: 0, //This is an index into the race data array
@@ -41,7 +42,7 @@ $(document).ready(function(){
   curBlessingList = blessingsList[curPreset.blessings];
 
   sortDataLists();
-  initCharacterData();
+  let gotBuild = initCharacterData();
   updateCustomSelectOptions();
   updateSkillNames();
   updateSkillLevelsDisplay();
@@ -55,8 +56,29 @@ $(document).ready(function(){
   createDerivedAttributesTable();
   updateDerivedAttributes();
   
+  if(gotBuild){
+    updateStuffFromCharacterCode();
+  }
+  
+  updateBuildCodeDisplay();
+  
   attachHandlers();
 });
+
+function updateStuffFromCharacterCode(){
+  $("#oghmaSelect").val(characterData.oghmaChoice);
+  $("#raceSelect").val(characterData.race);
+  $("#stoneSelect").val(characterData.standingStone);
+  $("#blessingSelect").val(characterData.blessing);
+  $("#perksSelect").val(curPerkList.id);
+  $("#racesListSelect").val(curRaceList.id);
+  $("#blessingsSelect").val(curBlessingList.id);
+  $("#mechanicsSelect").val(curGameMechanics.id);
+  $("#healthIncreasesInput").val(characterData.hmsIncreases[0]);
+  $("#magickaIncreasesInput").val(characterData.hmsIncreases[1]);
+  $("#staminaIncreasesInput").val(characterData.hmsIncreases[2]);
+  updateCharacterLevelAndResults();
+}
 
 function createDerivedAttributesTable() {
   let theTable = $("#derivedAttributeTable");
@@ -101,29 +123,37 @@ function dataArrayCompare(a,b){
   return a.name.localeCompare(b.name);
 }
 
-//Reset character data completely to a starting state
+//Initialize character data from the build code if one
+//was given. Otherwise have a completely blank character.
+//Returns true if character data was successfully parsed
+//from the build code.
 function initCharacterData(){
-  characterData.race = 0;
-  characterData.hmsIncreases = [0,0,0];
-  characterData.skillLevels = [];
-  for(let i = 0; i < 18; i++){
-    characterData.skillLevels.push(curRaceList.races[0].startingSkills[i]);
+  let gotFromURL = parseCharacterDataFromURL();
+  if(!gotFromURL){
+    characterData.race = 0;
+    characterData.hmsIncreases = [0,0,0];
+    characterData.skillLevels = [];
+    for(let i = 0; i < 18; i++){
+      characterData.skillLevels.push(curRaceList.races[0].startingSkills[i]);
+    }
+    characterData.perksTaken = [];
+    for(let i = 0; i < curPerkList.perks.length; i++){
+      characterData.perksTaken.push(false);
+    }
+    characterData.oghmaChoice = 0;
+    characterData.perkListID = 0;
+    characterData.raceListID = 0;
+    characterData.gameMechanicsListID = 0;
+    characterData.level = 1;
+    characterData.attrIncreases = 0;
+    characterData.earnedPerks = curGameMechanics.initialPerks;
+    characterData.spentPerks = 0;
+    characterData.standingStone = 0;
+    characterData.blessing = 0;
+    characterData.earnedAttributes = 0;
   }
-  characterData.perksTaken = [];
-  for(let i = 0; i < curPerkList.perks.length; i++){
-    characterData.perksTaken.push(false);
-  }
-  characterData.oghmaChoice = 0;
-  characterData.perkListID = 0;
-  characterData.raceListID = 0;
-  characterData.gameMechanicsListID = 0;
-  characterData.level = 1;
-  characterData.attrIncreases = 0;
-  characterData.earnedPerks = curGameMechanics.initialPerks;
-  characterData.spentPerks = 0;
-  characterData.standingStone = 0;
-  characterData.blessing = 0;
-  characterData.earnedAttributes = 0;
+  
+  return gotFromURL;
 }
 
 //Attach all the event handlers to the main UI
@@ -142,11 +172,27 @@ function attachHandlers(){
   $("#resetAllSkillsButton").click(resetAllSkillsButtonClick);
   $(".attributeInput").on("keydown input",attributeInputChange);
   $("#oghmaSelect").on("change", oghmaSelectChange);
+  $("#blessingSelect").on("change", blessingSelectChange);
+  $("#stoneSelect").on("change",stoneSelectChange);
+  $("#buildCodeCopyText").click(buildCodeCopyTextClick);
+}
+
+function blessingSelectChange(){
+  characterData.blessing = Number($(this).val());
+  updateBuildCodeDisplay();
+  
+}
+
+function stoneSelectChange(){
+  characterData.standingStone = Number($(this).val());
+  updateBuildCodeDisplay();
 }
 
 function oghmaSelectChange(){
+  characterData.oghmaChoice = Number($("#oghmaSelect").val());
   updateCharacterLevelAndResults();
   updateAttributeText();
+  updateBuildCodeDisplay();
 }
 
 function attributeInputChange(){
@@ -162,6 +208,7 @@ function attributeInputChange(){
   updateFreeAttributeChoicesDisplay();
   updateAttributeText();
   updateDerivedAttributes();
+  updateBuildCodeDisplay();
 }
 
 function updateDerivedAttributes(){
@@ -232,6 +279,7 @@ function resetActiveSkillButtonClick(){
   updateActiveSkillPanel();
   updateCircleAndLineColors();
   updateSkillLevelsDisplay();
+  updateBuildCodeDisplay();
 }
 
 function resetAllSkillsButtonClick(){
@@ -239,6 +287,7 @@ function resetAllSkillsButtonClick(){
   updateActiveSkillPanel();
   updateCircleAndLineColors();
   updateSkillLevelsDisplay();
+  updateBuildCodeDisplay();
 }
 
 //Remove all perks from the skill and set the skill level back
@@ -271,34 +320,41 @@ function customClickDivClick(){
 
 function raceListSelectChange(){
   changeRaceList(Number($(this).val()));
+  updateBuildCodeDisplay();
 }
 
 function blessingListSelectChange(){
   changeBlessingList(Number($(this).val()));
+  updateBuildCodeDisplay();
 }
 
 function mechanicsListSelectChange(){
   changeGameMechanics(Number($(this).val()));
+  updateBuildCodeDisplay();
 }
 
 function changeGameMechanics(gmNum){
   curGameMechanics = gameMechanicsList[getIndexWithID(gmNum,gameMechanicsList)];
   updateCharacterLevelAndResults();
+  updateBuildCodeDisplay();
 }
 
 function changeRaceList(listNum){
   curRaceList = racesList[getIndexWithID(listNum,racesList)];
   updateRaceSelect();
   changeRace(0,false);
+  updateBuildCodeDisplay();
 }
 
 function changeBlessingList(listNum){
   curBlessingList = blessingsList[getIndexWithID(listNum,blessingsList)];
   updateBlessingSelect();
+  updateBuildCodeDisplay();
 }
 
 function raceSelectChange(){
   changeRace(Number($(this).val()));
+  updateBuildCodeDisplay();
 }
 
 //Change the character's race to the new one with the number given.
@@ -360,10 +416,13 @@ function presetSelectChange() {
   if(oldVal != preset.blessings){
     changeBlessingList(preset.blessings);
   }
+  
+  updateBuildCodeDisplay();
 }
 
 function perkSelectChange(){
   changePerkList(Number($(this).val()));
+  updateBuildCodeDisplay();
 }
 
 function changePerkList(listNum){
@@ -392,6 +451,7 @@ function skillInputChange(){
   
   updateCharacterLevelAndResults();
   updateSkillLevelsDisplay();
+  updateBuildCodeDisplay();
 }
 
 //Remove perks from the given skill that the character should no longer have
@@ -468,7 +528,7 @@ function activeSkillPerkClick(event){
   
   window.getSelection().removeAllRanges();
   setTimeout(function(){$("body").removeClass("unselectable");},5);
-  
+  updateBuildCodeDisplay();
 }
 
 //Force the character into a state where we can take the given perk
@@ -575,10 +635,6 @@ function canTakePerk(perkNum){
   if(perkNum < 0) return false;
   if(calcFreePerks() < 1) return false;
   if(characterHasPerk(perkNum)) return false;
-  
-  if(curPerkList.perks[perkNum].skillReq > characterData.skillLevels[activeSkill])
-    return false;
-  
   if(!hasPerkPreReqs(perkNum)) return false;
   
   return true;
@@ -587,6 +643,9 @@ function canTakePerk(perkNum){
 function hasPerkPreReqs(perkNum){
   let hasOrPerks = false;
   let satisfiesOrPerks = false;
+  
+  if(curPerkList.perks[perkNum].skillReq > characterData.skillLevels[curPerkList.perks[perkNum].skill])
+    return false;
   
   for(let i = 0; i < curPerkList.perks[perkNum].preReqs.length; i++){
     if(curPerkList.perks[perkNum].preReqs[i] < 0){
@@ -953,7 +1012,6 @@ function attachMiniSkillTreeHandlers(){
 }
 
 function miniPerkHoverEnter(event){
-
   let clientRect = this.getBoundingClientRect();
 
   let perkNum = Number($(this).attr("data-perknum"));
@@ -1163,7 +1221,6 @@ function calcTotalXP(){
 
 function updateCharacterLevelAndResults(){
   let newLevel = calcLevel();
-  let levelDiff = newLevel - characterData.level;
   characterData.level = newLevel;
   characterData.earnedAttributes = newLevel - 1;
   characterData.earnedPerks = curGameMechanics.initialPerks + (newLevel-1);
@@ -1202,4 +1259,166 @@ function updateFreeAttributeChoicesDisplay(){
     theDiv.removeClass("redText");
     theDiv.addClass("whiteText");
   }
+}
+
+function generateBuildCode(){
+  let version = 1;
+  let code = String.fromCodePoint(version);
+  code += String.fromCodePoint(curPerkList.id);
+  code += String.fromCodePoint(curRaceList.id);
+  code += String.fromCodePoint(curGameMechanics.id);
+  code += String.fromCodePoint(curBlessingList.id);
+  code += String.fromCodePoint(characterData.level);
+  code += String.fromCodePoint(characterData.hmsIncreases[0]);
+  code += String.fromCodePoint(characterData.hmsIncreases[1]);
+  code += String.fromCodePoint(characterData.hmsIncreases[2]);
+  for(let i = 0; i < 18; i++){
+    code += String.fromCodePoint(characterData.skillLevels[i]);
+  }
+  code += String.fromCodePoint(characterData.oghmaChoice);
+  code += String.fromCodePoint(characterData.race);
+  code += String.fromCodePoint(characterData.standingStone);
+  code += String.fromCodePoint(characterData.blessing);
+  
+  let paddingNeeded = 8 - (characterData.perksTaken.length % 8);
+  if (paddingNeeded == 8) paddingNeeded = 0;
+  let character = 0;
+  for(let i = 0; i < characterData.perksTaken.length; i++){
+    character = (character << 1) | (characterData.perksTaken[i]);
+    if(i % 8 == 7){
+      code += String.fromCodePoint(character);
+      character = 0;
+    }
+  }
+  if(paddingNeeded != 0){
+    code += String.fromCodePoint(character << paddingNeeded);
+  }
+  
+  code = btoa(code);
+  //Use base64url encoding
+  code = code.replace(/\+/g,"-");
+  code = code.replace(/\//g,"_");
+  //Trim padding characters because they are not needed.
+  if(code.indexOf("=") != -1){
+    code = code.substring(0,code.indexOf("="));
+  }
+  
+  return code;
+}
+
+function parseCharacterDataFromURL(){
+  const queryString = window.location.search;
+  const params = new URLSearchParams(queryString);
+  if(!params.has("b")){
+    return false;
+  }
+  let buildCode = params.get("b");
+  //Back to regular base64
+  buildCode = buildCode.replace(/-/g,"+");
+  buildCode = buildCode.replace(/_/g,"/");
+  //decode
+  buildCode = atob(buildCode);
+  let version = buildCode.charCodeAt(0);
+  if(version == 1){
+    return buildCodeParserV1(buildCode);
+  }
+  else{
+    return false;
+  }
+}
+
+function buildCodeParserV1(buildCode){
+  let perkListID = buildCode.charCodeAt(1);
+  curPerkList = perksList[getIndexWithID(perkListID,perksList)];
+  let raceListID = buildCode.charCodeAt(2);
+  curRaceList = racesList[getIndexWithID(raceListID,racesList)];
+  let gmID = buildCode.charCodeAt(3);
+  curGameMechanics = gameMechanicsList[getIndexWithID(gmID,gameMechanicsList)];
+  let blessingsID = buildCode.charCodeAt(4);
+  curBlessingList = blessingsList[getIndexWithID(blessingsID,blessingsList)];
+  
+  characterData.level = buildCode.charCodeAt(5);
+  characterData.hmsIncreases[0] = buildCode.charCodeAt(6);
+  characterData.hmsIncreases[1] = buildCode.charCodeAt(7);
+  characterData.hmsIncreases[2] = buildCode.charCodeAt(8);
+  
+  characterData.skillLevels = [];
+  
+  for(let i = 0; i < 18; i++){
+    characterData.skillLevels.push(buildCode.charCodeAt(9+i));
+  }
+  
+  characterData.oghmaChoice = buildCode.charCodeAt(27);
+  characterData.race = buildCode.charCodeAt(28);
+  characterData.standingStone = buildCode.charCodeAt(29);
+  characterData.blessing = buildCode.charCodeAt(30);
+  
+  characterData.perksTaken = [];
+  //this method will be kind of inefficient but EHHHHHHH
+  for(let i = 0; i < curPerkList.perks.length; i++){
+    let index = 31 + Math.floor(i/8);
+    let offset = 7 - (i % 8);
+    let hasPerk = (buildCode.charCodeAt(index) & (1 << offset)) > 0;
+    characterData.perksTaken.push(hasPerk);
+    if(hasPerk) characterData.spentPerks++;
+  }
+  
+  return true;
+}
+
+function updateBuildCodeDisplay(){
+  let buildCheck = validateBuild();
+  if(buildCheck.valid){
+    let code = generateBuildCode();
+    let buildLink = `https://banananaut.github.io/NannerPlanner/?p=${curPreset.id}&b=${code}`;
+    $("#buildCodeText").val(buildLink);
+  }
+  else{
+    $("#buildCodeText").val(buildCheck.message);
+  }
+}
+
+//Make the build is valid: all earned attributes have been spent,
+//all selected perks are valid, haven't spent too many perks.
+//Returns object with the following properties:
+// valid: boolean
+// message: if the build is not valid, a message explaining why
+function validateBuild(){
+  let answer = {valid: true, message: ""};
+  if(calcFreeAttributeChoices() > 0){
+    answer.valid = false;
+    answer.message = "You need to spend all of your attributes.";
+  }
+  else if (calcFreeAttributeChoices() < 0){
+    answer.valid = false;
+    answer.message = "You have spent too many attribute increases.";
+  }
+  else if (calcFreePerks() < 0){
+    answer.valid = false;
+    answer.message = "You have too many perks.";
+  }
+  else if (!checkAllPerksValid()){
+    answer.valid = false;
+    answer.message = "You have a perk you don't have the pre-requisites for.";
+  }
+  return answer;
+}
+
+function checkAllPerksValid(){
+  for(let i = 0; i < characterData.perksTaken.length; i++){
+    if(characterHasPerk(i) && !hasPerkPreReqs(i)){
+      return false;
+    }
+  }
+  return true;
+}
+
+function buildCodeCopyTextClick(){
+  navigator.clipboard.writeText($("#buildCodeText").val()).then(function() {
+    $("#buildCopiedMessage").show();
+    clearTimeout(copiedMessageTimeoutID);
+    copiedMessageTimeoutID = setTimeout(function() {$("#buildCopiedMessage").hide();},2000);
+  }, function() {
+  /* clipboard write failed */
+});
 }
