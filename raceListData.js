@@ -276,7 +276,7 @@ const fTweaks17RaceData = {
      name: "Altmer", 
      startingHMS: [90,130,90], 
      startingCW: 90, speedBonus: 0,
-     hmsBonus: [0,45,0], 
+     hmsBonus: [30,45,0], 
      startingHMSRegen: [0,1.05,1.55], 
      unarmedDam: 5,
      startingSkills : [ 5,       //Alchemy
@@ -302,7 +302,7 @@ const fTweaks17RaceData = {
      name: "Argonian", 
      startingHMS: [105,90,120], 
      startingCW: 105, speedBonus: 0,
-     hmsBonus: [0,0,0], 
+     hmsBonus: [30,0,0], 
      startingHMSRegen: [0,0.92,1.6], 
      unarmedDam: 10,
      startingSkills : [ 5,       //Alchemy
@@ -328,7 +328,7 @@ const fTweaks17RaceData = {
      name: "Bosmer", 
      startingHMS: [100,100,120], 
      startingCW: 85, speedBonus: 0,
-     hmsBonus: [0,0,0], 
+     hmsBonus: [30,0,0], 
      startingHMSRegen: [0,0.88,1.65], 
      unarmedDam: 5,
      startingSkills : [10,       //Alchemy
@@ -354,7 +354,7 @@ const fTweaks17RaceData = {
      name: "Breton", 
      startingHMS: [90,120,90], 
      startingCW: 85, speedBonus: 0,
-     hmsBonus: [0,0,0], 
+     hmsBonus: [30,0,0], 
      startingHMSRegen: [0,0.96,1.5], 
      unarmedDam: 5,
      startingSkills : [10,       //Alchemy
@@ -380,7 +380,7 @@ const fTweaks17RaceData = {
      name: "Dunmer", 
      startingHMS: [105,105,105], 
      startingCW: 105, speedBonus: 0,
-     hmsBonus: [0,0,0], 
+     hmsBonus: [30,0,0], 
      startingHMSRegen: [0,0.95,1.65], 
      unarmedDam: 5,
      startingSkills : [10,       //Alchemy
@@ -406,7 +406,7 @@ const fTweaks17RaceData = {
      name: "Imperial", 
      startingHMS: [115,105,115], 
      startingCW: 110, speedBonus: 0,
-     hmsBonus: [0,0,30], 
+     hmsBonus: [30,0,30], 
      startingHMSRegen: [0,0.95,1.8], 
      unarmedDam: 5,
      startingSkills : [ 5,       //Alchemy
@@ -432,7 +432,7 @@ const fTweaks17RaceData = {
      name: "Khajiit", 
      startingHMS: [95,90,125], 
      startingCW: 95, speedBonus: 10,
-     hmsBonus: [0,0,0], 
+     hmsBonus: [30,0,0], 
      startingHMSRegen: [0,0.83,1.65], 
      unarmedDam: 40,
      startingSkills : [10,       //Alchemy
@@ -458,7 +458,7 @@ const fTweaks17RaceData = {
      name: "Nord", 
      startingHMS: [120,80,120], 
      startingCW: 115, speedBonus: 0,
-     hmsBonus: [0,0,0], 
+     hmsBonus: [30,0,0], 
      startingHMSRegen: [0,0.88,1.65], 
      unarmedDam: 9,
      startingSkills : [ 5,       //Alchemy
@@ -484,7 +484,7 @@ const fTweaks17RaceData = {
      name: "Orsimer", 
      startingHMS: [135,60,110], 
      startingCW: 145, speedBonus: 0,
-     hmsBonus: [20,0,0], 
+     hmsBonus: [50,0,0], 
      startingHMSRegen: [0,0.83,1.8], 
      unarmedDam: 10,
      startingSkills : [ 5,       //Alchemy
@@ -510,7 +510,7 @@ const fTweaks17RaceData = {
      name: "Redguard", 
      startingHMS: [110,80,120], 
      startingCW: 105, speedBonus: 0,
-     hmsBonus: [0,0,0], 
+     hmsBonus: [30,0,0], 
      startingHMSRegen: [0,0.83,1.7], 
      unarmedDam: 8,
      startingSkills : [ 5,       //Alchemy
