@@ -63,6 +63,9 @@ $(document).ready(function(){
   updateBuildCodeDisplay();
   
   attachHandlers();
+  
+  $("#mainTitle").html("Requiem Character Planner");
+  $("#mainSkillDisplayDiv").fadeIn(500);
 });
 
 function updateStuffFromCharacterCode(){
