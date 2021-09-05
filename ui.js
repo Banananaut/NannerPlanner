@@ -398,7 +398,7 @@ function updateLevelAndFreePerksDisplay(){
 
 function updateActiveSkillPanel(){
   $("#activeSkillDisplayName").html(curPerkList.skillNames[activeSkill]);
-  updateLevelAndFreePerksDisplay();
+  updateCharacterLevelAndResults();
   $("#activeSkillLevelInput").val(characterData.skillLevels[activeSkill]);
   drawActiveSkillTree();
   updateCircleAndLineColors();
