@@ -1058,6 +1058,7 @@ fTweaks17PerkData.perks[98].skillReq = 65;
 fTweaks17PerkData.perks[99].skillReq = 95;
 fTweaks17PerkData.perks[101].skillReq = 55;
 fTweaks17PerkData.perks[102].skillReq = 80;
+fTweaks17PerkData.perks[102].description = "Your use of heavy armor has emboldened you, allowing you to regenerate stamina more quickly while wearing heavy armor. Furthermore, you learned some new tricks to overcome the mobility limitations of your armor.";
 fTweaks17PerkData.perks[123].description = "After some training at the shooting range you can deal more damage with bows and crossbows. [bow and crossbow damage x 1.2, -50% weapon weight penalties, ammunition grants extra expertise, 30% less stamina drain for bows]";
 fTweaks17PerkData.perks[134].name = "Boxing";
 fTweaks17PerkData.perks[134].description = "You're a passionate fist fighter, and train regularly to toughen your muscles to their very limits. Your punches now deliver 30 more damage points and cost 3 times less stamina.";
