@@ -251,7 +251,7 @@ perks : [
    //54
   {name : "Extended<br>Binding", skill : 3, skillReq : 50,
    xPos : 53/4, yPos : 131/4, preReqs : [52], nextPerk: -1,
-   description : "Your knowledge of Oblivion's spiritual aspects increases the strength of all your summoned spirits."},
+   description : "You've perfected your spells' formulae to summon daedra and spirits, and are now able to cast them more easily and further away."},
    //55
   {name : "Elemental Binding", skill : 3, skillReq : 75,
    xPos : 76/4, yPos : 55/4, preReqs : [54], nextPerk: -1,
