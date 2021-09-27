@@ -361,16 +361,14 @@ function removePerkAndDependents(perkNum){
   actuallyRemovePerk(perkNum);
   for(let i = 0; i < curPerkList.perks.length; i++){
     if(characterHasPerk(i) && !hasPerkPreReqs(i)){
-      actuallyRemovePerk(i);
+      removePerkAndDependents(i);
     }
   }
 }
 
 //Attempt to remove the given perk. Does nothing if the character
 //does not actually have the perk.
-function tryRemovePerk(perkNum){
-  let hasPerk = characterHasPerk(perkNum);
- 
+function tryRemovePerk(perkNum){ 
   //Basic sanity check
   if(!characterHasPerk(perkNum)) return;
   

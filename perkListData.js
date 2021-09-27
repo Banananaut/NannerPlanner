@@ -1064,7 +1064,6 @@ fTweaks17PerkData.perks[134].name = "Boxing";
 fTweaks17PerkData.perks[134].description = "You're a passionate fist fighter, and train regularly to toughen your muscles to their very limits. Your punches now deliver 30 more damage points and cost 3 times less stamina.";
 fTweaks17PerkData.perks[155].description = "You've become very skilled in wielding two weapons at once. [dual-wield power attack damage x 1.25, dual power attack cost x 0.5]";
 fTweaks17PerkData.perks[163].name = "Redemption";
-
 fTweaks17PerkData.perks[163].description = "You regret your past and vow to change yourself from here on out. You regain favor to some degree. (Cures Skooma Addiction and Resets Murders, Bounty, Thefts, but not divine-specific mandates or guild membership)";
 fTweaks17PerkData.perks[170].description = "You've learned to focus your mind. Thus, you can keep your concentration even in stressful situations and regenerate your magicka 35% faster.";
 fTweaks17PerkData.perks[171].name = "Enhanced Magicka";
