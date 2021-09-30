@@ -83,7 +83,7 @@ const requiem402RaceData = {
     },
     {
      name: "High Elf", 
-     startingHMS: [90,130,90], 
+     startingHMS: [90,130,80], 
      startingCW: 95, speedBonus: 0,
      hmsBonus: [0,50,0], 
      startingHMSRegen: [0,1.25,1.55], 
