@@ -1110,7 +1110,7 @@ fTweaks17PerkData.perks.push(
 //3Tweaks removes the second rank of Morrowind Smithing and adds Esoteric Magic
 fTweaks17PerkData.perks[230] = {name : "Esoteric<br>Magic", skill : 4, skillReq : 45,
    xPos : 100/4, yPos : 270/4, preReqs : [56], nextPerk: -1,
-   description : "By pursuing your apprenticeship in Destruction, you've gained knowledge of Apprentice level spells which you now augment while casting them with less effort."};
+   description : "You have studied the stranger aspects of the Destruction school. Therefore, you no longer suffer a penalty when casting non-elemental spells."};
 //Now re-vamp the smithing tree.
 fTweaks17PerkData.perks[229] = {name : "Morrowind<br>Smithing", skill : 14, skillReq : 60,
    xPos : 40/5, yPos : 157/3.5, preReqs : [177], nextPerk: -1,
