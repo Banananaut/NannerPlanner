@@ -26,6 +26,9 @@ $(document).ready(function(){
   
   if(gotBuild){
     updateStuffFromCharacterCode();
+    // Highlight the mini skill tree for the active skill  
+    $(".miniSkillTreeDivSelected").removeClass("miniSkillTreeDivSelected");
+    $(`[data-skillnum="${activeSkill}"`).addClass("miniSkillTreeDivSelected");
   }
   
   updateBuildCodeDisplay();
@@ -67,7 +70,7 @@ function createDerivedAttributesTable() {
 
 //Attach all the event handlers to the main UI
 function attachHandlers(){
-  $(".miniSkillTreeDiv").click(leftSideSkillClick);
+  $(".miniSkillTreeDiv").click(miniSkillTreeClick);
   $(window).resize(resizeWindowHandler);
   $("#activeSkillLevelInput").on("change",skillInputChange);
   $("#presetSelect").on("change",presetSelectChange);
@@ -375,7 +378,7 @@ function resizeWindowHandler(){
   updateCircleAndLineColors();
 }
 
-function leftSideSkillClick(){
+function miniSkillTreeClick(){
   activeSkill = Number($(this).attr("data-skillnum"));
   $(".miniSkillTreeDivSelected").removeClass("miniSkillTreeDivSelected");
   $(this).addClass("miniSkillTreeDivSelected");

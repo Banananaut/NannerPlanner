@@ -90,6 +90,23 @@ function initCharacterData(){
     characterData.blessing = 0;
     characterData.earnedAttributes = 0;
   }
+  else
+  {
+    // Make the skill with the highest level the active skill
+    let highestSkill = 0;
+    let highestSkillVal = -1;
+    for( let i = 0; i < 18; i++)
+    {
+      if( characterData.skillLevels[i] > highestSkillVal )
+      {
+        highestSkill = i;
+        highestSkillVal = characterData.skillLevels[i];
+      }
+    }
+    
+    activeSkill = highestSkill;
+    
+  }
   
   return gotFromURL;
 }
