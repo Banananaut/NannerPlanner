@@ -1,5 +1,5 @@
 const requiem402RaceData = {
-  name : "Requiem 4.0 and Up",
+  name : "Requiem 4.0 - 5.45",
   id: 0,
   
   races : [
@@ -535,3 +535,271 @@ const fTweaks17RaceData = {
   ]
 };
 addRaceData(fTweaks17RaceData);
+
+const requiem60RaceData = {
+  name : "Requiem 6.0 and Up",
+  id: 2,
+  races : [
+  {
+     name: "Altmer", 
+     startingHMS: [90,140,80], 
+     startingCW: 95, speedBonus: 0,
+     hmsBonus: [0,0,0], 
+     startingHMSRegen: [0,0.4,0.78], 
+     unarmedDam: 5,
+     startingSkills : [ 5,       //Alchemy
+                       10,       //Alteration
+                        5,       //Block
+                       10,       //Conjuration
+                       15,       //Destruction
+                       10,       //Enchanting
+                        5,       //Evasion
+                        5,       //Heavy Armor
+                       15,       //Illusion
+                        5,       //Lockpicking
+                        5,       //Marksman
+                        5,       //One-handed
+                        5,       //Pickpocket
+                       10,       //Restoration
+                        5,       //Smithing
+                        5,       //Sneak
+                        5,       //Speech
+                        5]       //Two-handed
+    },
+    {
+     name: "Argonian", 
+     startingHMS: [100,120,100], 
+     startingCW: 105, speedBonus: 0,
+     hmsBonus: [0,0,0], 
+     startingHMSRegen: [0,0.38,0.8], 
+     unarmedDam: 10,
+     startingSkills : [ 5,       //Alchemy
+                       10,       //Alteration
+                        5,       //Block
+                        5,       //Conjuration
+                        5,       //Destruction
+                        5,       //Enchanting
+                       15,       //Evasion
+                        5,       //Heavy Armor
+                        5,       //Illusion
+                       15,       //Lockpicking
+                        5,       //Marksman
+                        5,       //One-handed
+                       10,       //Pickpocket
+                       10,       //Restoration
+                        5,       //Smithing
+                       10,       //Sneak
+                        5,       //Speech
+                        5]       //Two-handed
+    },
+    {
+     name: "Bosmer", 
+     startingHMS: [90,90,130], 
+     startingCW: 85, speedBonus: 10,
+     hmsBonus: [0,0,0], 
+     startingHMSRegen: [0,0.35,0.83], 
+     unarmedDam: 5,
+     startingSkills : [10,       //Alchemy
+                        5,       //Alteration
+                        5,       //Block
+                        5,       //Conjuration
+                        5,       //Destruction
+                        5,       //Enchanting
+                       10,       //Evasion
+                        5,       //Heavy Armor
+                        5,       //Illusion
+                       10,       //Lockpicking
+                       20,       //Marksman
+                        5,       //One-handed
+                       10,       //Pickpocket
+                        5,       //Restoration
+                        5,       //Smithing
+                       10,       //Sneak
+                        5,       //Speech
+                        5]       //Two-handed
+    },
+    {
+     name: "Breton", 
+     startingHMS: [90,130,80], 
+     startingCW: 90, speedBonus: 0,
+     hmsBonus: [0,0,0], 
+     startingHMSRegen: [0,0.39,0.78], 
+     unarmedDam: 5,
+     startingSkills : [10,       //Alchemy
+                       10,       //Alteration
+                        5,       //Block
+                       20,       //Conjuration
+                        5,       //Destruction
+                        5,       //Enchanting
+                        5,       //Evasion
+                        5,       //Heavy Armor
+                       10,       //Illusion
+                        5,       //Lockpicking
+                        5,       //Marksman
+                        5,       //One-handed
+                        5,       //Pickpocket
+                       10,       //Restoration
+                        5,       //Smithing
+                        5,       //Sneak
+                       10,       //Speech
+                        5]       //Two-handed
+    },
+    {
+     name: "Dunmer", 
+     startingHMS: [100,100,100], 
+     startingCW: 100, speedBonus: 5,
+     hmsBonus: [0,0,0], 
+     startingHMSRegen: [0,0.36,0.8], 
+     unarmedDam: 5,
+     startingSkills : [ 5,       //Alchemy
+                       10,       //Alteration
+                        5,       //Block
+                        5,       //Conjuration
+                       15,       //Destruction
+                        5,       //Enchanting
+                       10,       //Evasion
+                        5,       //Heavy Armor
+                       10,       //Illusion
+                        5,       //Lockpicking
+                        5,       //Marksman
+                       15,       //One-handed
+                        5,       //Pickpocket
+                        5,       //Restoration
+                        5,       //Smithing
+                       10,       //Sneak
+                        5,       //Speech
+                        5]       //Two-handed
+    },
+    {
+     name: "Imperial", 
+     startingHMS: [105,105,105], 
+     startingCW: 110, speedBonus: 0,
+     hmsBonus: [0,0,0], 
+     startingHMSRegen: [0,0.365,0.805], 
+     unarmedDam: 5,
+     startingSkills : [ 5,       //Alchemy
+                        5,       //Alteration
+                       10,       //Block
+                        5,       //Conjuration
+                       10,       //Destruction
+                        5,       //Enchanting
+                        5,       //Evasion
+                       10,       //Heavy Armor
+                        5,       //Illusion
+                        5,       //Lockpicking
+                        5,       //Marksman
+                       10,       //One-handed
+                        5,       //Pickpocket
+                       15,       //Restoration
+                        5,       //Smithing
+                        5,       //Sneak
+                       15,       //Speech
+                        5]       //Two-handed
+    },
+    {
+     name: "Khajiit", 
+     startingHMS: [110,70,140], 
+     startingCW: 100, speedBonus: 0,
+     hmsBonus: [0,0,0], 
+     startingHMSRegen: [0,0.33,0.84], 
+     unarmedDam: 15,
+     startingSkills : [10,       //Alchemy
+                        5,       //Alteration
+                        5,       //Block
+                        5,       //Conjuration
+                        5,       //Destruction
+                        5,       //Enchanting
+                        5,       //Evasion
+                        5,       //Heavy Armor
+                        5,       //Illusion
+                       10,       //Lockpicking
+                       10,       //Marksman
+                       10,       //One-handed
+                       10,       //Pickpocket
+                        5,       //Restoration
+                        5,       //Smithing
+                       20,       //Sneak
+                        5,       //Speech
+                        5]       //Two-handed
+    },
+    {
+     name: "Nord", 
+     startingHMS: [120,80,100], 
+     startingCW: 115, speedBonus: 0,
+     hmsBonus: [0,0,0], 
+     startingHMSRegen: [0,0.34,0.8], 
+     unarmedDam: 8,
+     startingSkills : [ 5,       //Alchemy
+                        5,       //Alteration
+                       10,       //Block
+                        5,       //Conjuration
+                        5,       //Destruction
+                        5,       //Enchanting
+                       10,       //Evasion
+                       10,       //Heavy Armor
+                        5,       //Illusion
+                        5,       //Lockpicking
+                        5,       //Marksman
+                       10,       //One-handed
+                        5,       //Pickpocket
+                        5,       //Restoration
+                       15,       //Smithing
+                        5,       //Sneak
+                        5,       //Speech
+                       15]       //Two-handed
+    },
+    {
+     name: "Orc", 
+     startingHMS: [140,70,110], 
+     startingCW: 125, speedBonus: 0,
+     hmsBonus: [0,0,0], 
+     startingHMSRegen: [0,0.33,0.81], 
+     unarmedDam: 10,
+     startingSkills : [ 5,       //Alchemy
+                        5,       //Alteration
+                       10,       //Block
+                        5,       //Conjuration
+                        5,       //Destruction
+                        5,       //Enchanting
+                       10,       //Evasion
+                       15,       //Heavy Armor
+                        5,       //Illusion
+                        5,       //Lockpicking
+                        5,       //Marksman
+                       10,       //One-handed
+                        5,       //Pickpocket
+                        5,       //Restoration
+                       15,       //Smithing
+                        5,       //Sneak
+                        5,       //Speech
+                       10]       //Two-handed
+    },
+    {
+     name: "Redguard", 
+     startingHMS: [130,60,120], 
+     startingCW: 120, speedBonus: 0,
+     hmsBonus: [0,0,0], 
+     startingHMSRegen: [0,0.32,0.82], 
+     unarmedDam: 9,
+     startingSkills : [ 5,       //Alchemy
+                        5,       //Alteration
+                       10,       //Block
+                        5,       //Conjuration
+                        5,       //Destruction
+                        5,       //Enchanting
+                       10,       //Evasion
+                       10,       //Heavy Armor
+                        5,       //Illusion
+                        5,       //Lockpicking
+                       10,       //Marksman
+                       20,       //One-handed
+                        5,       //Pickpocket
+                        5,       //Restoration
+                        5,       //Smithing
+                        5,       //Sneak
+                        5,       //Speech
+                       10]       //Two-handed
+    }
+  ]
+};
+addRaceData(requiem60RaceData);

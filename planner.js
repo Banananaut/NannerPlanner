@@ -31,7 +31,7 @@ var characterData = {
 };
 
 //Returns the preset number given in the URL.
-//Returns 0 if one was not given
+//Returns the lastest Requiem version if one was not given
 function parsePresetFromURL(){
   const queryString = window.location.search;
   const params = new URLSearchParams(queryString);
@@ -43,7 +43,7 @@ function parsePresetFromURL(){
     return presetNum;
   }
   else {
-    return 0;
+    return 3;
   }
   
 }

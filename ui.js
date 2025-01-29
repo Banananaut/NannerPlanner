@@ -385,7 +385,7 @@ function leftSideSkillClick(){
 function updateLevelAndFreePerksDisplay(){
   let theDiv = $("#freePerkCountDiv");
   let freePerks = calcFreePerks();
-  theDiv.html(`Level ${characterData.level}, Free Perks: ${freePerks}`);
+  theDiv.html(`Level ${characterData.level}, Unused Perks: ${freePerks}`);
   if(freePerks < 0){
     theDiv.removeClass("whiteText");
     theDiv.addClass("redText");

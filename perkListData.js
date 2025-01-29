@@ -4,7 +4,7 @@
 *
 */
 const requiem402PerkData = {
-name : "Requiem 4.0 and Up",
+name : "Requiem 4.0 - 5.45",
 id: 0,
 skillNames : [
   "Alchemy",      // 0
@@ -957,7 +957,7 @@ addPerkData(requiem402PerkData);
 *
 */
 const requiem402WithFozarsPerkData = deepmerge({},requiem402PerkData);
-requiem402WithFozarsPerkData.name = "Requiem 4.0.2 + Fozar's DB patch";
+requiem402WithFozarsPerkData.name = "Requiem 4.0.2 - 5.45 + Fozar's DB patch";
 requiem402WithFozarsPerkData.id = 1;
 
 //Add new smithing perks
@@ -1139,3 +1139,221 @@ fTweaks17PerkData.perks[182] = {name : "Elven<br>Smithing", skill : 14, skillReq
  fTweaks17PerkData.perks[186].preReqs = [-231,-185,-184];
 
 addPerkData(fTweaks17PerkData);
+
+/*
+*
+* Requiem 6.0
+* Some of these changes came from earlier verison but I cannot
+* be bothered to add more changes just for that.
+*
+*/
+const requiem60PerkData = deepmerge({},requiem402PerkData);
+requiem60PerkData.name = "Requiem 6.0 and Up";
+requiem60PerkData.id = 3;
+
+// Block perks are more informative
+// Improved Blocking
+requiem60PerkData.perks[28].description = "You strengthened your shield arm and trained to parry blows a little. [Block 25% more damage]"
+// Experienced Blocking
+requiem60PerkData.perks[29].description = "With weapon or shield you can block almost any blow with rock-solid confidence.<br>[Block 50% more damage, recover some stamina when blocking a hit]"
+// Strong Grip
+requiem60PerkData.perks[30].description = "You hold on to your shield like you would hold on to your life. [75% less shield weight, 10% more armor rating, block 40% more damage, arrows that hit the shield do no damage]"
+// Elemental Protection
+requiem60PerkData.perks[31].description = "You've learned how to block damaging spells. [Take 50% less fire, frost, and shock damage when blocking with a shield]"
+// Defensive Stance
+requiem60PerkData.perks[32].description = "You have honed your defensive movements to perfection. [Blocking with a shield does not slow you down]"
+// Powerful Bashes
+requiem60PerkData.perks[33].description = "By gathering your strength for a short while, you can perform a much more powerful bash. [Able to do a power bash]"
+// Overpowering Bashes
+requiem60PerkData.perks[34].description = "When you put all of your power into your shield bashes, you will often overpower your foes. [Power bashing with a shield can knock down]"
+// Disarming Bash
+requiem60PerkData.perks[35].description = "Sometimes, when you put all your strength into your bashes, your foes drop their weapon because of the pain. [25% chance to disarm when power bashing with a shield, 5% chance to disarm when power bashing with a weapon]"
+// Unstoppable Charge
+requiem60PerkData.perks[36].description = "When bull rushing with your shield raised, you are a tremendous force to deal with. [Sprinting with a shield raised knocks down most targets]"
+
+// Evasion perks too
+// Agility
+requiem60PerkData.perks[85].description = "After some training you are now much more confident in your evasive movements. [25% less falling damage when wearing no heavy armor, unique bonus when wearing high-quality materials, -50% armor weight penalty]"
+// Dodge
+requiem60PerkData.perks[86].description = "Your trained reflexes allow you to dodge incoming blows when wearing no heavy armor. [By sprinting a step or two away, you can attempt to dodge hostile attacks]"
+// Finesse
+requiem60PerkData.perks[87].description = "You are able to hit more precisely. [Up to 12% more power attack damage when wearing no heavy armor: head, chest, hands, feet]"
+// Dexterity
+requiem60PerkData.perks[88].description = "You are able to balance your weapon better. [Up to 24% less power attack stamina cost when wearing no heavy armor: head, chest, hands, feet]"
+// Agile Spellcasting
+requiem60PerkData.perks[89].description = "You learned how to avoid the limitations light armors bestow upon somatic spell components. [No spell cost penalty for casting spells in light armor]"
+// Windrunner -> Wind Walker
+requiem60PerkData.perks[90].name = "Wind Walker"
+requiem60PerkData.perks[90].description = "Your light armor and clothes have become your second skin. [Up to +10% movement speed when wearing no heavy armor: head, chest, hands, feet, -25% armor weight penalty]"
+// Vexing Flanker
+requiem60PerkData.perks[91].description = "You have learned to flank your enemies with ease. [Up to 16% more melee attack damage when running and wearing no heavy armor: head, chest, hands, feet, immune to finishers]"
+// Combat Reflexes
+requiem60PerkData.perks[92].description = "You've gained the ability to act faster in combat, though doing so will quickly exhaust you. [Lesser power: Slow time by 50% for 30 seconds, drains 5 stamina per second]"
+// Meteoric Reflexes
+requiem60PerkData.perks[93].description = "Your reflexes are lightning fast. [50% chance to take 95% less melee damage when wearing no heavy armor: head, chest, hands, feet]"
+
+// Heavy Armor too
+// Conditioning
+requiem60PerkData.perks[94].description = "You've accustomed yourself to using heavy armor. [No stamina drain for wearing heavy armor, unique bonus when wearing high-quality materials, -35% armor weight penalty]"
+// Relentless Onslaught
+requiem60PerkData.perks[95].description = "After extensive training you now can sprint in heavy armor without problems. [no sprinting stamina cost penalty, take 80% less melee damage when bullrushing, -10% armor weight penalty]"
+// Combat Casting
+requiem60PerkData.perks[96].description = "You are able to keep concentrated enough in heavy armor. [No spell cost penalty for casting Novice and Apprentice spells in heavy armor]"
+// Combat Trance
+requiem60PerkData.perks[97].description = "Your heavy armor distracts you even less. [No spell cost penalty for casting Adept spells in heavy armor]"
+// Combat Meditation
+requiem60PerkData.perks[98].description = "You're accustomed to your heavy armor so much that you can now cast even sophisticated spells with relative ease. [No spell cost penalty for casting Expert spells in heavy armor]"
+// Battle Mage
+requiem60PerkData.perks[99].description = "You have mastered spellcasting while wearing heavy armor. [No spell cost penalty for casting Master spells in heavy armor, 15% less spell cost when wearing all heavy armor: head, chest, hands, feet]"
+// Combat Training 
+requiem60PerkData.perks[100].description = "You are less hindered by your armor and can attack with ease. [No power attack stamina cost penalty, increased unarmed damage with heavy gauntlets, -10% armor weight penalty]"
+// Fortitude
+requiem60PerkData.perks[101].description = "Your training made you stronger and you are now less burdened by the rigidity of your armor. [+40 stamina, +20 carry weight, -10% armor weight penalty]"
+// Power of the Combatant
+requiem60PerkData.perks[102].description = "Once a day, you can now push yourself to continue fighting. [Daily power: Restore 25 stamina per second for 30 seconds, -10% armor weight penalty]"
+// Juggernaut
+requiem60PerkData.perks[103].description = "You've reached perfection in the skill of wearing heavy armor and are now significantly more maneuverable in it. [15% less armor weight, 10% more armor rating, 90% less stagger when wearing all heavy armor: head, chest, hands, feet]"
+
+// Lockpicking was revamped ( all 4 perks of it ) and got a new perk
+// Cheap Tricks
+requiem60PerkData.perks[119].description = "You have learned the basics of the art of picking locks. [+3 lockpicking expertise, forge lockpicks with Craftsmanship]"
+// Locksmithing Lore -> Advanced Lockpicking
+requiem60PerkData.perks[120].name = "Advanced Lockpicking"
+requiem60PerkData.perks[120].description = "You have extended your repertoire of lockpicking tricks. [+2 Lockpicking Expertise]"
+requiem60PerkData.perks[120].skillReq = 30
+//Move this and Treaure Hunter down as well to make room
+requiem60PerkData.perks[120].xPos = 200/4
+requiem60PerkData.perks[120].yPos = 250/4
+// Treasure Hunter
+requiem60PerkData.perks[121].description = "You are able to locate secret spaces in containers when you search them. [15% chance to find special loot in select chests, 1-4 precious stones in select chests]"
+//Move this and Treaure Hunter down as well to make room
+requiem60PerkData.perks[121].xPos = 60/4
+requiem60PerkData.perks[121].yPos = 175/4
+// New perk !!!
+ // 228: Sophisticated Lockpicking
+requiem60PerkData.perks.push(
+  {name : "Sophisticated Lockpicking", skill : 9, skillReq : 60,
+   xPos : 275/4, yPos : 150/4.5, preReqs : [120], nextPerk: -1,
+   description : "You have memorized the inner mechanics of sophisticated locks and security systems. [+2 Lockpicking Expertise]"}
+)
+// Mastery Lockpicking
+requiem60PerkData.perks[122].description = "You learned everything there is to know about the art of lockpicking. [+2 Lockpicking Expertise]"
+requiem60PerkData.perks[122].preReqs = [228]
+
+// Marksman description changes
+// Ranged Combat Training
+requiem60PerkData.perks[123].description = "After some training at the shooting range you can deal more damage with bows and crossbows. [20% more damage, ammunition grants armor penetration]"
+// Ranger
+requiem60PerkData.perks[124].description = "You improved your footwork when engaging in ranged combat with light weapons. [Able to run with a drawn light bow or crossbow]"
+// Marksman's Focus
+requiem60PerkData.perks[126].description = "When fully focusing on your target, everything around you seems to slow down remarkably. [Time slows down while zooming]"
+// Rapid Reload
+requiem60PerkData.perks[127].description = "Your have familiarized yourself with the mechanics of your crossbow. [+50% reload speed with crossbows]"
+// Quick Shot
+requiem60PerkData.perks[128].description = "You have learned to draw and fire in one single movement. [+50% draw speed with bows]"
+// Power Shot
+requiem60PerkData.perks[129].description = "You have discovered the art of aiming at tendons and joints.<br>[Chance to stagger targets]"
+// Precise Aim
+requiem60PerkData.perks[130].description = "Your aim is now precise enough to target weak spots in the enemy's defenses. [20% more damage]]"
+// Piercing Shot
+requiem60PerkData.perks[131].description = "You've learned how to hit the weakest parts of armor. [+50% armor penetration from ammunition]"
+// Penetrating Shot
+requiem60PerkData.perks[132].description = "You've mastered the technique of hitting weak armor parts. [+50% armor penetration from ammunition]"
+// Stunning Precision
+requiem60PerkData.perks[133].description = "Any successful staggering shot will almost always stun the target momentarily. [Staggering hits will also stun the target]"
+
+// One Handed description changes
+// Martial Arts
+requiem60PerkData.perks[134].description = "You are a passionate fist fighter, and train regularly to toughen your muscles to their very limits. [+30 unarmed damage]"
+// Weapon Mastery 1
+requiem60PerkData.perks[135].description = "Your improved fighting techniques allow you to swing one-handed weapons with less effort and deal more damage. [20% more damage]"
+// Weapon Mastery 2
+requiem60PerkData.perks[136].description = "Your improved fighting techniques increase your damage dealt with one-handed weapons greatly. [40% more damage]"
+// Penetrating Strikes
+requiem60PerkData.perks[137].description = "Your power attacks with one-handed weapons are now devastating enough to penetrate enemy armor and less exhausting. [50% less power attack stamina cost, +5% armor penetration]"
+// Dagger Focus 1
+requiem60PerkData.perks[138].description = "You learned some dirty tricks for your dagger. [25% irresistible sneak attack damage, +10% armor penetration]"
+// Dagger Focus 2
+requiem60PerkData.perks[139].description = "A dagger in your hand turns into a deadly weapon. [55% irresistible sneak attack damage, +20% armor penetration]"
+// Dagger Focus 3
+requiem60PerkData.perks[140].description = "You have mastered the deadly art of the dagger.<br>[100% irresistible sneak attack damage, +30% armor penetration]"
+// War Axe Focus 1
+requiem60PerkData.perks[141].description = "You've become familiar with war axes. [10% more damage, +10% armor penetration]"
+// War Axe Focus 2
+requiem60PerkData.perks[142].description = "You've become an advanced war axe fighter. [20% more damage, +20% armor penetration]"
+// War Axe Focus 3
+requiem60PerkData.perks[143].description = "You've become a master of war axe combat. [30% more damage, +30% armor penetration]"
+// Mace Focus 1
+requiem60PerkData.perks[144].description = "You've learned some techniques to crush armor with maces. [5% more power attack damage, +15% armor penetration]"
+// Mace Focus 2
+requiem60PerkData.perks[145].description = "You've become an advanced mace fighter and know how to find weak spots in enemy armor. [10% more power attack damage, +30% armor penetration]"
+// Mace Focus 3
+requiem60PerkData.perks[146].description = "You've become a masterly mace fighter, rendering armor almost useless. [15% more power attack damage, +45% armor penetration]"
+// Sword Focus 1
+requiem60PerkData.perks[147].description = "You've learned the basics of sword combat. [+8% attack speed, +7% armor penetration]"
+// Sword Focus 2
+requiem60PerkData.perks[148].description = "You've acquired the advanced techniques of sword combat. [+16% attack speed, +14% armor penetration]"
+// Sword Focus 3
+requiem60PerkData.perks[149].description = "You've become a master of sword combat. [+24% attack speed, +21% armor penetration]"
+// Powerful Strike
+requiem60PerkData.perks[150].description = "You know how to put the maximum force into your power attacks. [20% more power attack damage]"
+// Powerful Charge
+requiem60PerkData.perks[151].description = "You have learned to perform a leaping power attack while sprinting. [Able to do sprinting power attack]"
+// Storm of Steel
+requiem60PerkData.perks[155].description = "You've become very skilled in wielding two weapons at once. [20% more dual-wield power attack damage]"
+
+// Smithing description changes
+requiem60PerkData.perks[181].description = "You've been able to learn more advanced techniques, allowing you to craft and efficiently improve advanced light materials such as scale, netch leather, chitin, bonemold, and chainmail."
+
+// Two-handed changes
+// Great Weapon Mastery 1
+requiem60PerkData.perks[211].description = "Your improved fighting techniques increase your damage dealt with two-handed weapons. [20% more damage]"
+// Great Weapon Mastery 2
+requiem60PerkData.perks[212].description = "Your improved fighting techniques increase your damage dealt with two-handed weapons even more. [40% more damage]"
+// Barbaric Might
+requiem60PerkData.perks[213].description = "Your power attacks become mighty blows that will penetrate armor and are less tiring. [50% less power attack stamina cost, +5% armor penetration]"
+//Battle Axe Focus 1
+requiem60PerkData.perks[214].description = "You've become familiar with battle axes. [10% more damage, +10% armor penetration]"
+//Battle Axe Focus 2
+requiem60PerkData.perks[215].description = "You've become an advanced battle axe fighter. [20% more damage, +20% armor penetration]"
+//Battle Axe Focus 3
+requiem60PerkData.perks[216].description = "You've become a master of battle axe combat. [30% more damage, +30% armor penetration]"
+//Greatsword Focus 1
+requiem60PerkData.perks[217].description = "You've learned the basics of greatsword combat. [+8% attack speed with greatswords, +7% armor penetration]"
+//Greatsword Focus 2
+requiem60PerkData.perks[218].description = "You've acquired the advanced techniques of greatsword combat. [+16% attack speed with greatswords, +14% armor penetration]"
+//Greatsword Focus 3
+requiem60PerkData.perks[219].description = "You've become a master of greatsword combat. [+24% attack speed with greatswords, +21% armor penetration]"
+//Warhammer Focus 1
+requiem60PerkData.perks[220].description = "You've learned some techniques to crush armor with warhammers. [5% more power attack damage, +15% armor penetration]"
+//Warhammer Focus 2
+requiem60PerkData.perks[221].description = "You've become an advanced warhammer fighter and know how to find weak spots in enemy armor.<br>[10% more power attack damage, +30% armor penetration]"
+//Warhammer Focus 3
+requiem60PerkData.perks[222].description = "You've become a masterly warhammer fighter, rendering armor almost useless. [15% more power attack damage, +45% armor penetration]"
+// While we're here, add the new Quarterstaff Focus perks
+// 229: Quarterstaff Focus 1
+requiem60PerkData.perks.push(
+  {name : "Quarterstaff Focus", skill : 17, skillReq : 25,
+   xPos : 80/4, yPos : 260/4, preReqs : [213], nextPerk: 230,
+   description : "You've learned the basics of quarterstaff combat. [+10% attack speed with quarterstaves, +12% armor penetration]"}
+)
+// 230: Quarterstaff Focus 2
+requiem60PerkData.perks.push(
+  {name : "Quarterstaff Focus", skill : 17, skillReq : 50,
+   xPos : 80/4, yPos : 260/4, preReqs : [229], nextPerk: 231,
+   description : "You've acquired the advanced techniques of quarterstaff combat. [+20% attack speed with quarterstaves, +24% armor penetration]"}
+)
+// 231: Quarterstaff Focus 3
+requiem60PerkData.perks.push(
+  {name : "Quarterstaff Focus", skill : 17, skillReq : 75,
+   xPos : 80/4, yPos : 260/4, preReqs : [230], nextPerk: -1,
+   description : "You've become a master of quarterstaff combat. [+30% attack speed with quarterstaves, +36% armor penetration]"}
+)
+// Devastating Charge
+requiem60PerkData.perks[223].description = "You've learned to perform a leaping power attack while sprinting. [Able to do sprinting power attack]]"
+// Devastating Strike
+requiem60PerkData.perks[224].description = "Your two-handed combat style has improved so much that all power attacks have become devastating. [20% more power attack damage]"
+// Mighty Strike
+requiem60PerkData.perks[227].description = "You can kill almost any foe with a single strike of your two-hander, as your blows even fell giants with ease. [25% more damage]"
+
+addPerkData(requiem60PerkData)
