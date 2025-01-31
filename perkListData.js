@@ -1180,7 +1180,9 @@ requiem60PerkData.perks[86].description = "Your trained reflexes allow you to do
 requiem60PerkData.perks[87].description = "You are able to hit more precisely. [Up to 12% more power attack damage when wearing no heavy armor: head, chest, hands, feet]"
 // Dexterity
 requiem60PerkData.perks[88].description = "You are able to balance your weapon better. [Up to 24% less power attack stamina cost when wearing no heavy armor: head, chest, hands, feet]"
-// Agile Spellcasting
+// Agile Spellcasting has new requirements + description
+requiem60PerkData.perks[89].skillReq = 30;
+requiem60PerkData.perks[89].preReqs = [85]
 requiem60PerkData.perks[89].description = "You learned how to avoid the limitations light armors bestow upon somatic spell components. [No spell cost penalty for casting spells in light armor]"
 // Windrunner -> Wind Walker
 requiem60PerkData.perks[90].name = "Wind Walker"
